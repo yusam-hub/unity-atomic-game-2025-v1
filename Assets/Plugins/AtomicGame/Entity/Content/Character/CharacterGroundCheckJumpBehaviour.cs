@@ -70,6 +70,7 @@ namespace AtomicGame
             
             if (_isGrounded.Value && _velocityY <= 0)
             {
+                
                 _velocityY = 0;
                 _numberOfJumps = 0;
                 
@@ -84,28 +85,17 @@ namespace AtomicGame
                     }
                 } 
             }
-
-            /*float angle = 0;
-            if (_isGrounded.Value)
-            {
-                angle = Vector3.Angle(_transform.up, _hit.normal);
-                //todo - угол между персонажем и поверхностью - влияет на скорость - чем больше угол тем медленне скорость, передавать значение в множитель
-                //          
-            }*/
             
-            if (oldIsGrounded != _isGrounded.Value || (_isGrounded.Value && _oldGroundTransform != _hit.transform))
+            if (
+                oldIsGrounded != _isGrounded.Value 
+                || 
+                (_isGrounded.Value && _oldGroundTransform != _hit.transform)
+                )
             {
                 _transform.SetParent(_isGrounded.Value ? _hit.transform : null);
             } 
             
-            if (_isGrounded.Value)
-            {
-                _oldGroundTransform = _hit.transform;
-            }
-            else
-            {
-                _oldGroundTransform = null;
-            }
+            _oldGroundTransform = _isGrounded.Value ? _hit.transform : null;
             
             _transform.Translate(new Vector3(0, _velocityY, 0) * deltaTime);
         }

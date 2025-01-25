@@ -26,6 +26,7 @@ namespace AtomicGame
 		public const int RotateSpeed = -1838353354; // IValue<float>
 		public const int RotateAction = -600505304; // IAction<Vector3, float>
 		public const int JumpAction = -2046675773; // IAction
+		public const int Effects = -2018114250; // IReactiveDictionary<string, EffectInstance>
 		public const int KeyPressAction = -418488485; // IAction<KeyCode>
 		public const int KeyDownAction = -124030595; // IAction<KeyCode>
 		public const int KeyUpAction = -181628813; // IAction<KeyCode>
@@ -218,6 +219,24 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetJumpAction(this IEntity obj, IAction value) => obj.SetValue(JumpAction, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveDictionary<string, EffectInstance> GetEffects(this IEntity obj) => obj.GetValue<IReactiveDictionary<string, EffectInstance>>(Effects);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetEffects(this IEntity obj, out IReactiveDictionary<string, EffectInstance> value) => obj.TryGetValue(Effects, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddEffects(this IEntity obj, IReactiveDictionary<string, EffectInstance> value) => obj.AddValue(Effects, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasEffects(this IEntity obj) => obj.HasValue(Effects);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelEffects(this IEntity obj) => obj.DelValue(Effects);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetEffects(this IEntity obj, IReactiveDictionary<string, EffectInstance> value) => obj.SetValue(Effects, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IAction<KeyCode> GetKeyPressAction(this IEntity obj) => obj.GetValue<IAction<KeyCode>>(KeyPressAction);

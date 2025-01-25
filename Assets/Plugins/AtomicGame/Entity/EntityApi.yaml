@@ -23,7 +23,8 @@ values:
 - RotateSpeed: IValue<float>
 - RotateAction: IAction<Vector3, float> #direction,deltaTime
 - JumpAction: IAction
-
+- Effects: IReactiveDictionary<string, EffectInstance>
+  
 #Inputs
 - KeyPressAction: IAction<KeyCode>
 - KeyDownAction: IAction<KeyCode>
