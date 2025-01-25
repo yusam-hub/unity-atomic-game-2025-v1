@@ -19,6 +19,7 @@ namespace AtomicGame
 		///Values
 		public const int Character = 294335127; // IEntity
 		public const int Camera = 1018227507; // Camera
+		public const int CameraOffset = -1286660539; // IValue<Vector3>
 		public const int InputMap = 43340267; // InputMap
 
 
@@ -59,6 +60,24 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetCamera(this IPlayerContext obj, Camera value) => obj.SetValue(Camera, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IValue<Vector3> GetCameraOffset(this IPlayerContext obj) => obj.GetValue<IValue<Vector3>>(CameraOffset);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetCameraOffset(this IPlayerContext obj, out IValue<Vector3> value) => obj.TryGetValue(CameraOffset, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddCameraOffset(this IPlayerContext obj, IValue<Vector3> value) => obj.AddValue(CameraOffset, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasCameraOffset(this IPlayerContext obj) => obj.HasValue(CameraOffset);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelCameraOffset(this IPlayerContext obj) => obj.DelValue(CameraOffset);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetCameraOffset(this IPlayerContext obj, IValue<Vector3> value) => obj.SetValue(CameraOffset, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static InputMap GetInputMap(this IPlayerContext obj) => obj.GetValue<InputMap>(InputMap);

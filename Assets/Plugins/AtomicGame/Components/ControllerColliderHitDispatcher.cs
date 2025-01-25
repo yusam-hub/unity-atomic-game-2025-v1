@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AtomicGame
 {
-    public sealed class AgControllerColliderHitDispatcher : MonoBehaviour
+    public sealed class ControllerColliderHitDispatcher : MonoBehaviour
     {
         [SerializeField] private bool _isDebugging; 
         public event Action<ControllerColliderHit> OnHit;

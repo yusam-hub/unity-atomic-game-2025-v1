@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AtomicGame
 {
-    public static class AgTransformUseCase
+    public static class TransformUseCase
     {
         /*public static void AgMoveTowardsSelf(this IEntity entity, float deltaTime)
         {

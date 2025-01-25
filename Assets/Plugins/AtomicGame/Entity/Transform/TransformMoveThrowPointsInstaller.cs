@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace AtomicGame
 {
-    public class AgTransformMoveThrowPointsInstaller : SceneEntityInstaller
+    public class TransformMoveThrowPointsInstaller : SceneEntityInstaller
     {
         [SerializeField] 
         private Transform _transform;
@@ -15,7 +15,7 @@ namespace AtomicGame
         private ReactiveVariable<float> _moveSpeed = new(1f);
         
         [SerializeField] 
-        private ReactiveVariable<float> _rotateSpeed = new(500f);
+        private ReactiveVariable<float> _rotateSpeed = new(200f);
         
         [SerializeField] 
         private ReactiveVariable<float> _rotateAngle = new (1f);
@@ -32,7 +32,7 @@ namespace AtomicGame
             entity.AddTransforms(_points);
             entity.AddMoveSpeed(_moveSpeed);
             entity.AddRotateSpeed(_rotateSpeed);
-            entity.AddBehaviour(new AgTransformMoveThrowPointsBehaviour(_rotateAngle, _rotateDirection));
+            entity.AddBehaviour(new TransformMoveThrowPointsBehaviour(_rotateAngle, _rotateDirection));
         }
     }
 }

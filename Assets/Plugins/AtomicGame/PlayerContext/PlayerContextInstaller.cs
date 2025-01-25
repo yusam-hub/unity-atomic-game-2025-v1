@@ -15,10 +15,13 @@ namespace AtomicGame
         [SerializeField]
         private CharacterSystemInstaller _characterInstaller;
         
+        [SerializeField]
+        private CameraSystemInstaller _cameraInstaller;
         protected override void Install(IPlayerContext context)
         {
             context.AddInputMap(_inputMap);
             _characterInstaller.Install(context);
+            _cameraInstaller.Install(context);
         }
     }
 }

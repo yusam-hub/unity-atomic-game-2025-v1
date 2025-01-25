@@ -11,7 +11,7 @@ using Atomic.Elements;
 
 namespace AtomicGame
 {
-	public static class AgCommonEntityApi
+	public static class EntityApi
 	{
 
 
@@ -32,9 +32,9 @@ namespace AtomicGame
 		public const int Animator = -1714818978; // Animator
 		public const int AnimatorCurrentState = 1457520650; // IValue<int>
 		public const int ChangeCrossFadeEvent = 364688039; // IEvent<int>
-		public const int AgCollisionDispatcher = -1086234326; // AgCollisionDispatcher
-		public const int AgTriggerDispatcher = 817328212; // AgTriggerDispatcher
-		public const int AgControllerColliderHitDispatcher = -53023836; // AgControllerColliderHitDispatcher
+		public const int CollisionDispatcher = -2127104721; // CollisionDispatcher
+		public const int TriggerDispatcher = -1084234046; // TriggerDispatcher
+		public const int ControllerColliderHitDispatcher = -2253885; // ControllerColliderHitDispatcher
 
 
 		///Value Extensions
@@ -328,57 +328,57 @@ namespace AtomicGame
 		public static void SetChangeCrossFadeEvent(this IEntity obj, IEvent<int> value) => obj.SetValue(ChangeCrossFadeEvent, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static AgCollisionDispatcher GetAgCollisionDispatcher(this IEntity obj) => obj.GetValue<AgCollisionDispatcher>(AgCollisionDispatcher);
+		public static CollisionDispatcher GetCollisionDispatcher(this IEntity obj) => obj.GetValue<CollisionDispatcher>(CollisionDispatcher);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetAgCollisionDispatcher(this IEntity obj, out AgCollisionDispatcher value) => obj.TryGetValue(AgCollisionDispatcher, out value);
+		public static bool TryGetCollisionDispatcher(this IEntity obj, out CollisionDispatcher value) => obj.TryGetValue(CollisionDispatcher, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddAgCollisionDispatcher(this IEntity obj, AgCollisionDispatcher value) => obj.AddValue(AgCollisionDispatcher, value);
+		public static bool AddCollisionDispatcher(this IEntity obj, CollisionDispatcher value) => obj.AddValue(CollisionDispatcher, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasAgCollisionDispatcher(this IEntity obj) => obj.HasValue(AgCollisionDispatcher);
+		public static bool HasCollisionDispatcher(this IEntity obj) => obj.HasValue(CollisionDispatcher);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelAgCollisionDispatcher(this IEntity obj) => obj.DelValue(AgCollisionDispatcher);
+		public static bool DelCollisionDispatcher(this IEntity obj) => obj.DelValue(CollisionDispatcher);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetAgCollisionDispatcher(this IEntity obj, AgCollisionDispatcher value) => obj.SetValue(AgCollisionDispatcher, value);
+		public static void SetCollisionDispatcher(this IEntity obj, CollisionDispatcher value) => obj.SetValue(CollisionDispatcher, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static AgTriggerDispatcher GetAgTriggerDispatcher(this IEntity obj) => obj.GetValue<AgTriggerDispatcher>(AgTriggerDispatcher);
+		public static TriggerDispatcher GetTriggerDispatcher(this IEntity obj) => obj.GetValue<TriggerDispatcher>(TriggerDispatcher);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetAgTriggerDispatcher(this IEntity obj, out AgTriggerDispatcher value) => obj.TryGetValue(AgTriggerDispatcher, out value);
+		public static bool TryGetTriggerDispatcher(this IEntity obj, out TriggerDispatcher value) => obj.TryGetValue(TriggerDispatcher, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddAgTriggerDispatcher(this IEntity obj, AgTriggerDispatcher value) => obj.AddValue(AgTriggerDispatcher, value);
+		public static bool AddTriggerDispatcher(this IEntity obj, TriggerDispatcher value) => obj.AddValue(TriggerDispatcher, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasAgTriggerDispatcher(this IEntity obj) => obj.HasValue(AgTriggerDispatcher);
+		public static bool HasTriggerDispatcher(this IEntity obj) => obj.HasValue(TriggerDispatcher);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelAgTriggerDispatcher(this IEntity obj) => obj.DelValue(AgTriggerDispatcher);
+		public static bool DelTriggerDispatcher(this IEntity obj) => obj.DelValue(TriggerDispatcher);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetAgTriggerDispatcher(this IEntity obj, AgTriggerDispatcher value) => obj.SetValue(AgTriggerDispatcher, value);
+		public static void SetTriggerDispatcher(this IEntity obj, TriggerDispatcher value) => obj.SetValue(TriggerDispatcher, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static AgControllerColliderHitDispatcher GetAgControllerColliderHitDispatcher(this IEntity obj) => obj.GetValue<AgControllerColliderHitDispatcher>(AgControllerColliderHitDispatcher);
+		public static ControllerColliderHitDispatcher GetControllerColliderHitDispatcher(this IEntity obj) => obj.GetValue<ControllerColliderHitDispatcher>(ControllerColliderHitDispatcher);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetAgControllerColliderHitDispatcher(this IEntity obj, out AgControllerColliderHitDispatcher value) => obj.TryGetValue(AgControllerColliderHitDispatcher, out value);
+		public static bool TryGetControllerColliderHitDispatcher(this IEntity obj, out ControllerColliderHitDispatcher value) => obj.TryGetValue(ControllerColliderHitDispatcher, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddAgControllerColliderHitDispatcher(this IEntity obj, AgControllerColliderHitDispatcher value) => obj.AddValue(AgControllerColliderHitDispatcher, value);
+		public static bool AddControllerColliderHitDispatcher(this IEntity obj, ControllerColliderHitDispatcher value) => obj.AddValue(ControllerColliderHitDispatcher, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasAgControllerColliderHitDispatcher(this IEntity obj) => obj.HasValue(AgControllerColliderHitDispatcher);
+		public static bool HasControllerColliderHitDispatcher(this IEntity obj) => obj.HasValue(ControllerColliderHitDispatcher);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelAgControllerColliderHitDispatcher(this IEntity obj) => obj.DelValue(AgControllerColliderHitDispatcher);
+		public static bool DelControllerColliderHitDispatcher(this IEntity obj) => obj.DelValue(ControllerColliderHitDispatcher);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetAgControllerColliderHitDispatcher(this IEntity obj, AgControllerColliderHitDispatcher value) => obj.SetValue(AgControllerColliderHitDispatcher, value);
+		public static void SetControllerColliderHitDispatcher(this IEntity obj, ControllerColliderHitDispatcher value) => obj.SetValue(ControllerColliderHitDispatcher, value);
     }
 }

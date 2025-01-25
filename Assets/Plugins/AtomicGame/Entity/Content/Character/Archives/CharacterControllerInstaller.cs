@@ -9,7 +9,7 @@ using UnityEngine;
 namespace AtomicGame
 {
     /*[RequireComponent(typeof(CharacterController))]
-    public class AgCharacterControllerInstaller : SceneEntityInstaller
+    public class CharacterControllerInstaller : SceneEntityInstaller
     {
         [SerializeField] 
         private CharacterController _characterController;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AtomicGame
 {
-    public sealed class AgTransformMoveThrowPointsBehaviour : IEntityInit, IEntityUpdate
+    public sealed class TransformMoveThrowPointsBehaviour : IEntityInit, IEntityUpdate
     {
         private Transform _transform;
         private int _indexPoint;
@@ -14,7 +14,7 @@ namespace AtomicGame
         private IReactiveVariable<float> _angleRotate;
 
 
-        public AgTransformMoveThrowPointsBehaviour(IReactiveVariable<float> angleRotate, Vector3 rotateDirection)
+        public TransformMoveThrowPointsBehaviour(IReactiveVariable<float> angleRotate, Vector3 rotateDirection)
         {
             _angleRotate = angleRotate;
             _rotateDirection = rotateDirection;

@@ -3,8 +3,8 @@ entityType: IEntity
 aggressiveInlining: true
 
 namespace: AtomicGame
-className: AgCommonEntityApi
-directory: Assets/Plugins/AtomicGame/AtomicApi
+className: EntityApi
+directory: Assets/Plugins/AtomicGame/Entity
  
 imports:
 - System
@@ -35,6 +35,6 @@ values:
 - ChangeCrossFadeEvent: IEvent<int> #hash int
   
 #Dispatchers
-- AgCollisionDispatcher: AgCollisionDispatcher
-- AgTriggerDispatcher: AgTriggerDispatcher
-- AgControllerColliderHitDispatcher: AgControllerColliderHitDispatcher
+- CollisionDispatcher: CollisionDispatcher
+- TriggerDispatcher: TriggerDispatcher
+- ControllerColliderHitDispatcher: ControllerColliderHitDispatcher

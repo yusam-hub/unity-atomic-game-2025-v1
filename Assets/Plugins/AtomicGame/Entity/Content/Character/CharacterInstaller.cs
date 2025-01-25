@@ -8,7 +8,7 @@ using UnityEngine;
 namespace AtomicGame
 {
     [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
-    public class AgCharacterTransformInstaller : SceneEntityInstaller
+    public class CharacterInstaller : SceneEntityInstaller
     {
         [SerializeField] 
         private  ReactiveVariable<float> _moveSpeed = new(3.5f);
@@ -55,7 +55,7 @@ namespace AtomicGame
             }));
             
             entity.AddBehaviour(
-                new AgTransformGroundCheckJumpBehaviour(
+                new CharacterGroundCheckJumpBehaviour(
                 _checkGroundOffset ,
                 _checkGroundDistance, 
                 _isGrounded,

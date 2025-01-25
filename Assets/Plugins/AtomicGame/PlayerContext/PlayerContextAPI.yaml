@@ -16,4 +16,5 @@ imports:
 values:
 - Character: IEntity
 - Camera: Camera
+- CameraOffset: IValue<Vector3>
 - InputMap: InputMap
