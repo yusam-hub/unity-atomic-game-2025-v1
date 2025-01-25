@@ -18,9 +18,6 @@ namespace AtomicGame.Common
 		///Values
 		public const int Transform = -180157682; // Transform
 		public const int Transforms = -62676721; // Transform[]
-		public const int Animator = -1714818978; // Animator
-		public const int AnimatorCurrentState = 1457520650; // IValue<int>
-		public const int Rigidbody = -2101481708; // Rigidbody
 		public const int CharacterController = -270069640; // CharacterController
 		public const int MoveSpeed = 526065662; // IValue<float>
 		public const int MoveAction = 1225226561; // IAction<Vector3, float>
@@ -32,9 +29,12 @@ namespace AtomicGame.Common
 		public const int KeyPressAction = -418488485; // IAction<KeyCode>
 		public const int KeyDownAction = -124030595; // IAction<KeyCode>
 		public const int KeyUpAction = -181628813; // IAction<KeyCode>
+		public const int Animator = -1714818978; // Animator
+		public const int AnimatorCurrentState = 1457520650; // IValue<int>
 		public const int ChangeCrossFadeEvent = 364688039; // IEvent<int>
 		public const int AgCollisionDispatcher = -1086234326; // AgCollisionDispatcher
 		public const int AgTriggerDispatcher = 817328212; // AgTriggerDispatcher
+		public const int AgControllerColliderHitDispatcher = -53023836; // AgControllerColliderHitDispatcher
 
 
 		///Value Extensions
@@ -74,60 +74,6 @@ namespace AtomicGame.Common
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetTransforms(this IEntity obj, Transform[] value) => obj.SetValue(Transforms, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Animator GetAnimator(this IEntity obj) => obj.GetValue<Animator>(Animator);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetAnimator(this IEntity obj, out Animator value) => obj.TryGetValue(Animator, out value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddAnimator(this IEntity obj, Animator value) => obj.AddValue(Animator, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasAnimator(this IEntity obj) => obj.HasValue(Animator);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelAnimator(this IEntity obj) => obj.DelValue(Animator);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetAnimator(this IEntity obj, Animator value) => obj.SetValue(Animator, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IValue<int> GetAnimatorCurrentState(this IEntity obj) => obj.GetValue<IValue<int>>(AnimatorCurrentState);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetAnimatorCurrentState(this IEntity obj, out IValue<int> value) => obj.TryGetValue(AnimatorCurrentState, out value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddAnimatorCurrentState(this IEntity obj, IValue<int> value) => obj.AddValue(AnimatorCurrentState, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasAnimatorCurrentState(this IEntity obj) => obj.HasValue(AnimatorCurrentState);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelAnimatorCurrentState(this IEntity obj) => obj.DelValue(AnimatorCurrentState);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetAnimatorCurrentState(this IEntity obj, IValue<int> value) => obj.SetValue(AnimatorCurrentState, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Rigidbody GetRigidbody(this IEntity obj) => obj.GetValue<Rigidbody>(Rigidbody);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetRigidbody(this IEntity obj, out Rigidbody value) => obj.TryGetValue(Rigidbody, out value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddRigidbody(this IEntity obj, Rigidbody value) => obj.AddValue(Rigidbody, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasRigidbody(this IEntity obj) => obj.HasValue(Rigidbody);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelRigidbody(this IEntity obj) => obj.DelValue(Rigidbody);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetRigidbody(this IEntity obj, Rigidbody value) => obj.SetValue(Rigidbody, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static CharacterController GetCharacterController(this IEntity obj) => obj.GetValue<CharacterController>(CharacterController);
@@ -328,6 +274,42 @@ namespace AtomicGame.Common
 		public static void SetKeyUpAction(this IEntity obj, IAction<KeyCode> value) => obj.SetValue(KeyUpAction, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static Animator GetAnimator(this IEntity obj) => obj.GetValue<Animator>(Animator);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetAnimator(this IEntity obj, out Animator value) => obj.TryGetValue(Animator, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddAnimator(this IEntity obj, Animator value) => obj.AddValue(Animator, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasAnimator(this IEntity obj) => obj.HasValue(Animator);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelAnimator(this IEntity obj) => obj.DelValue(Animator);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetAnimator(this IEntity obj, Animator value) => obj.SetValue(Animator, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IValue<int> GetAnimatorCurrentState(this IEntity obj) => obj.GetValue<IValue<int>>(AnimatorCurrentState);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetAnimatorCurrentState(this IEntity obj, out IValue<int> value) => obj.TryGetValue(AnimatorCurrentState, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddAnimatorCurrentState(this IEntity obj, IValue<int> value) => obj.AddValue(AnimatorCurrentState, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasAnimatorCurrentState(this IEntity obj) => obj.HasValue(AnimatorCurrentState);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelAnimatorCurrentState(this IEntity obj) => obj.DelValue(AnimatorCurrentState);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetAnimatorCurrentState(this IEntity obj, IValue<int> value) => obj.SetValue(AnimatorCurrentState, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IEvent<int> GetChangeCrossFadeEvent(this IEntity obj) => obj.GetValue<IEvent<int>>(ChangeCrossFadeEvent);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -380,5 +362,23 @@ namespace AtomicGame.Common
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetAgTriggerDispatcher(this IEntity obj, AgTriggerDispatcher value) => obj.SetValue(AgTriggerDispatcher, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static AgControllerColliderHitDispatcher GetAgControllerColliderHitDispatcher(this IEntity obj) => obj.GetValue<AgControllerColliderHitDispatcher>(AgControllerColliderHitDispatcher);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetAgControllerColliderHitDispatcher(this IEntity obj, out AgControllerColliderHitDispatcher value) => obj.TryGetValue(AgControllerColliderHitDispatcher, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddAgControllerColliderHitDispatcher(this IEntity obj, AgControllerColliderHitDispatcher value) => obj.AddValue(AgControllerColliderHitDispatcher, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasAgControllerColliderHitDispatcher(this IEntity obj) => obj.HasValue(AgControllerColliderHitDispatcher);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelAgControllerColliderHitDispatcher(this IEntity obj) => obj.DelValue(AgControllerColliderHitDispatcher);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetAgControllerColliderHitDispatcher(this IEntity obj, AgControllerColliderHitDispatcher value) => obj.SetValue(AgControllerColliderHitDispatcher, value);
     }
 }

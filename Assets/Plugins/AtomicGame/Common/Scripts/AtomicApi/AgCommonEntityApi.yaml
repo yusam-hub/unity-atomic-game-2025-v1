@@ -15,9 +15,6 @@ imports:
 values:
 - Transform: Transform
 - Transforms: Transform[]
-- Animator: Animator
-- AnimatorCurrentState: IValue<int>
-- Rigidbody: Rigidbody
 - CharacterController: CharacterController
 - MoveSpeed: IValue<float>
 - MoveAction: IAction<Vector3, float> #direction,deltaTime
@@ -26,11 +23,18 @@ values:
 - RotateSpeed: IValue<float>
 - RotateAction: IAction<Vector3, float> #direction,deltaTime
 - JumpAction: IAction
+
+#Inputs
 - KeyPressAction: IAction<KeyCode>
 - KeyDownAction: IAction<KeyCode>
 - KeyUpAction: IAction<KeyCode>
+
+#Animator
+- Animator: Animator
+- AnimatorCurrentState: IValue<int>
 - ChangeCrossFadeEvent: IEvent<int> #hash int
   
-#Physics
+#Dispatchers
 - AgCollisionDispatcher: AgCollisionDispatcher
 - AgTriggerDispatcher: AgTriggerDispatcher
+- AgControllerColliderHitDispatcher: AgControllerColliderHitDispatcher
