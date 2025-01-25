@@ -73,7 +73,7 @@ namespace AtomicGame
             entity.AddRotateSpeed(_rotateSpeed);
             entity.AddRotateAction(new BaseAction<Vector3, float>((direction, deltaTime) =>
             {
-                entity.AgTransformRotateByDirection(direction, deltaTime);
+                entity.TransformRotateByDirection(direction, deltaTime);
             }));
             
             entity.AddKeyDownAction(new BaseAction<KeyCode>((keyCode) =>

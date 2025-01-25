@@ -12,7 +12,7 @@ namespace AtomicGame
             entity.AgMoveTowards(direction.Value, deltaTime);
         }*/
         
-        public static void AgTransformMoveByDirection(this IEntity entity, in Vector3 direction, in float deltaTime)
+        public static void TransformMoveByDirection(this IEntity entity, in Vector3 direction, in float deltaTime)
         {
             /*if (entity.TryGetMoveCondition(out IExpression<bool> condition) && !condition.Value)
             {
@@ -25,7 +25,7 @@ namespace AtomicGame
             transform.position += direction * (speed.Invoke() * deltaTime);
         }
         
-        public static void AgTransformRotateByDirection(this IEntity entity, in Vector3 direction, in float deltaTime)
+        public static void TransformRotateByDirection(this IEntity entity, in Vector3 direction, in float deltaTime)
         {
             if (direction == Vector3.zero)
             {
@@ -33,20 +33,20 @@ namespace AtomicGame
             }
 
             Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
-            AgTransformRotateByDirection(entity, targetRotation, deltaTime);
+            TransformRotateByDirection(entity, targetRotation, deltaTime);
         }
 
-        public static void AgTransformRotateByDirection(this IEntity entity, in Quaternion targetRotation, in float deltaTime)
+        public static void TransformRotateByDirection(this IEntity entity, in Quaternion targetRotation, in float deltaTime)
         {
             if (!entity.HasTransform()) return;
             if (!entity.HasRotateSpeed()) return;
             
             float speed = entity.GetRotateSpeed().Value * deltaTime;
             Transform transform = entity.GetTransform();
-            transform.rotation = AgTransformRotateByDirection(transform.rotation, targetRotation, speed);
+            transform.rotation = TransformRotateByDirection(transform.rotation, targetRotation, speed);
         }
         
-        public static Quaternion AgTransformRotateByDirection(in Quaternion currentRotation, in Quaternion targetRotation, in float speed)
+        public static Quaternion TransformRotateByDirection(in Quaternion currentRotation, in Quaternion targetRotation, in float speed)
         {
             return Quaternion.Lerp(currentRotation, targetRotation, speed);
         }

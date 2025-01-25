@@ -11,7 +11,7 @@ namespace AtomicGame
     public class CharacterInstaller : SceneEntityInstaller
     {
         [SerializeField] 
-        private  ReactiveVariable<float> _moveSpeed = new(3.5f);
+        private ReactiveVariable<float> _moveSpeed = new(3.5f);
 
         [SerializeField] 
         private ReactiveVariable<float> _rotateSpeed = new(15f);
@@ -42,7 +42,7 @@ namespace AtomicGame
             entity.AddMoveAction(new BaseAction<Vector3, float>((direction, deltaTime) =>
             {
                 _isMoving.Value = direction != Vector3.zero;
-                entity.AgTransformMoveByDirection(direction, deltaTime);
+                entity.TransformMoveByDirection(direction, deltaTime);
                 entity.GetRotateAction().Invoke(direction, deltaTime);
             }));
             entity.AddIsMoving(_isMoving);
@@ -51,7 +51,7 @@ namespace AtomicGame
             entity.AddRotateSpeed(_rotateSpeed);
             entity.AddRotateAction(new BaseAction<Vector3, float>((direction, deltaTime) =>
             {
-                entity.AgTransformRotateByDirection(direction, deltaTime);
+                entity.TransformRotateByDirection(direction, deltaTime);
             }));
             
             entity.AddBehaviour(
