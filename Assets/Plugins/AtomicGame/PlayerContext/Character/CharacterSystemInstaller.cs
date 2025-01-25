@@ -23,6 +23,7 @@ namespace AtomicGame
             context.AddCharacter(_character);
             context.AddController<CharacterMoveController>();
             context.AddController<CharacterJumpController>();
+            context.AddController<CharacterInteractController>();
         }
     }
 }

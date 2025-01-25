@@ -8,20 +8,30 @@ namespace AtomicGame
     {
         private const int COLLIDER_BUFFER_SIZE = 32;
 
-        public static bool Interact(in IEntity source, in Collider collider)
+        public static bool Interact(in IEntity character, in Collider collider)
         {
-            return collider != null && collider.TryGetComponent(out IEntity other) && Interact(source, other);
+            return collider != null && collider.TryGetComponent(out IEntity other) && Interact(character, other);
         }
 
-        public static bool Interact(in IEntity source, in IEntity target)
+        public static bool Interact(in IEntity character, in IEntity interactible)
         {
-            if (source == null)
+            if (character == null)
+            {
                 return false;
-
-            if (target == null || !target.HasInteractibleTag())
+            }
+            
+            if (interactible == null)
+            {
                 return false;
+            }
 
-            target.GetInteractAction().Invoke(source);
+            if (!interactible.HasInteractibleTag())
+            {
+                return false;
+            }
+            
+            interactible.GetInteractAction().Invoke(character);
+
             return true;
         }
 

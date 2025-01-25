@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e516cd3121b4631920b0e2f26995b31, type: 3}
   m_Name: MoveDoubleSpeedEffect
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: double speed
-  <Description>k__BackingField: double speed
+  <Name>k__BackingField: k1
+  <Description>k__BackingField: k1
   <Icon>k__BackingField: {fileID: 0}
   <Duration>k__BackingField:
     value: 15

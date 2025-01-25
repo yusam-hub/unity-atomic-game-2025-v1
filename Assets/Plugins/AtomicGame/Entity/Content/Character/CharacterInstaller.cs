@@ -63,11 +63,11 @@ namespace AtomicGame
             
             entity.AddBehaviour(
                 new CharacterGroundCheckJumpBehaviour(
-                _checkGroundOffset ,
-                _checkGroundDistance, 
-                _isGrounded,
-                _jumpForce,
-                _gravityScale
+                    _checkGroundOffset ,
+                    _checkGroundDistance, 
+                    _isGrounded,
+                    _jumpForce,
+                    _gravityScale
                 )
                 );
         }

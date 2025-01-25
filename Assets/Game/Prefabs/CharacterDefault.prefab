@@ -271,7 +271,7 @@ MonoBehaviour:
     _radius: 2
     _layerMask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 64
     _triggerInteraction: 0
     _period: 0.1
 --- !u!54 &3723407818527942261

@@ -18,8 +18,14 @@ namespace AtomicGame
             entity.AddInteractibleTag();
             entity.AddInteractAction(new BaseAction<IEntity>(character =>
             {
-                if (EffectUseCase.Apply(character, _effect))
-                    gameContext.GetEntityPool().Return(entity);
+                if (EffectUseCase.CanApply(character, _effect))
+                {
+                    if (EffectUseCase.Apply(character, _effect))
+                    {
+                        //Debug.Log($"OK");
+                        //gameContext.GetEntityPool().Return(entity);
+                    }
+                }
             }));
         }
     }

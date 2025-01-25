@@ -37,10 +37,12 @@ namespace AtomicGame
         public void OnFixedUpdate(in IEntity entity, in float deltaTime)
         {
             _period.Tick(deltaTime);
+            
             if (!_period.IsExpired())
                 return;
 
             InteractUseCase.FindClosest(_center.position, _radius, _layerMask, _triggerInteraction, out IEntity target);
+            
             _target.Value = target;
             _period.Reset();
         }

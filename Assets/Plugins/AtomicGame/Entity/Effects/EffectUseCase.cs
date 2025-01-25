@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Atomic.Elements;
 using Atomic.Entities;
+using UnityEngine;
 
 namespace AtomicGame
 {
@@ -17,10 +18,19 @@ namespace AtomicGame
             string effectName = effect.Name;
             
             IReactiveDictionary<string, EffectInstance> effects = character.GetEffects();
-            if (effects.ContainsKey(effectName) || !effect.Apply(character, out EffectInstance instance))
+            
+            if (effects.ContainsKey(effectName))
+            {
                 return false;
+            }
+            
+            if (!effect.Apply(character, out EffectInstance instance))
+            {
+                return false;
+            }
             
             effects.Add(effectName, instance);
+
             return true;
         }
 

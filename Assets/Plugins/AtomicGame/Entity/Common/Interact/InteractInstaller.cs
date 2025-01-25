@@ -12,7 +12,7 @@ namespace AtomicGame
         private Transform _center;
         
         [SerializeField]
-        private float _radius;
+        private float _radius = 2;
 
         [SerializeField]
         private LayerMask _layerMask;
@@ -26,8 +26,16 @@ namespace AtomicGame
         public void Install(IEntity entity)
         {
             entity.AddTargetInteractible(new ReactiveVariable<IEntity>());
-            entity.AddBehaviour(new DetectInteractibleBehaviour(_center, _radius, _layerMask, _triggerInteraction,
-                new Cooldown(_period)));
+            
+            entity.AddBehaviour(
+                new DetectInteractibleBehaviour(
+                    _center, 
+                    _radius, 
+                    _layerMask, 
+                    _triggerInteraction,
+                new Cooldown(_period)
+                    )
+                );
         }
     }
 }

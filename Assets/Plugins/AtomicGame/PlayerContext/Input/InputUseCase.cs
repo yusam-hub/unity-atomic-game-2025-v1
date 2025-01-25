@@ -17,6 +17,7 @@ namespace AtomicGame
             KeyCode keyCode = context.GetInputMap().Interact;
             return Input.GetKeyDown(keyCode);
         }
+        
         public static Vector3 GetMoveDirection(in IPlayerContext context)
         {
             InputMap inputMap = context.GetInputMap();
