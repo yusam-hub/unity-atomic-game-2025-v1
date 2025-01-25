@@ -16,7 +16,7 @@ values:
 - Transform: Transform
 - Transforms: Transform[]
 - CharacterController: CharacterController
-- MoveSpeed: IValue<float>
+- MoveSpeed: IReactiveVariable<float>
 - MoveAction: IAction<Vector3, float> #direction,deltaTime
 - IsMoving: IValue<bool>
 - IsGrounded: IValue<bool>

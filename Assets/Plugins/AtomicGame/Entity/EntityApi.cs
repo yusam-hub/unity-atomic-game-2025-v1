@@ -19,7 +19,7 @@ namespace AtomicGame
 		public const int Transform = -180157682; // Transform
 		public const int Transforms = -62676721; // Transform[]
 		public const int CharacterController = -270069640; // CharacterController
-		public const int MoveSpeed = 526065662; // IValue<float>
+		public const int MoveSpeed = 526065662; // IReactiveVariable<float>
 		public const int MoveAction = 1225226561; // IAction<Vector3, float>
 		public const int IsMoving = 120489994; // IValue<bool>
 		public const int IsGrounded = 507951781; // IValue<bool>
@@ -94,13 +94,13 @@ namespace AtomicGame
 		public static void SetCharacterController(this IEntity obj, CharacterController value) => obj.SetValue(CharacterController, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IValue<float> GetMoveSpeed(this IEntity obj) => obj.GetValue<IValue<float>>(MoveSpeed);
+		public static IReactiveVariable<float> GetMoveSpeed(this IEntity obj) => obj.GetValue<IReactiveVariable<float>>(MoveSpeed);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetMoveSpeed(this IEntity obj, out IValue<float> value) => obj.TryGetValue(MoveSpeed, out value);
+		public static bool TryGetMoveSpeed(this IEntity obj, out IReactiveVariable<float> value) => obj.TryGetValue(MoveSpeed, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddMoveSpeed(this IEntity obj, IValue<float> value) => obj.AddValue(MoveSpeed, value);
+		public static bool AddMoveSpeed(this IEntity obj, IReactiveVariable<float> value) => obj.AddValue(MoveSpeed, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasMoveSpeed(this IEntity obj) => obj.HasValue(MoveSpeed);
@@ -109,7 +109,7 @@ namespace AtomicGame
 		public static bool DelMoveSpeed(this IEntity obj) => obj.DelValue(MoveSpeed);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetMoveSpeed(this IEntity obj, IValue<float> value) => obj.SetValue(MoveSpeed, value);
+		public static void SetMoveSpeed(this IEntity obj, IReactiveVariable<float> value) => obj.SetValue(MoveSpeed, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IAction<Vector3, float> GetMoveAction(this IEntity obj) => obj.GetValue<IAction<Vector3, float>>(MoveAction);
