@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 3723407818527942261}
   - component: {fileID: 1522160593851973496}
   m_Layer: 0
-  m_Name: CharacterTransform
+  m_Name: CharacterDefault
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,6 +266,14 @@ MonoBehaviour:
     value: 0
   _isGrounded:
     value: 0
+  _interactInstaller:
+    _center: {fileID: 6644621728130250580}
+    _radius: 2
+    _layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    _triggerInteraction: 0
+    _period: 0.1
 --- !u!54 &3723407818527942261
 Rigidbody:
   m_ObjectHideFlags: 0

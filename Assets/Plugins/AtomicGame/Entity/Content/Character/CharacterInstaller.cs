@@ -34,8 +34,13 @@ namespace AtomicGame
         [SerializeField, ReadOnly]
         private ReactiveVariable<bool> _isGrounded = new (false);
         
+        [SerializeField]
+        private InteractInstaller _interactInstaller;
+        
         public override void Install(IEntity entity)
         {
+            _interactInstaller.Install(entity);
+            
             entity.AddEffects(new ReactiveDictionary<string, EffectInstance>());
             
             entity.AddTransform(transform);
