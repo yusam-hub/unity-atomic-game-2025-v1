@@ -1,0 +1,36 @@
+header: EntityAPI
+entityType: IEntity
+aggressiveInlining: true
+
+namespace: AtomicGame.Common
+className: AgCommonEntityApi
+directory: Assets/Plugins/AtomicGame/Common/Scripts/AtomicApi
+ 
+imports:
+- System
+- UnityEngine
+- Atomic.Entities
+- Atomic.Elements
+
+values:
+- Transform: Transform
+- Transforms: Transform[]
+- Animator: Animator
+- AnimatorCurrentState: IValue<int>
+- Rigidbody: Rigidbody
+- CharacterController: CharacterController
+- MoveSpeed: IValue<float>
+- MoveAction: IAction<Vector3, float> #direction,deltaTime
+- IsMoving: IValue<bool>
+- IsGrounded: IValue<bool>
+- RotateSpeed: IValue<float>
+- RotateAction: IAction<Vector3, float> #direction,deltaTime
+- JumpAction: IAction
+- KeyPressAction: IAction<KeyCode>
+- KeyDownAction: IAction<KeyCode>
+- KeyUpAction: IAction<KeyCode>
+- ChangeCrossFadeEvent: IEvent<int> #hash int
+  
+#Physics
+- AgCollisionDispatcher: AgCollisionDispatcher
+- AgTriggerDispatcher: AgTriggerDispatcher
