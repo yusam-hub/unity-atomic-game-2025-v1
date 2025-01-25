@@ -1,0 +1,14 @@
+header: ContextAPI
+contextType: IGameContext
+aggressiveInlining: true
+
+namespace: AtomicGame.Common
+className: GameContextAPI
+directory: Assets/Plugins/AtomicGame/Common/Scripts/GameContext
+ 
+imports:
+- UnityEngine
+- Atomic.Contexts
+- Atomic.Entities
+- Atomic.Elements
+- System.Collections.Generic
