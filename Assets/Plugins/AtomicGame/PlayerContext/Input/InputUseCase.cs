@@ -15,20 +15,22 @@ namespace AtomicGame
         public static Vector3 GetMoveDirection(in IPlayerContext context)
         {
             InputMap inputMap = context.GetInputMap();
-
+            
+            Vector3 direction = Vector3.zero;
+            
             if (Input.GetKey(inputMap.MoveForward))
-                return Vector3.forward;
+                direction.z = 1;
 
             if (Input.GetKey(inputMap.MoveBack))
-                return Vector3.back;
+                direction.z = -1;
 
             if (Input.GetKey(inputMap.MoveLeft))
-                return Vector3.left;
+                direction.x = -1;
 
             if (Input.GetKey(inputMap.MoveRight))
-                return Vector3.right;
+                direction.x = 1;;
 
-            return Vector3.zero;
+            return direction.normalized;
         }
     }
 }
