@@ -22,5 +22,8 @@ namespace AtomicGame
 
         [field: SerializeField]
         public KeyCode Jump { get; private set; } = KeyCode.Space;
+        
+        [field: SerializeField]
+        public KeyCode Interact { get; private set; } = KeyCode.E;
     }
 }

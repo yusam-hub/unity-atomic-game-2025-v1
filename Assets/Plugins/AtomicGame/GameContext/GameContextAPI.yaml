@@ -12,3 +12,6 @@ imports:
 - Atomic.Entities
 - Atomic.Elements
 - System.Collections.Generic
+
+values:
+- EntityPool: PrefabEntityPool

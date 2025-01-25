@@ -13,6 +13,8 @@ namespace AtomicGame
 {
 	public static class EntityApi
 	{
+		///Tags
+		public const int Interactible = -2055148603;
 
 
 		///Values
@@ -27,6 +29,8 @@ namespace AtomicGame
 		public const int RotateAction = -600505304; // IAction<Vector3, float>
 		public const int JumpAction = -2046675773; // IAction
 		public const int Effects = -2018114250; // IReactiveDictionary<string, EffectInstance>
+		public const int InteractAction = -1026843572; // IAction<IEntity>
+		public const int TargetInteractible = 21081601; // IReactiveVariable<IEntity>
 		public const int KeyPressAction = -418488485; // IAction<KeyCode>
 		public const int KeyDownAction = -124030595; // IAction<KeyCode>
 		public const int KeyUpAction = -181628813; // IAction<KeyCode>
@@ -36,6 +40,18 @@ namespace AtomicGame
 		public const int CollisionDispatcher = -2127104721; // CollisionDispatcher
 		public const int TriggerDispatcher = -1084234046; // TriggerDispatcher
 		public const int ControllerColliderHitDispatcher = -2253885; // ControllerColliderHitDispatcher
+
+
+		///Tag Extensions
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasInteractibleTag(this IEntity obj) => obj.HasTag(Interactible);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddInteractibleTag(this IEntity obj) => obj.AddTag(Interactible);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelInteractibleTag(this IEntity obj) => obj.DelTag(Interactible);
 
 
 		///Value Extensions
@@ -237,6 +253,42 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetEffects(this IEntity obj, IReactiveDictionary<string, EffectInstance> value) => obj.SetValue(Effects, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IAction<IEntity> GetInteractAction(this IEntity obj) => obj.GetValue<IAction<IEntity>>(InteractAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetInteractAction(this IEntity obj, out IAction<IEntity> value) => obj.TryGetValue(InteractAction, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddInteractAction(this IEntity obj, IAction<IEntity> value) => obj.AddValue(InteractAction, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasInteractAction(this IEntity obj) => obj.HasValue(InteractAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelInteractAction(this IEntity obj) => obj.DelValue(InteractAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetInteractAction(this IEntity obj, IAction<IEntity> value) => obj.SetValue(InteractAction, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveVariable<IEntity> GetTargetInteractible(this IEntity obj) => obj.GetValue<IReactiveVariable<IEntity>>(TargetInteractible);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetTargetInteractible(this IEntity obj, out IReactiveVariable<IEntity> value) => obj.TryGetValue(TargetInteractible, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddTargetInteractible(this IEntity obj, IReactiveVariable<IEntity> value) => obj.AddValue(TargetInteractible, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasTargetInteractible(this IEntity obj) => obj.HasValue(TargetInteractible);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelTargetInteractible(this IEntity obj) => obj.DelValue(TargetInteractible);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetTargetInteractible(this IEntity obj, IReactiveVariable<IEntity> value) => obj.SetValue(TargetInteractible, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IAction<KeyCode> GetKeyPressAction(this IEntity obj) => obj.GetValue<IAction<KeyCode>>(KeyPressAction);

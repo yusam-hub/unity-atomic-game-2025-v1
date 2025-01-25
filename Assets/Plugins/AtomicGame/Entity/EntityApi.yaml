@@ -12,6 +12,9 @@ imports:
 - Atomic.Entities
 - Atomic.Elements
 
+tags:
+- Interactible
+
 values:
 - Transform: Transform
 - Transforms: Transform[]
@@ -24,6 +27,10 @@ values:
 - RotateAction: IAction<Vector3, float> #direction,deltaTime
 - JumpAction: IAction
 - Effects: IReactiveDictionary<string, EffectInstance>
+  
+#Interact
+- InteractAction: IAction<IEntity> #IEntity — Character
+- TargetInteractible: IReactiveVariable<IEntity> #Entity — current interactible item
   
 #Inputs
 - KeyPressAction: IAction<KeyCode>

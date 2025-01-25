@@ -37,6 +37,7 @@ namespace AtomicGame
         public override void Install(IEntity entity)
         {
             entity.AddEffects(new ReactiveDictionary<string, EffectInstance>());
+            
             entity.AddTransform(transform);
             
             entity.AddMoveSpeed(_moveSpeed);
