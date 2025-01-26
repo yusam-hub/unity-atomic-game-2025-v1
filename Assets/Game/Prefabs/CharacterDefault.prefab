@@ -262,6 +262,10 @@ MonoBehaviour:
     value: 15
   _gravityScale:
     value: 3
+  _layerMask:
+    value:
+      serializedVersion: 2
+      m_Bits: 8
   _isMoving:
     value: 0
   _isGrounded:

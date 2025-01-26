@@ -15,7 +15,8 @@ namespace AtomicGame
         private readonly IReactiveVariable<bool> _isGrounded;
         private readonly IReactiveVariable<float> _jumpForce;
         private readonly IReactiveVariable<float> _gravityScale;
-        
+        private readonly IReactiveVariable<LayerMask> _layerMask;
+
         private RaycastHit _hit;
 
         private float _velocityY;
@@ -24,15 +25,16 @@ namespace AtomicGame
         private Transform _transform;
 
         private int _numberOfJumps;
-        private int maxNumberOfJumps = 2;
-        
+        private readonly int _maxNumberOfJumps = 2;
+
 
         public CharacterGroundCheckJumpBehaviour(
             IReactiveVariable<Vector3> posOffset, 
             IReactiveVariable<float> distanceToCheck, 
             IReactiveVariable<bool> isGrounded,
             IReactiveVariable<float> jumpForce,
-            IReactiveVariable<float> gravityScale
+            IReactiveVariable<float> gravityScale,
+            IReactiveVariable<LayerMask> layerMask
             )
         {
             _posOffset = posOffset;
@@ -40,6 +42,7 @@ namespace AtomicGame
             _isGrounded = isGrounded;
             _jumpForce = jumpForce;
             _gravityScale = gravityScale;
+            _layerMask = layerMask;
         }
         
         public void Init(in IEntity entity)
@@ -48,7 +51,7 @@ namespace AtomicGame
             
             entity.AddJumpAction(new BaseAction(() =>
             {
-                if (_numberOfJumps >= maxNumberOfJumps) return;
+                if (_numberOfJumps >= _maxNumberOfJumps) return;
 
                 _numberOfJumps++;
                 _velocityY = _jumpForce.Value;
@@ -65,6 +68,7 @@ namespace AtomicGame
             var oldIsGrounded = _isGrounded.Value;
             
             _isGrounded.Value = Physics.Raycast(ray, out _hit, _distanceToCheck.Value);
+            //_isGrounded.Value = Physics.CheckSphere(_transform.position, _distanceToCheck.Value, _layerMask.Value);
             
             _velocityY += _gravity * _gravityScale.Value * deltaTime;
             
@@ -78,7 +82,6 @@ namespace AtomicGame
                 {
                     if (_isGrounded.Value)
                     {
-                        
                         Vector3 closestPoint = _hit.collider.ClosestPoint(_transform.position);
                         Vector3 snappedPosition = new Vector3(_transform.position.x, closestPoint.y, _transform.position.z);
                         _transform.position = snappedPosition;

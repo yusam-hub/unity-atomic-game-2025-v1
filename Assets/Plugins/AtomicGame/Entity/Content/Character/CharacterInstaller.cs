@@ -28,6 +28,9 @@ namespace AtomicGame
         [SerializeField] 
         private ReactiveVariable<float> _gravityScale = new(5f);
         
+        [SerializeField] 
+        private ReactiveVariable<LayerMask> _layerMask = new();
+        
         [SerializeField, ReadOnly]
         private ReactiveVariable<bool> _isMoving = new (false);
         
@@ -67,7 +70,8 @@ namespace AtomicGame
                     _checkGroundDistance, 
                     _isGrounded,
                     _jumpForce,
-                    _gravityScale
+                    _gravityScale,
+                    _layerMask
                 )
                 );
         }
