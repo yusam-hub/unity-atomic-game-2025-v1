@@ -209,10 +209,10 @@ GameObject:
   - component: {fileID: 6644621728130250580}
   - component: {fileID: 8588427829599581967}
   - component: {fileID: 7279904411867398302}
-  - component: {fileID: 156996380951767269}
-  - component: {fileID: 1522160593851973496}
+  - component: {fileID: 5784172453476441135}
+  - component: {fileID: 5156950100191784913}
   m_Layer: 0
-  m_Name: CharacterDefault
+  m_Name: CharacterDefault2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -252,7 +252,7 @@ MonoBehaviour:
   installInEditMode: 0
   disposeValues: 1
   installers:
-  - {fileID: 156996380951767269}
+  - {fileID: 5156950100191784913}
   _onlySelectedGizmos: 0
   _onlyEditModeGizmos: 0
 --- !u!114 &7279904411867398302
@@ -269,50 +269,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entities:
   - {fileID: 8588427829599581967}
---- !u!114 &156996380951767269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7888863271407192419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 338b9ac92e234a48a384fc99a1c20781, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactInstaller:
-    _center: {fileID: 6644621728130250580}
-    _radius: 2
-    _layerMask:
-      serializedVersion: 2
-      m_Bits: 64
-    _triggerInteraction: 0
-    _period: 0.1
-  _moveSpeed:
-    value: 7
-  _rotateSpeed:
-    value: 15
-  _checkGroundOffset:
-    value: {x: 0, y: -0.1, z: 0}
-  _checkGroundDistance:
-    value: 0.4
-  _jumpForce:
-    value: 15
-  _gravityScale:
-    value: 3
-  _layerMask:
-    value:
-      serializedVersion: 2
-      m_Bits: 8
-  _isMoving:
-    value: 0
-  _isGrounded:
-    value: 0
-  _planarRotation:
-    value: {x: 0, y: 0, z: 0, w: 0}
---- !u!136 &1522160593851973496
-CapsuleCollider:
+--- !u!143 &5784172453476441135
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -329,11 +287,49 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
+  serializedVersion: 3
   m_Height: 2
-  m_Direction: 1
+  m_Radius: 0.3
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &5156950100191784913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7888863271407192419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5155409e0bf24ff98299f99845628645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactInstaller:
+    _center: {fileID: 6644621728130250580}
+    _radius: 2
+    _layerMask:
+      serializedVersion: 2
+      m_Bits: 64
+    _triggerInteraction: 0
+    _period: 0.1
+  _moveSpeed:
+    value: 3.5
+  _currentSpeed:
+    value: 0
+  _rotateSpeed:
+    value: 15
+  _isMoving:
+    value: 0
+  _isGrounded:
+    value: 0
+  gravityMultiplier: 3
+  jumpPower: 5
+  maxNumberOfJumps: 2
+  _planarRotation:
+    value: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &9037147321634094115
 PrefabInstance:
   m_ObjectHideFlags: 0

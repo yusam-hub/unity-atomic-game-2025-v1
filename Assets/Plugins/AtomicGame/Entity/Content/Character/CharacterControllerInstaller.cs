@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Atomic.Elements;
 using Atomic.Entities;
 using AtomicGame;
@@ -7,79 +8,79 @@ using UnityEngine;
 
 namespace AtomicGame
 {
-    [RequireComponent(typeof(CapsuleCollider))]
-    public class CharacterInstaller : SceneEntityInstaller
+    [RequireComponent(typeof(CharacterController))]
+    public class CharacterControllerInstaller : SceneEntityInstaller
     {
         [SerializeField]
         private InteractInstaller _interactInstaller;
 
         [SerializeField] 
-        private ReactiveVariable<float> _moveSpeed = new(3.5f);
+        private  ReactiveVariable<float> _moveSpeed = new(3.5f);
 
+        [SerializeField, ReadOnly]
+        private  ReactiveVariable<float> _currentSpeed = new(0);
+        
         [SerializeField] 
         private ReactiveVariable<float> _rotateSpeed = new(15f);
-        
-        [SerializeField] 
-        private ReactiveVariable<Vector3> _checkGroundOffset = new(new Vector3(0,-0.1f,0));
-        
-        [SerializeField] 
-        private ReactiveVariable<float> _checkGroundDistance = new(0.4f);
-        
-        [SerializeField]
-        private ReactiveVariable<float> _jumpForce = new(15f);
-        
-        [SerializeField] 
-        private ReactiveVariable<float> _gravityScale = new(5f);
-        
-        [SerializeField] 
-        private ReactiveVariable<LayerMask> _layerMask = new();
         
         [SerializeField, ReadOnly]
         private ReactiveVariable<bool> _isMoving = new (false);
         
         [SerializeField, ReadOnly]
         private ReactiveVariable<bool> _isGrounded = new (false);
-        
 
+        private ReactiveVariable<Vector3> _moveDirection = new();
+        
+        private CharacterController _characterController;
+        
         [SerializeField, ReadOnly]
         private ReactiveVariable<Quaternion> _planarRotation = new ();
-        
         public override void Install(IEntity entity)
         {
+            _characterController = GetComponent<CharacterController>();
+            
             _interactInstaller.Install(entity);
             
             entity.AddEffects(new ReactiveDictionary<string, EffectInstance>());
             entity.AddPlanarRotation(_planarRotation);
             
-            entity.AddTransform(transform);
+            entity.AddTransform(_characterController.transform);
+            entity.AddCharacterController(_characterController);    
             
             entity.AddMoveSpeed(_moveSpeed);
             entity.AddMoveAction(new BaseAction<Vector3, float>((direction, deltaTime) =>
             {
-                _isMoving.Value = direction != Vector3.zero;
                 var newDir = _planarRotation.Value * direction;
-                entity.TransformMoveByDirection(newDir, deltaTime);
+                _isMoving.Value = newDir.x != 0 || newDir.z != 0;
                 entity.GetRotateAction().Invoke(newDir, deltaTime);
+                _moveDirection.Value = newDir;
             }));
+            
             entity.AddIsMoving(_isMoving);
-            entity.AddIsGrounded(_isGrounded);
+            entity.AddIsGrounded(new BaseFunction<bool>(() => _characterController.isGrounded));
             
             entity.AddRotateSpeed(_rotateSpeed);
             entity.AddRotateAction(new BaseAction<Vector3, float>((direction, deltaTime) =>
             {
                 entity.TransformRotateByDirection(direction, deltaTime);
             }));
-            
+
             entity.AddBehaviour(
-                new CharacterGroundCheckJumpBehaviour(
-                    _checkGroundOffset ,
-                    _checkGroundDistance, 
-                    _isGrounded,
-                    _jumpForce,
-                    _gravityScale,
-                    _layerMask
+                new CharacterControllerBehaviour(
+                    _characterController, 
+                    _currentSpeed,
+                    _moveSpeed,
+                    _moveDirection
                 )
-                );
+            );
+        }
+
+        private IEnumerator WaitForLanding()
+        {
+            yield return new WaitUntil(() => !_characterController.isGrounded);
+            yield return new WaitUntil(() =>_characterController.isGrounded);
+
+            //_numberOfJumps = 0;
         }
     }
 }
