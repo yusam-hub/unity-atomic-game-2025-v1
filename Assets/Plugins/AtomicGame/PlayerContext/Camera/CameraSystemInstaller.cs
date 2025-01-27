@@ -9,16 +9,29 @@ namespace AtomicGame
     public sealed class CameraSystemInstaller : IContextInstaller<IPlayerContext>
     {
         [SerializeField]
-        private Vector3 _cameraOffset = new Vector3(0, 5, -5);
+        private Camera _camera;
 
         [SerializeField]
-        private Camera _camera;
+        private Vector3 _cameraFollowOffset = new Vector3(0, 5, -5);
+
+        [SerializeField] 
+        private bool _cameraThirdPersonEnabled;
         
         public void Install(IPlayerContext context)
         {
-            context.AddCameraOffset(new Const<Vector3>(_cameraOffset));
             context.AddCamera(_camera);
-            context.AddController<CameraFollowController>();
+            
+            if (_cameraThirdPersonEnabled)
+            {
+                context.AddCameraPlanarRotation(new ReactiveVariable<Quaternion>());
+                context.AddController<CameraThirdPersonController>(); 
+            }
+            else
+            {
+                context.AddCameraFollowOffset(new Const<Vector3>(_cameraFollowOffset));
+                context.AddController<CameraFollowController>();
+            }
+
         }
     }
 }

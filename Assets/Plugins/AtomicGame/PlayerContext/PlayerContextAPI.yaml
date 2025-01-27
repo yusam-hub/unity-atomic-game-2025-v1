@@ -15,6 +15,9 @@ imports:
 
 values:
 - Character: IEntity
-- Camera: Camera
-- CameraOffset: IValue<Vector3>
 - InputMap: InputMap
+  
+#Camera
+- Camera: Camera
+- CameraFollowOffset: IValue<Vector3>
+- CameraPlanarRotation: IReactiveVariable<Quaternion>
