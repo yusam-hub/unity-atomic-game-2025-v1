@@ -27,6 +27,7 @@ values:
 - RotateAction: IAction<Vector3, float> #direction,deltaTime
 - JumpAction: IAction
 - Effects: IReactiveDictionary<string, EffectInstance>
+- PlanarRotation: IReactiveVariable<Quaternion>  
   
 #Interact
 - InteractAction: IAction<IEntity> #IEntity — Character

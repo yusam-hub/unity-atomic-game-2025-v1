@@ -8,7 +8,7 @@ namespace AtomicGame
     public sealed class CameraThirdPersonController : IContextInit<IPlayerContext>, IContextUpdate, IContextLateUpdate
     {
         private IReactiveVariable<Quaternion> _cameraPlanarRotation;
-        private Transform _character;
+        private IEntity _character;
         private Transform _camera;
 
         private float _rotationSpeed = 2;
@@ -38,13 +38,14 @@ namespace AtomicGame
         public void Init(IPlayerContext context)
         {
             _cameraPlanarRotation = context.GetCameraPlanarRotation();
-            _character = context.GetCharacter().GetTransform();
+            _character = context.GetCharacter();
             _camera = context.GetCamera().transform;
         }
 
         public void OnUpdate(IContext context, float deltaTime)
         {
             _invertZoomVal = _invertZoom ? -1 : 1;
+            
             _currentZoomDistance += Input.GetAxisRaw("Mouse ScrollWheel") * _zoomSpeed * _invertZoomVal;
             _currentZoomDistance = Mathf.Clamp(_currentZoomDistance, _minZoomDistance, _maxZoomDistance);
             
@@ -56,10 +57,12 @@ namespace AtomicGame
             
             _rotationY += Input.GetAxis("Mouse X") * _invertXVal * _rotationSpeed;
 
-            _focusPosition = _character.position + new Vector3(_framingOffset.x, _framingOffset.y);
+            _focusPosition = _character.GetTransform().position + new Vector3(_framingOffset.x, _framingOffset.y);
 
             _targetRotation = Quaternion.Euler(_rotationX, _rotationY, 0);
             _cameraPlanarRotation.Value = Quaternion.Euler(0, _rotationY, 0);
+            
+            _character.GetPlanarRotation().Value = _cameraPlanarRotation.Value;//send to character
         }
 
         public void OnLateUpdate(IContext context, float deltaTime)

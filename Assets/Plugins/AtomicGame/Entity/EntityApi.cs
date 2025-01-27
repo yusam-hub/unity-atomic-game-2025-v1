@@ -29,6 +29,7 @@ namespace AtomicGame
 		public const int RotateAction = -600505304; // IAction<Vector3, float>
 		public const int JumpAction = -2046675773; // IAction
 		public const int Effects = -2018114250; // IReactiveDictionary<string, EffectInstance>
+		public const int PlanarRotation = -2030768779; // IReactiveVariable<Quaternion>
 		public const int InteractAction = -1026843572; // IAction<IEntity>
 		public const int TargetInteractible = 21081601; // IReactiveVariable<IEntity>
 		public const int KeyPressAction = -418488485; // IAction<KeyCode>
@@ -253,6 +254,24 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetEffects(this IEntity obj, IReactiveDictionary<string, EffectInstance> value) => obj.SetValue(Effects, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveVariable<Quaternion> GetPlanarRotation(this IEntity obj) => obj.GetValue<IReactiveVariable<Quaternion>>(PlanarRotation);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetPlanarRotation(this IEntity obj, out IReactiveVariable<Quaternion> value) => obj.TryGetValue(PlanarRotation, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddPlanarRotation(this IEntity obj, IReactiveVariable<Quaternion> value) => obj.AddValue(PlanarRotation, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasPlanarRotation(this IEntity obj) => obj.HasValue(PlanarRotation);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelPlanarRotation(this IEntity obj) => obj.DelValue(PlanarRotation);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetPlanarRotation(this IEntity obj, IReactiveVariable<Quaternion> value) => obj.SetValue(PlanarRotation, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IAction<IEntity> GetInteractAction(this IEntity obj) => obj.GetValue<IAction<IEntity>>(InteractAction);

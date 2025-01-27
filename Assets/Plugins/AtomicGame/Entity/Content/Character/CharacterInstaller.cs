@@ -10,6 +10,9 @@ namespace AtomicGame
     [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
     public class CharacterInstaller : SceneEntityInstaller
     {
+        [SerializeField]
+        private InteractInstaller _interactInstaller;
+
         [SerializeField] 
         private ReactiveVariable<float> _moveSpeed = new(3.5f);
 
@@ -37,14 +40,16 @@ namespace AtomicGame
         [SerializeField, ReadOnly]
         private ReactiveVariable<bool> _isGrounded = new (false);
         
-        [SerializeField]
-        private InteractInstaller _interactInstaller;
+
+        [SerializeField, ReadOnly]
+        private ReactiveVariable<Quaternion> _planarRotation = new ();
         
         public override void Install(IEntity entity)
         {
             _interactInstaller.Install(entity);
             
             entity.AddEffects(new ReactiveDictionary<string, EffectInstance>());
+            entity.AddPlanarRotation(_planarRotation);
             
             entity.AddTransform(transform);
             
