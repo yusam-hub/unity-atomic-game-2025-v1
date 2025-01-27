@@ -21,7 +21,7 @@ namespace AtomicGame
         private Vector2 _framingOffset = new Vector2(0,1);
         
         private bool _invertZoom = true;
-        private bool _invertX = true;
+        private bool _invertX = false;
         private bool _invertY = true;
         
         private float _invertZoomVal;

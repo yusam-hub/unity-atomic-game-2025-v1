@@ -57,8 +57,9 @@ namespace AtomicGame
             entity.AddMoveAction(new BaseAction<Vector3, float>((direction, deltaTime) =>
             {
                 _isMoving.Value = direction != Vector3.zero;
-                entity.TransformMoveByDirection(direction, deltaTime);
-                entity.GetRotateAction().Invoke(direction, deltaTime);
+                var newDir = _planarRotation.Value * direction;
+                entity.TransformMoveByDirection(newDir, deltaTime);
+                entity.GetRotateAction().Invoke(newDir, deltaTime);
             }));
             entity.AddIsMoving(_isMoving);
             entity.AddIsGrounded(_isGrounded);
