@@ -8,7 +8,7 @@ using UnityEngine;
 namespace AtomicGame
 {
     [RequireComponent(typeof(CapsuleCollider))]
-    public class CharacterInstaller : SceneEntityInstaller
+    public class CharacterTransformInstaller : SceneEntityInstaller
     {
         [SerializeField]
         private InteractInstaller _interactInstaller;
@@ -71,7 +71,7 @@ namespace AtomicGame
             }));
             
             entity.AddBehaviour(
-                new CharacterGroundCheckJumpBehaviour(
+                new CharacterTransformBehaviour(
                     _checkGroundOffset ,
                     _checkGroundDistance, 
                     _isGrounded,

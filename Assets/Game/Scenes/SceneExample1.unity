@@ -1331,7 +1331,7 @@ MonoBehaviour:
   _inputMap: {fileID: 11400000, guid: a3fd30273d5e7477c9a3df1a86dc89f4, type: 2}
   _spawnPoint: {fileID: 895784082}
   _characterInstaller:
-    _characterPrefab: {fileID: 7888863271407192419, guid: fcb146b6940724f2aa61d98e3fed1573,
+    _characterPrefab: {fileID: 7888863271407192419, guid: 1dda336aa276b421799081b035e68c3b,
       type: 3}
   _cameraInstaller:
     _camera: {fileID: 330585545}

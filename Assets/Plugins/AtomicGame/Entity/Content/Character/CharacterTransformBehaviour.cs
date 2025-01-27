@@ -6,7 +6,7 @@ using UnityEngine.Android;
 
 namespace AtomicGame
 {
-    public sealed class CharacterGroundCheckJumpBehaviour : IEntityInit, IEntityUpdate
+    public sealed class CharacterTransformBehaviour : IEntityInit, IEntityUpdate
     {
         private readonly float _gravity = -9.81f;
         
@@ -28,7 +28,7 @@ namespace AtomicGame
         private readonly int _maxNumberOfJumps = 2;
 
 
-        public CharacterGroundCheckJumpBehaviour(
+        public CharacterTransformBehaviour(
             IReactiveVariable<Vector3> posOffset, 
             IReactiveVariable<float> distanceToCheck, 
             IReactiveVariable<bool> isGrounded,
