@@ -28,6 +28,7 @@ namespace AtomicGame
 		public const int RotateSpeed = -1838353354; // IValue<float>
 		public const int RotateAction = -600505304; // IAction<Vector3, float>
 		public const int JumpAction = -2046675773; // IAction
+		public const int JumpEvent = -1811156839; // IEvent
 		public const int Effects = -2018114250; // IReactiveDictionary<string, EffectInstance>
 		public const int PlanarRotation = -2030768779; // IReactiveVariable<Quaternion>
 		public const int InteractAction = -1026843572; // IAction<IEntity>
@@ -236,6 +237,24 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetJumpAction(this IEntity obj, IAction value) => obj.SetValue(JumpAction, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IEvent GetJumpEvent(this IEntity obj) => obj.GetValue<IEvent>(JumpEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetJumpEvent(this IEntity obj, out IEvent value) => obj.TryGetValue(JumpEvent, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddJumpEvent(this IEntity obj, IEvent value) => obj.AddValue(JumpEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasJumpEvent(this IEntity obj) => obj.HasValue(JumpEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelJumpEvent(this IEntity obj) => obj.DelValue(JumpEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetJumpEvent(this IEntity obj, IEvent value) => obj.SetValue(JumpEvent, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IReactiveDictionary<string, EffectInstance> GetEffects(this IEntity obj) => obj.GetValue<IReactiveDictionary<string, EffectInstance>>(Effects);

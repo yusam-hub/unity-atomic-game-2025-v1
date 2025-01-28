@@ -60,6 +60,7 @@ namespace AtomicGame
             
             entity.AddIsMoving(_isMoving);
             entity.AddIsGrounded(_isGrounded);
+            entity.AddJumpEvent(new BaseEvent());
             
             entity.AddRotateSpeed(_rotateSpeed);
             entity.AddRotateAction(new BaseAction<Vector3, float>((direction, deltaTime) =>

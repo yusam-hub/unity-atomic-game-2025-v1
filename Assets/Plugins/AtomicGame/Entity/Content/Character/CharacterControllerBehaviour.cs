@@ -46,16 +46,18 @@ namespace AtomicGame
             _isMoving = isMoving;
         }
 
-
         public void Init(in IEntity entity)
         {
             _controllerColliderHitDispatcher.OnHit += ControllerColliderHitDispatcherOnOnHit;
-
+            
+            IEvent jumpEvent = entity.GetJumpEvent();
+            
             entity.AddJumpAction(new BaseAction(() =>
             {
                 if (_numberOfJumps >= _maxNumberOfJumps) return;
                 _numberOfJumps++;
                 _velocity = jumpPower;
+                jumpEvent.Invoke();
             }));
         }
         

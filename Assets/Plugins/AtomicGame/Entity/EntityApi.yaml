@@ -26,6 +26,7 @@ values:
 - RotateSpeed: IValue<float>
 - RotateAction: IAction<Vector3, float> #direction,deltaTime
 - JumpAction: IAction
+- JumpEvent: IEvent
 - Effects: IReactiveDictionary<string, EffectInstance>
 - PlanarRotation: IReactiveVariable<Quaternion>  
   
