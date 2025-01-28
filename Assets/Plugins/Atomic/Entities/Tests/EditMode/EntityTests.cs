@@ -90,7 +90,7 @@ namespace Atomic.Entities
         public void HashCodeTest()
         {
             var entity1 = new Entity("1");
-            Assert.AreEqual(entity1.InstanceId, entity1.GetHashCode());
+            Assert.AreEqual(entity1.Id, entity1.GetHashCode());
         }
 
         [Test]
@@ -101,7 +101,7 @@ namespace Atomic.Entities
             var entity2 = new Entity("2");
 
             //Act:
-            entity2.InstanceId = entity1.InstanceId;
+            entity2.Id = entity1.Id;
 
             //Assert:
             Assert.IsTrue(entity1.Equals(entity2));

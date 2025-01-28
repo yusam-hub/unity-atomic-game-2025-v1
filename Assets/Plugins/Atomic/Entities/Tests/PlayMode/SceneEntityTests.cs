@@ -94,7 +94,7 @@ namespace Atomic.Entities
         public void HashCodeTest()
         {
             var entity1 = SceneEntity.Create("1");
-            Assert.AreEqual(entity1.InstanceId, entity1.GetHashCode());
+            Assert.AreEqual(entity1.Id, entity1.GetHashCode());
         }
 
         [Test]
@@ -901,7 +901,7 @@ namespace Atomic.Entities
             var entityGO = new GameObject();
             SceneEntity sceneEntity = entityGO.AddComponent<SceneEntity>();
             SceneEntityProxy sceneEntityProxy = entityGO.AddComponent<SceneEntityProxy>();
-            sceneEntityProxy.source = sceneEntity;
+            sceneEntityProxy._source = sceneEntity;
 
             //Wait awake:
             yield return null;
@@ -919,7 +919,7 @@ namespace Atomic.Entities
             var entityGO = new GameObject();
             SceneEntity sceneEntity = entityGO.AddComponent<SceneEntity>();
             SceneEntityProxy sceneEntityProxy = entityGO.AddComponent<SceneEntityProxy>();
-            sceneEntityProxy.source = sceneEntity;
+            sceneEntityProxy._source = sceneEntity;
 
             //Wait awake:
             yield return null;

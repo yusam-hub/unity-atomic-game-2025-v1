@@ -14,7 +14,7 @@ namespace Atomic.Entities.Tests
             var entityGO = new GameObject();
             var entity = entityGO.AddComponent<SceneEntity>();
             var runner = entityGO.AddComponent<SceneEntityRunner>();
-            runner.AddEntity(entity);
+            runner.Add(entity);
 
             EntityBehaviourStub stub = new EntityBehaviourStub();
             bool success = entity.AddBehaviour(stub);
@@ -56,7 +56,7 @@ namespace Atomic.Entities.Tests
             var entityGO = new GameObject();
             var entity = entityGO.AddComponent<SceneEntity>();
             var runner = entityGO.AddComponent<SceneEntityRunner>();
-            runner.AddEntity(entity);
+            runner.Add(entity);
 
             yield return new WaitForSeconds(0.25f);
 
@@ -99,7 +99,7 @@ namespace Atomic.Entities.Tests
             Assert.IsFalse(stub.updated);
             
             var runner = entityGO.AddComponent<SceneEntityRunner>();
-            runner.AddEntity(entity);
+            runner.Add(entity);
             
             //Arrange:
             yield return null;

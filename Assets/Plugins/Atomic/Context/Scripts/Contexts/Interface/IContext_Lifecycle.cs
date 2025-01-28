@@ -4,7 +4,7 @@ namespace Atomic.Contexts
 {
     public partial interface IContext
     {
-        event Action OnInitiazized;
+        event Action OnInitialized;
         event Action OnEnabled;
         event Action OnDisabled;
         event Action OnDisposed;

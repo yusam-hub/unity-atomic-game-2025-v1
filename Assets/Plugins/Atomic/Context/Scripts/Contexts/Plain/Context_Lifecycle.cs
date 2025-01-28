@@ -7,7 +7,7 @@ namespace Atomic.Contexts
 {
     public partial class Context
     {
-        public event Action OnInitiazized;
+        public event Action OnInitialized;
         public event Action OnEnabled;
         public event Action OnDisabled;
         public event Action OnDisposed;
@@ -38,12 +38,12 @@ namespace Atomic.Contexts
                 return;
             }
 
-            foreach (IContextController system in this.controllers)
-                if (system is IContextInit initController)
+            foreach (IContextController controller in this.controllers)
+                if (controller is IContextInit initController)
                     initController.Init(this.owner);
 
             this.initialized = true;
-            this.OnInitiazized?.Invoke();
+            this.OnInitialized?.Invoke();
         }
 
         public void Enable()
@@ -60,8 +60,8 @@ namespace Atomic.Contexts
                 return;
             }
 
-            foreach (IContextController system in this.controllers)
-                if (system is IContextEnable enableController)
+            foreach (IContextController controller in this.controllers)
+                if (controller is IContextEnable enableController)
                     enableController.Enable(this.owner);
 
             this.enabled = true;
@@ -76,8 +76,8 @@ namespace Atomic.Contexts
                 return;
             }
 
-            foreach (IContextController system in this.controllers)
-                if (system is IContextDisable disableController)
+            foreach (IContextController controller in this.controllers)
+                if (controller is IContextDisable disableController)
                     disableController.Disable(this.owner);
 
             this.enabled = false;
@@ -89,8 +89,8 @@ namespace Atomic.Contexts
             if (!this.initialized) Debug.LogWarning($"Context with name {name} is not initialized!");
             if (this.enabled) this.Disable();
 
-            foreach (IContextController system in this.controllers)
-                if (system is IContextDispose destroyController)
+            foreach (IContextController controller in this.controllers)
+                if (controller is IContextDispose destroyController)
                     destroyController.Dispose(this.owner);
 
             this.initialized = false;
@@ -111,7 +111,7 @@ namespace Atomic.Contexts
                 _updateCache.Clear();
                 _updateCache.AddRange(this.updates);
 
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < count && this.enabled; i++)
                 {
                     IContextUpdate update = _updateCache[i];
                     update.OnUpdate(this.owner, deltaTime);
@@ -135,7 +135,7 @@ namespace Atomic.Contexts
                 _fixedUpdateCache.Clear();
                 _fixedUpdateCache.AddRange(this.fixedUpdates);
 
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < count && this.enabled; i++)
                 {
                     IContextFixedUpdate updateController = _fixedUpdateCache[i];
                     updateController.OnFixedUpdate(this.owner, deltaTime);
@@ -159,7 +159,7 @@ namespace Atomic.Contexts
                 _lateUpdateCache.Clear();
                 _lateUpdateCache.AddRange(this.lateUpdates);
 
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < count && this.enabled; i++)
                 {
                     IContextLateUpdate updateController = _lateUpdateCache[i];
                     updateController.OnLateUpdate(this.owner, deltaTime);

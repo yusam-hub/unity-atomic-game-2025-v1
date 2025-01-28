@@ -21,22 +21,12 @@ namespace Atomic.Contexts
 
         public T GetValue<T>(int key)
         {
-            if (this.values.TryGetValue(key, out object value))
-            {
-                return (T) value;
-            }
-
-            return default;
+            return this.values.TryGetValue(key, out object value) ? (T) value : default;
         }
 
         public object GetValue(int key)
         {
-            if (this.values.TryGetValue(key, out var value))
-            {
-                return value;
-            }
-
-            return null;
+            return this.values.TryGetValue(key, out var value) ? value : null;
         }
 
         public bool TryGetValue<T>(int id, out T value)

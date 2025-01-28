@@ -78,7 +78,7 @@ namespace Atomic.Elements
         
         public override string ToString()
         {
-            return this.Value.ToString();
+            return this.Value?.ToString();
         }
     }
 }

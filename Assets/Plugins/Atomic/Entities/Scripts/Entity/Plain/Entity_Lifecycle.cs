@@ -19,17 +19,7 @@ namespace Atomic.Entities
             get { return initialized; }
         }
 
-        public bool Enabled
-        {
-            get { return this.enabled; }
-            set
-            {
-                if (value)
-                    this.Enable();
-                else
-                    this.Disable();
-            }
-        }
+        public bool Enabled => this.enabled;
 
         private bool initialized;
         private bool enabled;
@@ -70,15 +60,6 @@ namespace Atomic.Entities
 
             this.initialized = false;
             this.OnDisposed?.Invoke();
-
-            //Auto unsubscribe events:
-            DelegateUtils.Unsubscribe(ref this.OnInitialized);
-            DelegateUtils.Unsubscribe(ref this.OnEnabled);
-            DelegateUtils.Unsubscribe(ref this.OnDisabled);
-            DelegateUtils.Unsubscribe(ref this.OnUpdated);
-            DelegateUtils.Unsubscribe(ref this.OnFixedUpdated);
-            DelegateUtils.Unsubscribe(ref this.OnLateUpdated);
-            DelegateUtils.Unsubscribe(ref this.OnDisposed);
         }
 
         public void Enable()
@@ -119,7 +100,7 @@ namespace Atomic.Entities
             this.OnDisabled?.Invoke();
         }
 
-        public void OnUpdate(in float deltaTime)
+        public void OnUpdate(float deltaTime)
         {
             if (!this.enabled)
                 return;
@@ -130,7 +111,7 @@ namespace Atomic.Entities
                 _updateCache.Clear();
                 _updateCache.AddRange(this.updates);
 
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < count && this.enabled; i++)
                 {
                     IEntityUpdate update = _updateCache[i];
                     update.OnUpdate(this.owner, in deltaTime);
@@ -140,7 +121,7 @@ namespace Atomic.Entities
             this.OnUpdated?.Invoke(deltaTime);
         }
 
-        public void OnFixedUpdate(in float deltaTime)
+        public void OnFixedUpdate(float deltaTime)
         {
             if (!this.enabled)
                 return;
@@ -151,7 +132,7 @@ namespace Atomic.Entities
                 _fixedUpdateCache.Clear();
                 _fixedUpdateCache.AddRange(this.fixedUpdates);
 
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < count && this.enabled; i++)
                 {
                     IEntityFixedUpdate fixedUpdate = _fixedUpdateCache[i];
                     fixedUpdate.OnFixedUpdate(this.owner, in deltaTime);
@@ -161,7 +142,7 @@ namespace Atomic.Entities
             this.OnFixedUpdated?.Invoke(deltaTime);
         }
 
-        public void OnLateUpdate(in float deltaTime)
+        public void OnLateUpdate(float deltaTime)
         {
             if (!this.enabled)
                 return;
@@ -172,7 +153,7 @@ namespace Atomic.Entities
                 _lateUpdateCache.Clear();
                 _lateUpdateCache.AddRange(this.lateUpdates);
 
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < count && this.enabled; i++)
                 {
                     IEntityLateUpdate lateUpdate = _lateUpdateCache[i];
                     lateUpdate.OnLateUpdate(this.owner, in deltaTime);

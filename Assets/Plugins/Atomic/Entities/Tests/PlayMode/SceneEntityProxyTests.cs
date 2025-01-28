@@ -42,7 +42,7 @@ namespace Atomic.Entities
             );
 
             SceneEntityProxy proxy = entity.gameObject.AddComponent<SceneEntityProxy>();
-            proxy.source = entity;
+            proxy._source = entity;
 
             //Assert:
             Assert.AreEqual("123", proxy.Name);
@@ -90,11 +90,11 @@ namespace Atomic.Entities
             //Arrange:
             var entity1 = SceneEntity.Create("1");
             var proxy1 = entity1.gameObject.AddComponent<SceneEntityProxy>();
-            proxy1.source = entity1;
+            proxy1._source = entity1;
             
             var entity2 = SceneEntity.Create("2");
             var proxy2 = entity2.gameObject.AddComponent<SceneEntityProxy>();
-            proxy2.source = entity2;
+            proxy2._source = entity2;
         
             //Assert:
             Assert.IsFalse(proxy1.Equals(proxy2));
@@ -106,9 +106,9 @@ namespace Atomic.Entities
         {
             var entity1 = SceneEntity.Create("1");
             var proxy1 = entity1.gameObject.AddComponent<SceneEntityProxy>();
-            proxy1.source = entity1;
+            proxy1._source = entity1;
 
-            Assert.AreEqual(entity1.InstanceId, proxy1.GetHashCode());
+            Assert.AreEqual(entity1.Id, proxy1.GetHashCode());
         }
         
         [Test]
@@ -117,11 +117,11 @@ namespace Atomic.Entities
             //Arrange:
             var entity1 = SceneEntity.Create("1");
             var proxy1 = entity1.gameObject.AddComponent<SceneEntityProxy>();
-            proxy1.source = entity1;
+            proxy1._source = entity1;
             
             var entity2 = SceneEntity.Create("2");
             var proxy2 = entity2.gameObject.AddComponent<SceneEntityProxy>();
-            proxy2.source = entity1;
+            proxy2._source = entity1;
             
             Assert.IsTrue(proxy1.Equals(proxy2));
         }

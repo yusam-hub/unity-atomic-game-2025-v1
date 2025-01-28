@@ -54,15 +54,15 @@ namespace Atomic.Entities
                                                       e.TryGetValue(ValueAPI.TEAM, out TeamType teamType) &&
                                                       teamType == TeamType.BLUE);
             //Act:
-            IReadOnlyCollection<IEntity> filteredEntities = filter.Entities;
+            IReadOnlyCollection<IEntity> filteredEntities = filter.GetAll();
 
             //Assert:
             Assert.AreEqual(2, filteredEntities.Count);
-            Assert.IsTrue(filter.HasEntity(alex));
-            Assert.IsTrue(filter.HasEntity(mike));
+            Assert.IsTrue(filter.Has(alex));
+            Assert.IsTrue(filter.Has(mike));
 
-            Assert.IsFalse(filter.HasEntity(ivan));
-            Assert.IsFalse(filter.HasEntity(george));
+            Assert.IsFalse(filter.Has(ivan));
+            Assert.IsFalse(filter.Has(george));
         }
 
         [Test]
@@ -104,24 +104,24 @@ namespace Atomic.Entities
                                                       e.TryGetValue(ValueAPI.TEAM, out TeamType teamType) &&
                                                       teamType == TeamType.BLUE);
 
-            filter.OnEntityAdded += e => wasAddEvent = e;
+            filter.OnAdded += e => wasAddEvent = e;
 
             //Act:
-            world.AddEntity(ivan);
+            world.Add(ivan);
             Assert.IsNull(wasAddEvent);
 
-            world.AddEntity(mike);
+            world.Add(mike);
             Assert.AreEqual(mike, wasAddEvent);
 
-            IReadOnlyCollection<IEntity> filteredEntities = filter.Entities;
+            IReadOnlyCollection<IEntity> filteredEntities = filter.GetAll();
 
             //Assert:
             Assert.AreEqual(3, filteredEntities.Count);
-            Assert.IsTrue(filter.HasEntity(alex));
-            Assert.IsTrue(filter.HasEntity(george));
-            Assert.IsTrue(filter.HasEntity(mike));
+            Assert.IsTrue(filter.Has(alex));
+            Assert.IsTrue(filter.Has(george));
+            Assert.IsTrue(filter.Has(mike));
 
-            Assert.IsFalse(filter.HasEntity(ivan));
+            Assert.IsFalse(filter.Has(ivan));
         }
 
 
@@ -163,25 +163,25 @@ namespace Atomic.Entities
                                                       teamType == TeamType.BLUE);
 
             IEntity removedEntity = null;
-            filter.OnEntityDeleted += e => removedEntity = e;
+            filter.OnDeleted += e => removedEntity = e;
 
             //Pre-assert:
-            Assert.AreEqual(3, filter.Entities.Count);
-            Assert.IsTrue(filter.HasEntity(mike));
+            Assert.AreEqual(3, filter.GetAll().Length);
+            Assert.IsTrue(filter.Has(mike));
 
             //Act:
-            world.DelEntity(ivan);
+            world.Del(ivan);
             Assert.IsNull(removedEntity);
 
-            world.DelEntity(mike);
+            world.Del(mike);
             Assert.AreEqual(mike, removedEntity);
 
             //Assert:
-            Assert.AreEqual(2, filter.Entities.Count);
-            Assert.IsTrue(filter.HasEntity(alex));
-            Assert.IsTrue(filter.HasEntity(george));
-            Assert.IsFalse(filter.HasEntity(mike));
-            Assert.IsFalse(filter.HasEntity(ivan));
+            Assert.AreEqual(2, filter.GetAll().Length);
+            Assert.IsTrue(filter.Has(alex));
+            Assert.IsTrue(filter.Has(george));
+            Assert.IsFalse(filter.Has(mike));
+            Assert.IsFalse(filter.Has(ivan));
         }
 
         [Test]
@@ -224,28 +224,28 @@ namespace Atomic.Entities
             IEntity addedEntity = null;
             IEntity removedEntity = null;
 
-            filter.OnEntityAdded += e => addedEntity = e;
-            filter.OnEntityDeleted += e => removedEntity = e;
+            filter.OnAdded += e => addedEntity = e;
+            filter.OnDeleted += e => removedEntity = e;
 
             //Act:
-            Assert.IsFalse(filter.HasEntity(george));
+            Assert.IsFalse(filter.Has(george));
             george.SetValue(ValueAPI.TEAM, TeamType.BLUE);
-            Assert.IsTrue(filter.HasEntity(george));
+            Assert.IsTrue(filter.Has(george));
             Assert.AreEqual(george, addedEntity);
 
-            Assert.IsTrue(filter.HasEntity(mike));
+            Assert.IsTrue(filter.Has(mike));
             mike.SetValue(ValueAPI.TEAM, TeamType.RED);
-            Assert.IsFalse(filter.HasEntity(mike));
+            Assert.IsFalse(filter.Has(mike));
             Assert.AreEqual(mike, removedEntity);
 
-            Assert.IsTrue(filter.HasEntity(alex));
+            Assert.IsTrue(filter.Has(alex));
             alex.DelValue(ValueAPI.TEAM);
-            Assert.IsFalse(filter.HasEntity(alex));
+            Assert.IsFalse(filter.Has(alex));
             Assert.AreEqual(alex, removedEntity);
             
-            Assert.IsFalse(filter.HasEntity(ivan));
+            Assert.IsFalse(filter.Has(ivan));
             ivan.AddValue(ValueAPI.TEAM, TeamType.BLUE);
-            Assert.IsTrue(filter.HasEntity(ivan));
+            Assert.IsTrue(filter.Has(ivan));
             Assert.AreEqual(ivan, addedEntity);
         }
 
@@ -276,18 +276,18 @@ namespace Atomic.Entities
             IEntity addedEntity = null;
             IEntity removedEntity = null;
 
-            filter.OnEntityAdded += e => addedEntity = e;
-            filter.OnEntityDeleted += e => removedEntity = e;
+            filter.OnAdded += e => addedEntity = e;
+            filter.OnDeleted += e => removedEntity = e;
 
             //Act:
-            Assert.IsFalse(filter.HasEntity(mike));
+            Assert.IsFalse(filter.Has(mike));
             mike.AddTag(TagAPI.WARRIOR);
-            Assert.IsTrue(filter.HasEntity(mike));
+            Assert.IsTrue(filter.Has(mike));
             Assert.AreEqual(mike, addedEntity);
 
-            Assert.IsTrue(filter.HasEntity(alex));
+            Assert.IsTrue(filter.Has(alex));
             alex.DelTag(TagAPI.WARRIOR);
-            Assert.IsFalse(filter.HasEntity(alex));
+            Assert.IsFalse(filter.Has(alex));
             Assert.AreEqual(alex, removedEntity);
         }
     }

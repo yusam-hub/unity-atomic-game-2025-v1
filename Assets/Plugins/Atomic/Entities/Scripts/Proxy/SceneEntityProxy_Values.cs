@@ -3,44 +3,44 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public partial class SceneEntityProxy<T>
+    public partial class SceneEntityProxy<E>
     {
         public event Action<IEntity, int, object> OnValueAdded
         {
-            add => source.OnValueAdded += value;
-            remove => source.OnValueAdded -= value;
+            add => _source.OnValueAdded += value;
+            remove => _source.OnValueAdded -= value;
         }
 
         public event Action<IEntity, int, object> OnValueDeleted
         {
-            add => source.OnValueDeleted += value;
-            remove => source.OnValueDeleted -= value;
+            add => _source.OnValueDeleted += value;
+            remove => _source.OnValueDeleted -= value;
         }
 
         public event Action<IEntity, int, object> OnValueChanged
         {
-            add => source.OnValueChanged += value;
-            remove => source.OnValueChanged -= value;
+            add => _source.OnValueChanged += value;
+            remove => _source.OnValueChanged -= value;
         }
 
         public event Action<IEntity> OnValuesCleared
         {
-            add => source.OnValuesCleared += value;
-            remove => source.OnValuesCleared -= value;
+            add => _source.OnValuesCleared += value;
+            remove => _source.OnValuesCleared -= value;
         }
         
-        public IReadOnlyDictionary<int, object> Values => source.Values;
+        public IReadOnlyDictionary<int, object> Values => _source.Values;
 
-        public T GetValue<T>(in int id) => source.GetValue<T>(id);
-        public object GetValue(in int id) => source.GetValue(id);
-        public bool TryGetValue<T>(in int id, out T value) => source.TryGetValue(in id, out value);
-        public bool TryGetValue(in int id, out object value) => source.TryGetValue(in id, out value);
-        public bool AddValue(in int id, in object value) => source.AddValue(in id, in value);
-        public void SetValue(in int id, in object value) => source.SetValue(in id, in value);
-        public void SetValue(in int id, in object value, out object previous) => source.SetValue(in id, in value, out previous);
-        public bool DelValue(in int id) => source.DelValue(in id);
-        public bool DelValue(in int id, out object removed) => source.DelValue(in id, out removed);
-        public bool HasValue(in int id) => source.HasValue(in id);
-        public bool ClearValues() => source.ClearValues();
+        public T GetValue<T>(in int id) => _source.GetValue<T>(id);
+        public object GetValue(in int id) => _source.GetValue(id);
+        public bool TryGetValue<T>(in int id, out T value) => _source.TryGetValue(in id, out value);
+        public bool TryGetValue(in int id, out object value) => _source.TryGetValue(in id, out value);
+        public bool AddValue(in int id, in object value) => _source.AddValue(in id, in value);
+        public void SetValue(in int id, in object value) => _source.SetValue(in id, in value);
+        public void SetValue(in int id, in object value, out object previous) => _source.SetValue(in id, in value, out previous);
+        public bool DelValue(in int id) => _source.DelValue(in id);
+        public bool DelValue(in int id, out object removed) => _source.DelValue(in id, out removed);
+        public bool HasValue(in int id) => _source.HasValue(in id);
+        public bool ClearValues() => _source.ClearValues();
     }
 }

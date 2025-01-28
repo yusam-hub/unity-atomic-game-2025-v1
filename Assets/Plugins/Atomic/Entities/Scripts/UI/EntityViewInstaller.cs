@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Atomic.Entities.UI
+namespace Atomic.Entities
 {
     public abstract class EntityViewInstaller : MonoBehaviour, IEntityViewInstaller
     {

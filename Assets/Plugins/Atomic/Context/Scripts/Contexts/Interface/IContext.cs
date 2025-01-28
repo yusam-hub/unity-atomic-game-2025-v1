@@ -7,5 +7,7 @@ namespace Atomic.Contexts
         IContext Parent { get; set; }
 
         void Clear();
+
+        void Destruct();
     }
 }

@@ -1,31 +1,40 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Atomic.Entities.UI
+namespace Atomic.Entities
 {
     [CreateAssetMenu(
         fileName = "Entity View Catalog",
         menuName = "Atomic/Entities/Entity View Catalog"
     )]
-    public sealed class EntityViewCatalog : ScriptableObject
+    public class EntityViewCatalog : ScriptableObject
     {
-        public IEnumerable<EntityView> Prefabs => _prefabs;
-
         [SerializeField]
-        private EntityView[] _prefabs;
+        private List<EntityView> _prefabs;
+
+        public int Count => _prefabs.Count;
+
+        public KeyValuePair<string, EntityView> GetPrefab(int index)
+        {
+            EntityView view = _prefabs[index];
+            return new KeyValuePair<string, EntityView>(this.GetName(view), view);
+        }
+
+        public EntityView GetPrefab(string name)
+        {
+            for (int i = 0, count = _prefabs.Count; i < count; i++)
+            {
+                EntityView prefab = _prefabs[i];
+                string prefabName = this.GetName(prefab);
+                if (prefabName == name)
+                    return prefab;
+            }
+
+            throw new Exception($"Prefab with name {name} is not found!");
+        }
+
+        protected virtual string GetName(EntityView prefab) => prefab.Name;
     }
 }
 
-
-//
-// public EntityView GetPrefab(string name)
-// {
-//     for (int i = 0, count = _prefabs.Length; i < count; i++)
-//     {
-//         EntityView view = _prefabs[i];
-//         if (view.name == name)
-//             return view;
-//     }
-//
-//     throw new Exception($"Presenter prefab with name {name} is not found!");
-// }

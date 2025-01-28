@@ -18,7 +18,7 @@ namespace Atomic.Contexts
             var initSystem = new InitSystemStub();
 
             context.AddController(initSystem);
-            context.OnInitiazized += () => wasEvent.value = true;
+            context.OnInitialized += () => wasEvent.value = true;
 
             //Act
             context.Init();
@@ -39,7 +39,7 @@ namespace Atomic.Contexts
             var systemStub = new CommonSystemStub();
 
             context.AddController(systemStub);
-            context.OnInitiazized += () => initEvent.value = true;
+            context.OnInitialized += () => initEvent.value = true;
             context.OnEnabled += () => enabledEvent.value = true;
 
             //Act

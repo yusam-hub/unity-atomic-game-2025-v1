@@ -8,45 +8,46 @@ namespace Atomic.Entities
     {
     }
 
-    public abstract partial class SceneEntityProxy<T> : MonoBehaviour, IEntity where T : SceneEntity
+    public abstract partial class SceneEntityProxy<E> : MonoBehaviour, IEntity where E : SceneEntity
     {
         [SerializeField]
-        public T source;
+        public E _source;
 
-        public int InstanceId
+        public int Id
         {
-            get { return source.InstanceId; }
+            get { return _source.Id; }
+            set { _source.Id = value; }
         }
 
         public string Name
         {
-            get => source.Name;
-            set => source.Name = value;
+            get => _source.Name;
+            set => _source.Name = value;
         }
-
-        private void Reset()
-        {
-            this.source = this.GetComponentInParent<T>();
-        }
-
+        
         public void Clear()
         {
-            source.Clear();
+            _source.Clear();
         }
 
-        private bool Equals(SceneEntityProxy<T> other)
+        public void Destruct()
         {
-            return Equals(source, other.source);
+            _source.Destruct();
         }
 
         public override bool Equals(object obj)
         {
-            return ReferenceEquals(this, obj) || obj is SceneEntityProxy<T> other && Equals(other);
+            return obj is IEntity entity && _source.Id == entity.Id;
         }
 
         public override int GetHashCode()
         {
-            return this.source.GetHashCode();
+            return _source.GetHashCode();
+        }
+
+        private void Reset()
+        {
+            _source = this.GetComponentInParent<E>();
         }
     }
 }

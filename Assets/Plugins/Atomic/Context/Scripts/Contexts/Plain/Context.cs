@@ -30,5 +30,16 @@ namespace Atomic.Contexts
             this.ClearValues();
             this.ClearControllers();
         }
+
+        public void Destruct()
+        {
+            DelegateUtils.Unsubscribe(ref this.OnInitialized);
+            DelegateUtils.Unsubscribe(ref this.OnEnabled);
+            DelegateUtils.Unsubscribe(ref this.OnDisabled);
+            DelegateUtils.Unsubscribe(ref this.OnUpdated);
+            DelegateUtils.Unsubscribe(ref this.OnFixedUpdated);
+            DelegateUtils.Unsubscribe(ref this.OnLateUpdated);
+            DelegateUtils.Unsubscribe(ref this.OnDisposed);
+        }
     }
 }

@@ -8,14 +8,14 @@ namespace Atomic.Entities
      */
     public interface IEntityFilter : IDisposable, IEnumerable<IEntity>
     {
-        event Action<IEntity> OnEntityAdded;
-        event Action<IEntity> OnEntityDeleted;
+        event Action<IEntity> OnAdded;
+        event Action<IEntity> OnDeleted;
+
+        int Count { get; }
         
-        List<IEntity> Entities { get; }
-        
-        int CopyTo(IEntity[] results);
-        void CopyTo(List<IEntity> results);
-        
-        bool HasEntity(IEntity entity);
+        bool Has(IEntity entity);
+        IEntity[] GetAll();
+        int GetAll(IEntity[] results);
+        void CopyTo(ICollection<IEntity> results);
     }
 }

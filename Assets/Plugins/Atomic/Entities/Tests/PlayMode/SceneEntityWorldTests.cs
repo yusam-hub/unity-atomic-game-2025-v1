@@ -21,12 +21,12 @@ namespace Atomic.Entities
             var entity = new Entity("E");
             entity.AddBehaviour(initBehaviour);
 
-            var entityWorld = SceneEntityWorld.Instantiate("Test", scanEntities: false, entity);
+            var entityWorld = SceneEntityWorld.Create("Test", scanEntities: false, entity);
             var wasInit = false;
 
             //Act:
             entity.OnInitialized += () => wasInit = true;
-            entityWorld.InitEntities();
+            entityWorld.Init();
 
             //Assert:
             Assert.IsTrue(wasInit);
@@ -40,12 +40,12 @@ namespace Atomic.Entities
             var entity = new Entity("E");
             entity.AddBehaviour(behaviourStub);
 
-            var entityWorld = SceneEntityWorld.Instantiate("Test", scanEntities: false, entity);
+            var entityWorld = SceneEntityWorld.Create("Test", scanEntities: false, entity);
             var wasEnable = false;
 
             //Act:
             entity.OnEnabled += () => wasEnable = true;
-            entityWorld.EnableEntities();
+            entityWorld.Enable();
 
             //Assert:
             Assert.IsTrue(wasEnable);
@@ -58,18 +58,21 @@ namespace Atomic.Entities
         {
             var behaviourStub = new EntityBehaviourStub();
             var entity = new Entity("E");
-            entity.Enable();
             entity.AddBehaviour(behaviourStub);
 
+            Assert.IsFalse(behaviourStub.initialized);
+            Assert.IsFalse(behaviourStub.enabled);
+            
+            var world = SceneEntityWorld.Create("Test", scanEntities: false, entity);
+            world.Enable();
+            var wasUpdate = false;
+            
             Assert.IsTrue(behaviourStub.initialized);
             Assert.IsTrue(behaviourStub.enabled);
 
-            var entityWorld = SceneEntityWorld.Instantiate("Test", scanEntities: false, entity);
-            var wasUpdate = false;
-
             //Act:
             entity.OnUpdated += _ => wasUpdate = true;
-            entityWorld.UpdateEntities(0);
+            world.OnUpdate(0);
 
             //Assert:
             Assert.IsTrue(wasUpdate);
@@ -80,18 +83,18 @@ namespace Atomic.Entities
         {
             var behaviourStub = new EntityBehaviourStub();
             var entity = new Entity("E");
-            entity.Enable();
             entity.AddBehaviour(behaviourStub);
+
+            var world = SceneEntityWorld.Create("Test", scanEntities: false, entity);
+            world.Enable();
+            var wasUpdate = false;
 
             Assert.IsTrue(behaviourStub.initialized);
             Assert.IsTrue(behaviourStub.enabled);
-
-            var world = SceneEntityWorld.Instantiate("Test", scanEntities: false, entity);
-            var wasUpdate = false;
-
+            
             //Act:
             entity.OnFixedUpdated += _ => wasUpdate = true;
-            world.FixedUpdateEntities(0);
+            world.OnFixedUpdate(0);
 
             //Assert:
             Assert.IsTrue(wasUpdate);
@@ -102,18 +105,18 @@ namespace Atomic.Entities
         {
             var behaviourStub = new EntityBehaviourStub();
             var entity = new Entity("E");
-            entity.Enable();
             entity.AddBehaviour(behaviourStub);
+            
+            var world = SceneEntityWorld.Create("Test", scanEntities: false, entity);
+            world.Enable();
+            var wasUpdate = false;
 
             Assert.IsTrue(behaviourStub.initialized);
             Assert.IsTrue(behaviourStub.enabled);
 
-            var world = SceneEntityWorld.Instantiate("Test", scanEntities: false, entity);
-            var wasUpdate = false;
-
             //Act:
             entity.OnLateUpdated += _ => wasUpdate = true;
-            world.LateUpdateEntities(0);
+            world.OnLateUpdate(0);
 
             //Assert:
             Assert.IsTrue(wasUpdate);
@@ -124,18 +127,19 @@ namespace Atomic.Entities
         {
             var behaviourStub = new EntityBehaviourStub();
             var entity = new Entity("E");
-            entity.Enable();
             entity.AddBehaviour(behaviourStub);
-
-            Assert.IsTrue(behaviourStub.initialized);
-            Assert.IsTrue(behaviourStub.enabled);
-
-            var world = SceneEntityWorld.Instantiate("Test", scanEntities: false, entity);
+            
+            var world = SceneEntityWorld.Create("Test", scanEntities: false, entity);
+            world.Enable();
             var wasDisable = false;
 
+            //Pre-assert:
+            Assert.IsTrue(behaviourStub.initialized);
+            Assert.IsTrue(behaviourStub.enabled);
+            
             //Act:
             entity.OnDisabled += () => wasDisable = true;
-            world.DisableEntities();
+            world.Disable();
 
             //Assert:
             Assert.IsTrue(wasDisable);
@@ -146,18 +150,18 @@ namespace Atomic.Entities
         {
             var behaviourStub = new EntityBehaviourStub();
             var entity = new Entity("E");
-            entity.Enable();
             entity.AddBehaviour(behaviourStub);
+            
+            var world = SceneEntityWorld.Create("Test", scanEntities: false, entity);
+            world.Enable();
+            var wasDispose = false;
 
             Assert.IsTrue(behaviourStub.initialized);
             Assert.IsTrue(behaviourStub.enabled);
-
-            var world = SceneEntityWorld.Instantiate("Test", scanEntities: false, entity);
-            var wasDispose = false;
-
+            
             //Act:
             entity.OnDisposed += () => wasDispose = true;
-            world.DisposeEntities();
+            world.Dispose();
 
             //Assert:
             Assert.IsTrue(wasDispose);
@@ -171,13 +175,13 @@ namespace Atomic.Entities
         public void AddEntity()
         {
             //Arrange
-            var entityWorld = SceneEntityWorld.Instantiate("Test", scanEntities: false);
+            var entityWorld = SceneEntityWorld.Create("Test", scanEntities: false);
             var entity = new Entity("Test Entity");
             IEntity wasEvent = null;
 
             //Act
-            entityWorld.OnEntityAdded += addedEntity => wasEvent = addedEntity;
-            bool success = entityWorld.AddEntity(entity);
+            entityWorld.OnAdded += addedEntity => wasEvent = addedEntity;
+            bool success = entityWorld.Add(entity);
 
             //Assert
             Assert.IsTrue(success);
@@ -189,12 +193,12 @@ namespace Atomic.Entities
         {
             //Arrange
             var entity = new Entity("Test Entity");
-            var entityWorld = SceneEntityWorld.Instantiate("Test", scanEntities: false, entity);
+            var entityWorld = SceneEntityWorld.Create("Test", scanEntities: false, entity);
             IEntity wasEvent = null;
 
             //Act
-            entityWorld.OnEntityDeleted += rEntity => wasEvent = rEntity;
-            bool success = entityWorld.DelEntity(entity);
+            entityWorld.OnDeleted += rEntity => wasEvent = rEntity;
+            bool success = entityWorld.Del(entity);
 
             //Assert
             Assert.IsTrue(success);
@@ -206,10 +210,10 @@ namespace Atomic.Entities
         {
             //Arrange
             var entity = new Entity("Test Entity");
-            var entityWorld = SceneEntityWorld.Instantiate("Test", scanEntities: false, entity);
+            var entityWorld = SceneEntityWorld.Create("Test", scanEntities: false, entity);
 
             //Act
-            bool exists = entityWorld.HasEntity(entity);
+            bool exists = entityWorld.Has(entity);
 
             //Assert
             Assert.IsTrue(exists);
@@ -222,12 +226,13 @@ namespace Atomic.Entities
             var entity2 = new Entity("2", new[] {0});
             var entity3 = new Entity("3", new[] {0});
 
-            var entityWorld = SceneEntityWorld.Instantiate("Test", scanEntities: false, entity2, entity1, entity3);
+            var entityWorld = SceneEntityWorld.Create("Test", scanEntities: false, entity2, entity1, entity3);
 
             //Act
-            IEntity entityWithTag = entityWorld.GetEntityWithTag(0);
+            bool success = entityWorld.GetWithTag(0, out IEntity entityWithTag);
 
             //Assert
+            Assert.IsTrue(success);
             Assert.AreEqual(entity2, entityWithTag);
         }
 
@@ -238,12 +243,12 @@ namespace Atomic.Entities
             var entity2 = new Entity("2", new[] {0});
             var entity3 = new Entity("3", new[] {0});
             var entity4 = new Entity("4", new[] {1});
-            
-            var entityWorld = SceneEntityWorld.Instantiate("Test", scanEntities: false,
+
+            var entityWorld = SceneEntityWorld.Create("Test", scanEntities: false,
                 entity2, entity1, entity4, entity3);
 
             //Act
-            IReadOnlyList<IEntity> entitiesWithTag = entityWorld.GetEntitiesWithTag(0);
+            IReadOnlyList<IEntity> entitiesWithTag = entityWorld.GetAllWithTag(0);
 
             //Assert
             Assert.AreEqual(3, entitiesWithTag.Count);
@@ -260,12 +265,12 @@ namespace Atomic.Entities
             var entity3 = new Entity("3", new[] {0});
             var entity4 = new Entity("4", new[] {1});
 
-            var entityWorld = SceneEntityWorld.Instantiate("Test", scanEntities: false,
+            var entityWorld = SceneEntityWorld.Create("Test", scanEntities: false,
                 entity2, entity1, entity4, entity3);
 
             //Act
             IEntity[] buffer = new IEntity[10];
-            int count = entityWorld.GetEntitiesWithTag(0, buffer);
+            int count = entityWorld.GetAllWithTag(0, buffer);
 
             //Assert
             Assert.AreEqual(3, count);
@@ -290,38 +295,17 @@ namespace Atomic.Entities
                 {1, new object()}
             });
 
-            var entityWorld = SceneEntityWorld.Instantiate("Test", scanEntities: false,
+            var entityWorld = SceneEntityWorld.Create("Test", scanEntities: false,
                 entity2, entity1, entity3);
 
             //Act
-            IEntity entityWithValue = entityWorld.GetEntityWithValue(1);
+            bool sucess = entityWorld.GetWithValue(1, out IEntity entityWithValue);
 
             //Assert
+            Assert.IsTrue(sucess);
             Assert.AreEqual(entity2, entityWithValue);
         }
 
         #endregion
-
-        // #region Unity
-        //
-        // private const string SCENE_PATH = "Assets/Plugins/Atomic/Entities/Tests/Assets/Scenes/EntityWorld.unity";
-        //
-        // [UnityTest]
-        // public IEnumerator AutoScanEntities()
-        // {
-        //     AsyncOperation operation = EditorSceneManager
-        //         .LoadSceneAsyncInPlayMode(SCENE_PATH, new LoadSceneParameters(LoadSceneMode.Additive));
-        //
-        //     yield return operation;
-        //     yield return new WaitForEndOfFrame();
-        //
-        //     SceneEntityWorld entityWorld = GameObject.FindObjectOfType<SceneEntityWorld>();
-        //
-        //     yield return null;
-        //     
-        //     Assert.AreEqual(4, entityWorld.EntityCount);
-        // }
-        //
-        // #endregion
     }
 }

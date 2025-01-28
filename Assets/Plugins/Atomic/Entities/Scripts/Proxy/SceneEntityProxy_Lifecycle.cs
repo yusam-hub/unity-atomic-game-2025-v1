@@ -2,67 +2,67 @@ using System;
 
 namespace Atomic.Entities
 {
-    public partial class SceneEntityProxy<T>
+    public partial class SceneEntityProxy<E>
     {
         public event Action OnInitialized
         {
-            add => source.OnInitialized += value;
-            remove => source.OnInitialized -= value;
+            add => _source.OnInitialized += value;
+            remove => _source.OnInitialized -= value;
         }
 
         public event Action OnEnabled
         {
-            add => source.OnEnabled += value;
-            remove => source.OnEnabled -= value;
+            add => _source.OnEnabled += value;
+            remove => _source.OnEnabled -= value;
         }
 
         public event Action OnDisabled
         {
-            add => source.OnDisabled += value;
-            remove => source.OnDisabled -= value;
+            add => _source.OnDisabled += value;
+            remove => _source.OnDisabled -= value;
         }
 
         public event Action OnDisposed
         {
-            add => source.OnDisposed += value;
-            remove => source.OnDisposed -= value;
+            add => _source.OnDisposed += value;
+            remove => _source.OnDisposed -= value;
         }
 
         public event Action<float> OnUpdated
         {
-            add => source.OnUpdated += value;
-            remove => source.OnUpdated -= value;
+            add => _source.OnUpdated += value;
+            remove => _source.OnUpdated -= value;
         }
 
         public event Action<float> OnFixedUpdated
         {
-            add => source.OnFixedUpdated += value;
-            remove => source.OnFixedUpdated -= value;
+            add => _source.OnFixedUpdated += value;
+            remove => _source.OnFixedUpdated -= value;
         }
 
         public event Action<float> OnLateUpdated
         {
-            add => source.OnLateUpdated += value;
-            remove => source.OnLateUpdated -= value;
+            add => _source.OnLateUpdated += value;
+            remove => _source.OnLateUpdated -= value;
         }
         
         public bool Initialized
         {
-            get => source.Initialized;
+            get => _source.Initialized;
         }
 
         public bool Enabled
         {
-            get => source.Enabled;
-            set => source.Enabled = value;
+            get => _source.Enabled;
+            set => _source.Enabled = value;
         }
         
-        public void Init() => source.Init();
-        public void Enable() => source.Enable();
-        public void Disable() => source.Disable();
-        public void Dispose() => source.Dispose();
-        public void OnUpdate(in float deltaTime) => source.OnUpdate(in deltaTime);
-        public void OnFixedUpdate(in float deltaTime) => source.OnFixedUpdate(in deltaTime);
-        public void OnLateUpdate(in float deltaTime) => source.OnLateUpdate(in deltaTime);
+        public void Init() => _source.Init();
+        public void Enable() => _source.Enable();
+        public void Disable() => _source.Disable();
+        public void Dispose() => _source.Dispose();
+        public void OnUpdate(float deltaTime) => _source.OnUpdate(deltaTime);
+        public void OnFixedUpdate(float deltaTime) => _source.OnFixedUpdate(deltaTime);
+        public void OnLateUpdate(float deltaTime) => _source.OnLateUpdate(deltaTime);
     }
 }

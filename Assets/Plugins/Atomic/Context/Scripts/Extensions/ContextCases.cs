@@ -32,7 +32,7 @@ namespace Atomic.Contexts
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WhenInit(this IContext context, Action action) => context.OnInitiazized += action;
+        public static void WhenInit(this IContext context, Action action) => context.OnInitialized += action;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WhenEnable(this IContext context, Action action) => context.OnEnabled += action;

@@ -10,24 +10,22 @@ namespace Atomic.Entities
         private static bool installed;
 
         private readonly HashSet<IEntity> entities = new();
-        private readonly List<IEntity> _entities = new();
-        
+        private readonly List<IEntity> _cache = new();
+
         private static SceneEntityUpdater instance
         {
             get
             {
                 if (_instance == null && !installed)
                 {
-                    GameObject go = new GameObject(nameof(SceneEntityUpdater));
-                    DontDestroyOnLoad(go);
-                    _instance = go.AddComponent<SceneEntityUpdater>();
+                    _instance = CreateInstance();
                     installed = true;
                 }
 
                 return _instance;
             }
         }
-
+        
         public static void AddEntity(IEntity entity)
         {
 #if UNITY_EDITOR
@@ -63,12 +61,12 @@ namespace Atomic.Entities
                 return;
             }
 
-            _entities.Clear();
-            _entities.AddRange(this.entities);
+            _cache.Clear();
+            _cache.AddRange(this.entities);
 
             for (int i = 0; i < count; i++)
             {
-                IEntity entity = _entities[i];
+                IEntity entity = _cache[i];
                 entity.OnUpdate(deltaTime);
             }
         }
@@ -82,12 +80,12 @@ namespace Atomic.Entities
                 return;
             }
 
-            _entities.Clear();
-            _entities.AddRange(this.entities);
+            _cache.Clear();
+            _cache.AddRange(this.entities);
 
             for (int i = 0; i < count; i++)
             {
-                IEntity entity = _entities[i];
+                IEntity entity = _cache[i];
                 entity.OnFixedUpdate(deltaTime);
             }
         }
@@ -102,18 +100,18 @@ namespace Atomic.Entities
                 return;
             }
 
-            _entities.Clear();
-            _entities.AddRange(this.entities);
+            _cache.Clear();
+            _cache.AddRange(this.entities);
 
             for (int i = 0; i < count; i++)
             {
-                IEntity entity = _entities[i];
+                IEntity entity = _cache[i];
                 entity.OnLateUpdate(deltaTime);
             }
         }
 
         #endregion
-        
+
 #if UNITY_EDITOR
         [InitializeOnEnterPlayMode]
         private static void OnEnterPlayMode()
@@ -121,5 +119,11 @@ namespace Atomic.Entities
             installed = false;
         }
 #endif
+        private static SceneEntityUpdater CreateInstance()
+        {
+            GameObject go = new GameObject(nameof(SceneEntityUpdater));
+            DontDestroyOnLoad(go);
+            return go.AddComponent<SceneEntityUpdater>();
+        }
     }
 }

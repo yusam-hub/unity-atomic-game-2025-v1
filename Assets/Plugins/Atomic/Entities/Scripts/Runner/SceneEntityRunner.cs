@@ -88,9 +88,8 @@ namespace Atomic.Entities
                 SceneEntityUpdater.DelEntity(entity);
             }
         }
-        
-        
-        public bool AddEntity(in SceneEntity entity)
+
+        public bool Add(in SceneEntity entity)
         {
             if (entity == null) 
                 return false;
@@ -111,7 +110,7 @@ namespace Atomic.Entities
             return true;
         }
         
-        public bool RemoveEntity(in SceneEntity entity)
+        public bool Del(in SceneEntity entity)
         {
             if (!entity)
                 return false;

@@ -1,19 +1,22 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 
-// ReSharper disable UnusedMember.Global
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Atomic.Entities
 {
     public partial class Entity : IEntity
     {
-        private static int idGenerator;
+        private static readonly Dictionary<int, IEntity> s_entities = new();
+        private static readonly Queue<int> s_recycledIds = new();
+        private static int s_maxId = -1;
 
-        public int InstanceId
+        public int Id
         {
-            get { return this.instanceId; }
-            internal set { instanceId = value; }
+            get { return this.id; }
+            set { this.SetId(value); }
         }
 
         public string Name
@@ -23,50 +26,53 @@ namespace Atomic.Entities
         }
 
         private readonly IEntity owner;
-        private int instanceId;
         private string name;
+        private int id;
 
         public Entity(
             in string name = null,
             in IEnumerable<int> tags = null,
             in IDictionary<int, object> values = null,
             in IEnumerable<IEntityBehaviour> behaviours = null,
-            in IEntity owner = null
+            in IEntity owner = null,
+            in int id = -1
         )
         {
-            this.instanceId = ++idGenerator;
             this.name = name ?? string.Empty;
+            this.id = id < 0 ? NextId() : id;
+
             this.tags = tags == null
                 ? new HashSet<int>()
                 : new HashSet<int>(tags);
+
             this.values = values == null
                 ? new Dictionary<int, object>()
                 : new Dictionary<int, object>(values);
             this.behaviours = behaviours == null
                 ? new HashSet<IEntityBehaviour>()
                 : new HashSet<IEntityBehaviour>(behaviours);
-            
+
             this.owner = owner ?? this;
         }
 
         public override string ToString()
         {
-            return $"{nameof(name)}: {this.name}";
+            return $"{nameof(name)}: {name}, {nameof(id)}: {id}";
         }
 
-        private bool Equals(Entity other)
+        public bool Equals(IEntity other)
         {
-            return this.instanceId == other.instanceId;
+            return this.id == other.Id;
         }
 
         public override bool Equals(object obj)
         {
-            return ReferenceEquals(this, obj) || obj is Entity other && Equals(other);
+            return obj is IEntity other && other.Id == this.id;
         }
 
         public override int GetHashCode()
         {
-            return this.instanceId;
+            return this.id;
         }
 
         public void Clear()
@@ -75,12 +81,54 @@ namespace Atomic.Entities
             this.ClearValues();
             this.ClearBehaviours();
         }
-        
+
+        public void Destruct()
+        {
+            if (s_entities.Remove(this.id))
+                s_recycledIds.Enqueue(this.id);
+            
+            DelegateUtils.Unsubscribe(ref this.OnInitialized);
+            DelegateUtils.Unsubscribe(ref this.OnEnabled);
+            DelegateUtils.Unsubscribe(ref this.OnDisabled);
+            DelegateUtils.Unsubscribe(ref this.OnUpdated);
+            DelegateUtils.Unsubscribe(ref this.OnFixedUpdated);
+            DelegateUtils.Unsubscribe(ref this.OnLateUpdated);
+            DelegateUtils.Unsubscribe(ref this.OnDisposed);
+        }
+
+        public static bool Find(int id, out IEntity entity)
+        {
+            return s_entities.TryGetValue(id, out entity);
+        }
+
+        private static int NextId()
+        {
+            if (s_recycledIds.TryDequeue(out int id))
+                return id;
+
+            do s_maxId++;
+            while (s_entities.ContainsKey(s_maxId));
+            return s_maxId;
+        }
+
+        private void SetId(int id)
+        {
+            if (id < 0)
+                throw new Exception($"Id cannot be negative! Actual: {id}!");
+
+            s_entities.Remove(this.id);
+            s_entities[id] = this;
+
+            this.id = id;
+        }
+
 #if UNITY_EDITOR
         [InitializeOnEnterPlayMode]
         private static void OnEnterPlayMode()
         {
-            idGenerator = 0;
+            s_maxId = -1;
+            s_recycledIds.Clear();
+            s_entities.Clear();
         }
 #endif
     }

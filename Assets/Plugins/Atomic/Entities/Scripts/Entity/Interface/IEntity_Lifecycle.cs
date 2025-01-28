@@ -21,8 +21,8 @@ namespace Atomic.Entities
         void Disable();
         void Dispose();
         
-        void OnUpdate(in float deltaTime);
-        void OnFixedUpdate(in float deltaTime);
-        void OnLateUpdate(in float deltaTime);
+        void OnUpdate(float deltaTime);
+        void OnFixedUpdate(float deltaTime);
+        void OnLateUpdate(float deltaTime);
     }
 }
