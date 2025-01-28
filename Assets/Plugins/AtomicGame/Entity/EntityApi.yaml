@@ -21,8 +21,8 @@ values:
 - CharacterController: CharacterController
 - MoveSpeed: IReactiveVariable<float>
 - MoveAction: IAction<Vector3, float> #direction,deltaTime
-- IsMoving: IValue<bool>
-- IsGrounded: IValue<bool>
+- IsMoving: IReactiveVariable<bool>
+- IsGrounded: IReactiveVariable<bool>
 - RotateSpeed: IValue<float>
 - RotateAction: IAction<Vector3, float> #direction,deltaTime
 - JumpAction: IAction

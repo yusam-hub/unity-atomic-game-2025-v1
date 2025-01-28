@@ -23,8 +23,8 @@ namespace AtomicGame
 		public const int CharacterController = -270069640; // CharacterController
 		public const int MoveSpeed = 526065662; // IReactiveVariable<float>
 		public const int MoveAction = 1225226561; // IAction<Vector3, float>
-		public const int IsMoving = 120489994; // IValue<bool>
-		public const int IsGrounded = 507951781; // IValue<bool>
+		public const int IsMoving = 120489994; // IReactiveVariable<bool>
+		public const int IsGrounded = 507951781; // IReactiveVariable<bool>
 		public const int RotateSpeed = -1838353354; // IValue<float>
 		public const int RotateAction = -600505304; // IAction<Vector3, float>
 		public const int JumpAction = -2046675773; // IAction
@@ -148,13 +148,13 @@ namespace AtomicGame
 		public static void SetMoveAction(this IEntity obj, IAction<Vector3, float> value) => obj.SetValue(MoveAction, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IValue<bool> GetIsMoving(this IEntity obj) => obj.GetValue<IValue<bool>>(IsMoving);
+		public static IReactiveVariable<bool> GetIsMoving(this IEntity obj) => obj.GetValue<IReactiveVariable<bool>>(IsMoving);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetIsMoving(this IEntity obj, out IValue<bool> value) => obj.TryGetValue(IsMoving, out value);
+		public static bool TryGetIsMoving(this IEntity obj, out IReactiveVariable<bool> value) => obj.TryGetValue(IsMoving, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddIsMoving(this IEntity obj, IValue<bool> value) => obj.AddValue(IsMoving, value);
+		public static bool AddIsMoving(this IEntity obj, IReactiveVariable<bool> value) => obj.AddValue(IsMoving, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasIsMoving(this IEntity obj) => obj.HasValue(IsMoving);
@@ -163,16 +163,16 @@ namespace AtomicGame
 		public static bool DelIsMoving(this IEntity obj) => obj.DelValue(IsMoving);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetIsMoving(this IEntity obj, IValue<bool> value) => obj.SetValue(IsMoving, value);
+		public static void SetIsMoving(this IEntity obj, IReactiveVariable<bool> value) => obj.SetValue(IsMoving, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IValue<bool> GetIsGrounded(this IEntity obj) => obj.GetValue<IValue<bool>>(IsGrounded);
+		public static IReactiveVariable<bool> GetIsGrounded(this IEntity obj) => obj.GetValue<IReactiveVariable<bool>>(IsGrounded);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetIsGrounded(this IEntity obj, out IValue<bool> value) => obj.TryGetValue(IsGrounded, out value);
+		public static bool TryGetIsGrounded(this IEntity obj, out IReactiveVariable<bool> value) => obj.TryGetValue(IsGrounded, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddIsGrounded(this IEntity obj, IValue<bool> value) => obj.AddValue(IsGrounded, value);
+		public static bool AddIsGrounded(this IEntity obj, IReactiveVariable<bool> value) => obj.AddValue(IsGrounded, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasIsGrounded(this IEntity obj) => obj.HasValue(IsGrounded);
@@ -181,7 +181,7 @@ namespace AtomicGame
 		public static bool DelIsGrounded(this IEntity obj) => obj.DelValue(IsGrounded);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetIsGrounded(this IEntity obj, IValue<bool> value) => obj.SetValue(IsGrounded, value);
+		public static void SetIsGrounded(this IEntity obj, IReactiveVariable<bool> value) => obj.SetValue(IsGrounded, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IValue<float> GetRotateSpeed(this IEntity obj) => obj.GetValue<IValue<float>>(RotateSpeed);

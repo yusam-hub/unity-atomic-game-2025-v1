@@ -2,7 +2,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Game.Scripts.GameContext.Audio
+namespace AtomicGame
 {
     [RequireComponent(typeof(AudioSource))]
     public class  AudioManager : MonoBehaviour
