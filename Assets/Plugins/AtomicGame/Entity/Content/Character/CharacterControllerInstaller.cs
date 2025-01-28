@@ -14,20 +14,22 @@ namespace AtomicGame
         [SerializeField]
         private InteractInstaller _interactInstaller;
 
-
-
         [SerializeField] 
-        private  ReactiveVariable<float> _moveSpeed = new(3.5f);
+        private ReactiveVariable<float> _moveSpeed = new(3.5f);
 
         [SerializeField, ReadOnly]
-        private  ReactiveVariable<float> _currentSpeed = new(0);
+        private ReactiveVariable<float> _currentSpeed = new(0);
         
         [SerializeField] 
         private ReactiveVariable<float> _rotateSpeed = new(15f);
         
         [SerializeField, ReadOnly]
         private ReactiveVariable<bool> _isMoving = new (false);
+      
+        [SerializeField, ReadOnly]
+        private ReactiveVariable<bool> _isGrounded = new (false);
         
+        [SerializeField, ReadOnly]
         private ReactiveVariable<Vector3> _moveDirection = new();
         
         private CharacterController _characterController;
@@ -52,13 +54,12 @@ namespace AtomicGame
             entity.AddMoveAction(new BaseAction<Vector3, float>((direction, deltaTime) =>
             {
                 var newDir = _planarRotation.Value * direction;
-                _isMoving.Value = newDir.x != 0 || newDir.z != 0;
-                entity.GetRotateAction().Invoke(newDir, deltaTime);
                 _moveDirection.Value = newDir;
+                entity.GetRotateAction().Invoke(_moveDirection.Value, deltaTime);
             }));
             
             entity.AddIsMoving(_isMoving);
-            entity.AddIsGrounded(new BaseFunction<bool>(() => _characterController.isGrounded));
+            entity.AddIsGrounded(_isGrounded);
             
             entity.AddRotateSpeed(_rotateSpeed);
             entity.AddRotateAction(new BaseAction<Vector3, float>((direction, deltaTime) =>
@@ -72,7 +73,9 @@ namespace AtomicGame
                     _controllerColliderHitDispatcher,
                     _currentSpeed,
                     _moveSpeed,
-                    _moveDirection
+                    _moveDirection,
+                    _isGrounded,
+                    _isMoving
                 )
             );
         }

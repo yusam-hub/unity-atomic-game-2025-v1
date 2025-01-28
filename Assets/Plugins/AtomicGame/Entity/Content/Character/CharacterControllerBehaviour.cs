@@ -13,7 +13,8 @@ namespace AtomicGame
         private IReactiveVariable<float> _currentSpeed;
         private IReactiveVariable<float> _moveSpeed;
         private IReactiveVariable<Vector3> _moveDirection;
-        
+        private IReactiveVariable<bool> _isGrounded;
+        private IReactiveVariable<bool> _isMoving;     
         
         private Vector3 _platformLastPosition;
         private Vector3 _platformMovement;
@@ -31,7 +32,9 @@ namespace AtomicGame
             ControllerColliderHitDispatcher controllerColliderHitDispatcher,
             IReactiveVariable<float> currentSpeed, 
             IReactiveVariable<float> moveSpeed, 
-            IReactiveVariable<Vector3> moveDirection
+            IReactiveVariable<Vector3> moveDirection,
+            IReactiveVariable<bool> isGrounded,
+            IReactiveVariable<bool> isMoving
             )
         {
             _characterController = characterController;
@@ -39,6 +42,8 @@ namespace AtomicGame
             _currentSpeed = currentSpeed;
             _moveSpeed = moveSpeed;
             _moveDirection = moveDirection;
+            _isGrounded = isGrounded;
+            _isMoving = isMoving;
         }
 
 
@@ -66,23 +71,31 @@ namespace AtomicGame
         
         public void OnUpdate(in IEntity entity, in float deltaTime)
         {
+            _isGrounded.Value = _characterController.isGrounded;
+            
             var newDir = _moveDirection.Value;
             
             if (_characterController.isGrounded && _velocity < 0.0f)
             {
                 _velocity = -1.0f;
                 _numberOfJumps = 0;
+                _isMoving.Value = newDir != Vector3.zero;
             }
             else
             {
                 _velocity += _gravity * gravityMultiplier * deltaTime;
+                _isMoving.Value = true;
             }
 
             newDir.y = _velocity;
                 
             float acceleration = 2;
             
-            _currentSpeed.Value = Mathf.MoveTowards(_currentSpeed.Value, _moveSpeed.Value, acceleration * deltaTime);
+            _currentSpeed.Value = Mathf.MoveTowards(
+                _currentSpeed.Value, 
+                _moveSpeed.Value, 
+                acceleration * deltaTime
+                );
 
             newDir *= _currentSpeed.Value;
 
