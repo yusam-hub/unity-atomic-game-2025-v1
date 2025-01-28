@@ -13,6 +13,8 @@ namespace AtomicGame
 
         public override void Install(IEntity entity)
         {
+            entity.AddAnimator(_animator);
+            
             entity.GetIsGrounded().Subscribe((value) =>
             {
                 _animator.SetBool(IsGrounded, value);
