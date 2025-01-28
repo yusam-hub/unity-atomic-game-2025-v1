@@ -77,7 +77,7 @@ namespace AtomicGame
             
             var newDir = _moveDirection.Value;
             
-            if (_characterController.isGrounded && _velocity < 0.0f)
+            if (_isGrounded.Value && _velocity < 0.0f)
             {
                 _velocity = -1.0f;
                 _numberOfJumps = 0;
