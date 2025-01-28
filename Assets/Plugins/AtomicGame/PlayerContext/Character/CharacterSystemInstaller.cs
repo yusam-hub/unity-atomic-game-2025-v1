@@ -11,13 +11,17 @@ namespace AtomicGame
     {
         //[SerializeField]
         private SceneEntity _character;
+        
+        [SerializeField]
+        private Transform _spawnPoint;
 
         [SerializeField, AssetsOnly]
         private GameObject _characterPrefab;
         
         public void Install(IPlayerContext context)
         {
-            GameObject gameObject = SceneEntity.Instantiate(_characterPrefab);
+            GameObject gameObject = SceneEntity.Instantiate(_characterPrefab, _spawnPoint.position, _spawnPoint.rotation);
+            
             _character = gameObject.GetComponent<SceneEntity>();
             
             context.AddCharacter(_character);

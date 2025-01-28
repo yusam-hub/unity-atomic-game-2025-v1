@@ -6,12 +6,17 @@ using UnityEngine.Android;
 
 namespace AtomicGame
 {
-    public sealed class CharacterControllerBehaviour : IEntityInit, IEntityUpdate
+    public sealed class CharacterControllerBehaviour : IEntityInit, IEntityDispose, IEntityUpdate
     {
         private CharacterController _characterController;
+        private ControllerColliderHitDispatcher _controllerColliderHitDispatcher;
         private IReactiveVariable<float> _currentSpeed;
         private IReactiveVariable<float> _moveSpeed;
         private IReactiveVariable<Vector3> _moveDirection;
+        
+        
+        private Vector3 _platformLastPosition;
+        private Vector3 _platformMovement;
         
         private float _gravity = -9.81f;
         private float gravityMultiplier = 2.0f;
@@ -23,12 +28,14 @@ namespace AtomicGame
 
         public CharacterControllerBehaviour(
             CharacterController characterController, 
+            ControllerColliderHitDispatcher controllerColliderHitDispatcher,
             IReactiveVariable<float> currentSpeed, 
             IReactiveVariable<float> moveSpeed, 
             IReactiveVariable<Vector3> moveDirection
             )
         {
             _characterController = characterController;
+            _controllerColliderHitDispatcher = controllerColliderHitDispatcher;
             _currentSpeed = currentSpeed;
             _moveSpeed = moveSpeed;
             _moveDirection = moveDirection;
@@ -37,12 +44,24 @@ namespace AtomicGame
 
         public void Init(in IEntity entity)
         {
+            _controllerColliderHitDispatcher.OnHit += ControllerColliderHitDispatcherOnOnHit;
+
             entity.AddJumpAction(new BaseAction(() =>
             {
                 if (_numberOfJumps >= _maxNumberOfJumps) return;
                 _numberOfJumps++;
                 _velocity = jumpPower;
             }));
+        }
+        
+        void ControllerColliderHitDispatcherOnOnHit(ControllerColliderHit hit)
+        {
+
+        }
+        
+        public void Dispose(in IEntity entity)
+        {
+            _controllerColliderHitDispatcher.OnHit -= ControllerColliderHitDispatcherOnOnHit;
         }
         
         public void OnUpdate(in IEntity entity, in float deltaTime)
@@ -64,10 +83,14 @@ namespace AtomicGame
             float acceleration = 2;
             
             _currentSpeed.Value = Mathf.MoveTowards(_currentSpeed.Value, _moveSpeed.Value, acceleration * deltaTime);
-            
-            _characterController.Move(newDir * _currentSpeed.Value * deltaTime);
+
+            newDir *= _currentSpeed.Value;
+
+            _characterController.Move(newDir  * deltaTime);
 
             _moveDirection.Value = newDir;
         }
+
+
     }
 }

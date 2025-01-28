@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 7279904411867398302}
   - component: {fileID: 5784172453476441135}
   - component: {fileID: 5156950100191784913}
+  - component: {fileID: -7765389209718778104}
   m_Layer: 0
   m_Name: CharacterControllerDefault
   m_TagString: Untagged
@@ -323,13 +324,21 @@ MonoBehaviour:
     value: 15
   _isMoving:
     value: 0
-  _isGrounded:
-    value: 0
-  gravityMultiplier: 3
-  jumpPower: 5
-  maxNumberOfJumps: 2
   _planarRotation:
     value: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &-7765389209718778104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7888863271407192419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142b68b0296842c78be38c31fd9b4b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isDebugging: 0
 --- !u!1001 &9037147321634094115
 PrefabInstance:
   m_ObjectHideFlags: 0

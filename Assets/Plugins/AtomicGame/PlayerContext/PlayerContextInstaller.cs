@@ -8,20 +8,20 @@ namespace AtomicGame
     {
         [SerializeField]
         private InputMap _inputMap;
+
         
         [SerializeField]
-        private Transform _spawnPoint;
+        private CharacterSystemInstaller _characterSystemInstaller;
         
         [SerializeField]
-        private CharacterSystemInstaller _characterInstaller;
-        
-        [SerializeField]
-        private CameraSystemInstaller _cameraInstaller;
+        private CameraSystemInstaller _cameraSystemInstaller;
         protected override void Install(IPlayerContext context)
         {
             context.AddInputMap(_inputMap);
-            _characterInstaller.Install(context);
-            _cameraInstaller.Install(context);
+            
+            _characterSystemInstaller.Install(context);
+            
+            _cameraSystemInstaller.Install(context);
         }
     }
 }

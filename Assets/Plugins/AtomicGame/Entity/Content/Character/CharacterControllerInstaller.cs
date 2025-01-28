@@ -8,11 +8,13 @@ using UnityEngine;
 
 namespace AtomicGame
 {
-    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(CharacterController), typeof(ControllerColliderHitDispatcher))]
     public class CharacterControllerInstaller : SceneEntityInstaller
     {
         [SerializeField]
         private InteractInstaller _interactInstaller;
+
+
 
         [SerializeField] 
         private  ReactiveVariable<float> _moveSpeed = new(3.5f);
@@ -26,18 +28,17 @@ namespace AtomicGame
         [SerializeField, ReadOnly]
         private ReactiveVariable<bool> _isMoving = new (false);
         
-        [SerializeField, ReadOnly]
-        private ReactiveVariable<bool> _isGrounded = new (false);
-
         private ReactiveVariable<Vector3> _moveDirection = new();
         
         private CharacterController _characterController;
+        private ControllerColliderHitDispatcher _controllerColliderHitDispatcher;
         
         [SerializeField, ReadOnly]
         private ReactiveVariable<Quaternion> _planarRotation = new ();
         public override void Install(IEntity entity)
         {
             _characterController = GetComponent<CharacterController>();
+            _controllerColliderHitDispatcher = GetComponent<ControllerColliderHitDispatcher>();
             
             _interactInstaller.Install(entity);
             
@@ -68,19 +69,12 @@ namespace AtomicGame
             entity.AddBehaviour(
                 new CharacterControllerBehaviour(
                     _characterController, 
+                    _controllerColliderHitDispatcher,
                     _currentSpeed,
                     _moveSpeed,
                     _moveDirection
                 )
             );
-        }
-
-        private IEnumerator WaitForLanding()
-        {
-            yield return new WaitUntil(() => !_characterController.isGrounded);
-            yield return new WaitUntil(() =>_characterController.isGrounded);
-
-            //_numberOfJumps = 0;
         }
     }
 }

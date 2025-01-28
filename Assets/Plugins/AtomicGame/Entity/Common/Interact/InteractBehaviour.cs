@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AtomicGame
 {
-    /*public sealed class InteractBehaviour : IEntityInit, IEntityDispose
+    public sealed class InteractBehaviour : IEntityInit, IEntityDispose
     {
         private TriggerDispatcher _trigger;
         private IEntity _entity;
@@ -24,5 +24,5 @@ namespace AtomicGame
         {
             InteractUseCase.Interact(_entity, collider);
         }
-    }*/
+    }
 }
