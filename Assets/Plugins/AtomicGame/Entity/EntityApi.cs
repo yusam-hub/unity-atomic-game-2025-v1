@@ -35,6 +35,7 @@ namespace AtomicGame
 		public const int Health = -915003867; // IReactiveVariable<int>
 		public const int DeathEvent = -1096613677; // IEvent
 		public const int Damage = 375673178; // IValue<int>
+		public const int MoveDirection = -721923052; // IReactiveVariable<Vector3>
 		public const int InteractAction = -1026843572; // IAction<IEntity>
 		public const int TargetInteractible = 21081601; // IReactiveVariable<IEntity>
 		public const int KeyPressAction = -418488485; // IAction<KeyCode>
@@ -358,6 +359,24 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetDamage(this IEntity obj, IValue<int> value) => obj.SetValue(Damage, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveVariable<Vector3> GetMoveDirection(this IEntity obj) => obj.GetValue<IReactiveVariable<Vector3>>(MoveDirection);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetMoveDirection(this IEntity obj, out IReactiveVariable<Vector3> value) => obj.TryGetValue(MoveDirection, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddMoveDirection(this IEntity obj, IReactiveVariable<Vector3> value) => obj.AddValue(MoveDirection, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasMoveDirection(this IEntity obj) => obj.HasValue(MoveDirection);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelMoveDirection(this IEntity obj) => obj.DelValue(MoveDirection);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetMoveDirection(this IEntity obj, IReactiveVariable<Vector3> value) => obj.SetValue(MoveDirection, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IAction<IEntity> GetInteractAction(this IEntity obj) => obj.GetValue<IAction<IEntity>>(InteractAction);

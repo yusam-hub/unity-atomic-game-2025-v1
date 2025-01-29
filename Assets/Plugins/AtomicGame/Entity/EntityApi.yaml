@@ -33,6 +33,7 @@ values:
 - Health: IReactiveVariable<int>
 - DeathEvent: IEvent
 - Damage: IValue<int>
+- MoveDirection: IReactiveVariable<Vector3>
   
 #Interact
 - InteractAction: IAction<IEntity> #IEntity — Character

@@ -6,11 +6,11 @@ namespace AtomicGame
 {
     public static class TransformUseCase
     {
-        /*public static void AgMoveTowardsSelf(this IEntity entity, float deltaTime)
+        public static void TransformMoveSelf(this IEntity entity, float deltaTime)
         {
             IReactiveVariable<Vector3> direction = entity.GetMoveDirection();
-            entity.AgMoveTowards(direction.Value, deltaTime);
-        }*/
+            entity.TransformMoveByDirection(direction.Value, deltaTime);
+        }
         
         public static void TransformMoveByDirection(this IEntity entity, in Vector3 direction, in float deltaTime)
         {
