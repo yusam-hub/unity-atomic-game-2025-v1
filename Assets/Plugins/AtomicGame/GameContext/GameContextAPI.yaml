@@ -14,5 +14,5 @@ imports:
 - System.Collections.Generic
 
 values:
-- EntityPool: GenericEntityPool
+- BulletSceneEntityPool: GenericSceneEntityPool
 - Score: IReactiveVariable<int>

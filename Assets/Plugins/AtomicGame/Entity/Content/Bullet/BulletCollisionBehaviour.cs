@@ -8,14 +8,13 @@ namespace AtomicGame
 {
     public sealed class BulletCollisionBehaviour : IEntityInit, IEntityDispose
     {
-        private GameObject _gameObject;
+
         private TriggerDispatcher _triggerDispatcher;
         private IValue<int> _damage;
         private IAction _destroyAction;
         
         public void Init(in IEntity entity)
         {
-            _gameObject = entity.GetTransform().gameObject;
             _destroyAction = entity.GetDestroyAction();
             _damage = entity.GetDamage();
             _triggerDispatcher = entity.GetTriggerDispatcher();

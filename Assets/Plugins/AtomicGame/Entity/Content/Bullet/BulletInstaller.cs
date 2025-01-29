@@ -19,15 +19,14 @@ namespace AtomicGame
         private float _lifetime = 10;
         public override void Install(IEntity entity)
         {
-            GameContext gameContext = GameContext.Instance;
-            
             entity.AddTransform(transform);
             entity.AddDamage(new Const<int>(_damage));
             
             entity.AddLifetime(new Cooldown(_lifetime, _lifetime));
+            
             entity.AddDestroyAction(new BaseAction(() =>
             {
-               GameObject.Destroy(transform.gameObject); 
+                BulletUseCase.UnSpawnBullet(entity);
             }));
             
             entity.AddMoveSpeed(new ReactiveVariable<float>(_moveSpeed));

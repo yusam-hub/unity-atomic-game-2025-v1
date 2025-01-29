@@ -17,29 +17,29 @@ namespace AtomicGame
 
 
 		///Values
-		public const int EntityPool = 1931115573; // GenericEntityPool
+		public const int BulletSceneEntityPool = 1173791206; // GenericSceneEntityPool
 		public const int Score = -212330411; // IReactiveVariable<int>
 
 
 		///Value Extensions
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static GenericEntityPool GetEntityPool(this IGameContext obj) => obj.GetValue<GenericEntityPool>(EntityPool);
+		public static GenericSceneEntityPool GetBulletSceneEntityPool(this IGameContext obj) => obj.GetValue<GenericSceneEntityPool>(BulletSceneEntityPool);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetEntityPool(this IGameContext obj, out GenericEntityPool value) => obj.TryGetValue(EntityPool, out value);
+		public static bool TryGetBulletSceneEntityPool(this IGameContext obj, out GenericSceneEntityPool value) => obj.TryGetValue(BulletSceneEntityPool, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddEntityPool(this IGameContext obj, GenericEntityPool value) => obj.AddValue(EntityPool, value);
+		public static bool AddBulletSceneEntityPool(this IGameContext obj, GenericSceneEntityPool value) => obj.AddValue(BulletSceneEntityPool, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasEntityPool(this IGameContext obj) => obj.HasValue(EntityPool);
+		public static bool HasBulletSceneEntityPool(this IGameContext obj) => obj.HasValue(BulletSceneEntityPool);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelEntityPool(this IGameContext obj) => obj.DelValue(EntityPool);
+		public static bool DelBulletSceneEntityPool(this IGameContext obj) => obj.DelValue(BulletSceneEntityPool);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetEntityPool(this IGameContext obj, GenericEntityPool value) => obj.SetValue(EntityPool, value);
+		public static void SetBulletSceneEntityPool(this IGameContext obj, GenericSceneEntityPool value) => obj.SetValue(BulletSceneEntityPool, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IReactiveVariable<int> GetScore(this IGameContext obj) => obj.GetValue<IReactiveVariable<int>>(Score);
