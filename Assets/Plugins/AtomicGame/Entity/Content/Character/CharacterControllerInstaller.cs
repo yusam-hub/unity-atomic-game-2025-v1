@@ -47,12 +47,7 @@ namespace AtomicGame
             
             _interactInstaller.Install(entity);
             _healthInstaller.Install(entity);
-
-            entity.GetDeathEvent().Subscribe(() =>
-            {
-                Debug.Log($"Death");
-            });
-            
+         
             entity.AddEffects(new ReactiveDictionary<string, EffectInstance>());
             entity.AddPlanarRotation(_planarRotation);
             
