@@ -36,8 +36,10 @@ namespace AtomicGame
 		public const int DeathEvent = -1096613677; // IEvent
 		public const int Damage = 375673178; // IValue<int>
 		public const int MoveDirection = -721923052; // IReactiveVariable<Vector3>
+		public const int BulletPrefab = -918778767; // SceneEntity
+		public const int FirePoint = 397255013; // Transform
 		public const int InteractAction = -1026843572; // IAction<IEntity>
-		public const int TargetInteractible = 21081601; // IReactiveVariable<IEntity>
+		public const int TargetInteractable = -990542098; // IReactiveVariable<IEntity>
 		public const int KeyPressAction = -418488485; // IAction<KeyCode>
 		public const int KeyDownAction = -124030595; // IAction<KeyCode>
 		public const int KeyUpAction = -181628813; // IAction<KeyCode>
@@ -379,6 +381,42 @@ namespace AtomicGame
 		public static void SetMoveDirection(this IEntity obj, IReactiveVariable<Vector3> value) => obj.SetValue(MoveDirection, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static SceneEntity GetBulletPrefab(this IEntity obj) => obj.GetValue<SceneEntity>(BulletPrefab);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetBulletPrefab(this IEntity obj, out SceneEntity value) => obj.TryGetValue(BulletPrefab, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddBulletPrefab(this IEntity obj, SceneEntity value) => obj.AddValue(BulletPrefab, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasBulletPrefab(this IEntity obj) => obj.HasValue(BulletPrefab);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelBulletPrefab(this IEntity obj) => obj.DelValue(BulletPrefab);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetBulletPrefab(this IEntity obj, SceneEntity value) => obj.SetValue(BulletPrefab, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static Transform GetFirePoint(this IEntity obj) => obj.GetValue<Transform>(FirePoint);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetFirePoint(this IEntity obj, out Transform value) => obj.TryGetValue(FirePoint, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddFirePoint(this IEntity obj, Transform value) => obj.AddValue(FirePoint, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasFirePoint(this IEntity obj) => obj.HasValue(FirePoint);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelFirePoint(this IEntity obj) => obj.DelValue(FirePoint);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetFirePoint(this IEntity obj, Transform value) => obj.SetValue(FirePoint, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IAction<IEntity> GetInteractAction(this IEntity obj) => obj.GetValue<IAction<IEntity>>(InteractAction);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -397,22 +435,22 @@ namespace AtomicGame
 		public static void SetInteractAction(this IEntity obj, IAction<IEntity> value) => obj.SetValue(InteractAction, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IReactiveVariable<IEntity> GetTargetInteractible(this IEntity obj) => obj.GetValue<IReactiveVariable<IEntity>>(TargetInteractible);
+		public static IReactiveVariable<IEntity> GetTargetInteractable(this IEntity obj) => obj.GetValue<IReactiveVariable<IEntity>>(TargetInteractable);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetTargetInteractible(this IEntity obj, out IReactiveVariable<IEntity> value) => obj.TryGetValue(TargetInteractible, out value);
+		public static bool TryGetTargetInteractable(this IEntity obj, out IReactiveVariable<IEntity> value) => obj.TryGetValue(TargetInteractable, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddTargetInteractible(this IEntity obj, IReactiveVariable<IEntity> value) => obj.AddValue(TargetInteractible, value);
+		public static bool AddTargetInteractable(this IEntity obj, IReactiveVariable<IEntity> value) => obj.AddValue(TargetInteractable, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasTargetInteractible(this IEntity obj) => obj.HasValue(TargetInteractible);
+		public static bool HasTargetInteractable(this IEntity obj) => obj.HasValue(TargetInteractable);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelTargetInteractible(this IEntity obj) => obj.DelValue(TargetInteractible);
+		public static bool DelTargetInteractable(this IEntity obj) => obj.DelValue(TargetInteractable);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetTargetInteractible(this IEntity obj, IReactiveVariable<IEntity> value) => obj.SetValue(TargetInteractible, value);
+		public static void SetTargetInteractable(this IEntity obj, IReactiveVariable<IEntity> value) => obj.SetValue(TargetInteractable, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IAction<KeyCode> GetKeyPressAction(this IEntity obj) => obj.GetValue<IAction<KeyCode>>(KeyPressAction);

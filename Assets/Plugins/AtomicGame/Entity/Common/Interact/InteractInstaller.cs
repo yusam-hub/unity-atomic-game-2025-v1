@@ -25,7 +25,7 @@ namespace AtomicGame
         
         public void Install(IEntity entity)
         {
-            entity.AddTargetInteractible(new ReactiveVariable<IEntity>());
+            entity.AddTargetInteractable(new ReactiveVariable<IEntity>());
             
             entity.AddBehaviour(
                 new DetectInteractibleBehaviour(

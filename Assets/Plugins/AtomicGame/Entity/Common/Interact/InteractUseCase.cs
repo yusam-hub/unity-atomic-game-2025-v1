@@ -37,8 +37,8 @@ namespace AtomicGame
 
         public static bool InteractAsCharacter(in IEntity character)
         {
-            IEntity interactible = character.GetTargetInteractible().Value;
-            return Interact(character, interactible);
+            IEntity interactable = character.GetTargetInteractable().Value;
+            return Interact(character, interactable);
         }
 
         public static bool FindClosest(
@@ -46,7 +46,7 @@ namespace AtomicGame
             in float radius,
             in LayerMask layerMask,
             in QueryTriggerInteraction triggerInteraction,
-            out IEntity interactible
+            out IEntity interactable
         )
         {
             ArrayPool<Collider> arrayPool = ArrayPool<Collider>.Shared;
@@ -55,7 +55,7 @@ namespace AtomicGame
             int count = Physics.OverlapSphereNonAlloc(center, radius, colliders, layerMask, triggerInteraction);
 
             float minDistance = float.MaxValue;
-            interactible = null;
+            interactable = null;
 
             for (int i = 0; i < count; i++)
             {
@@ -68,12 +68,12 @@ namespace AtomicGame
                 if (distance >= minDistance)
                     continue;
 
-                interactible = other;
+                interactable = other;
                 minDistance = distance;
             }
 
             arrayPool.Return(colliders);
-            return interactible != null;
+            return interactable != null;
         }
     }
 }

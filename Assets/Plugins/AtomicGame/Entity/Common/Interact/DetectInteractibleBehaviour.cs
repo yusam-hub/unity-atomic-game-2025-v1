@@ -31,7 +31,7 @@ namespace AtomicGame
 
         public void Init(in IEntity entity)
         {
-            _target = entity.GetTargetInteractible();
+            _target = entity.GetTargetInteractable();
         }
 
         public void OnFixedUpdate(in IEntity entity, in float deltaTime)

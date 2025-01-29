@@ -35,9 +35,13 @@ values:
 - Damage: IValue<int>
 - MoveDirection: IReactiveVariable<Vector3>
   
+#Bullet
+- BulletPrefab: SceneEntity
+- FirePoint: Transform
+  
 #Interact
 - InteractAction: IAction<IEntity> #IEntity — Character
-- TargetInteractible: IReactiveVariable<IEntity> #Entity — current interactible item
+- TargetInteractable: IReactiveVariable<IEntity> #Entity — current interactable item
   
 #Inputs
 - KeyPressAction: IAction<KeyCode>
