@@ -32,10 +32,12 @@ namespace AtomicGame
 		public const int JumpEvent = -1811156839; // IEvent
 		public const int Effects = -2018114250; // IReactiveDictionary<string, EffectInstance>
 		public const int PlanarRotation = -2030768779; // IReactiveVariable<Quaternion>
-		public const int Health = -915003867; // IReactiveVariable<int>
-		public const int DeathEvent = -1096613677; // IEvent
 		public const int Damage = 375673178; // IValue<int>
 		public const int MoveDirection = -721923052; // IReactiveVariable<Vector3>
+		public const int Health = -915003867; // IReactiveVariable<int>
+		public const int DeathEvent = -1096613677; // IEvent
+		public const int Lifetime = -997109026; // Cooldown
+		public const int DestroyAction = 85938956; // IAction
 		public const int BulletPrefab = -918778767; // SceneEntity
 		public const int FirePoint = 397255013; // Transform
 		public const int InteractAction = -1026843572; // IAction<IEntity>
@@ -309,6 +311,42 @@ namespace AtomicGame
 		public static void SetPlanarRotation(this IEntity obj, IReactiveVariable<Quaternion> value) => obj.SetValue(PlanarRotation, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IValue<int> GetDamage(this IEntity obj) => obj.GetValue<IValue<int>>(Damage);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetDamage(this IEntity obj, out IValue<int> value) => obj.TryGetValue(Damage, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddDamage(this IEntity obj, IValue<int> value) => obj.AddValue(Damage, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasDamage(this IEntity obj) => obj.HasValue(Damage);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelDamage(this IEntity obj) => obj.DelValue(Damage);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetDamage(this IEntity obj, IValue<int> value) => obj.SetValue(Damage, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveVariable<Vector3> GetMoveDirection(this IEntity obj) => obj.GetValue<IReactiveVariable<Vector3>>(MoveDirection);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetMoveDirection(this IEntity obj, out IReactiveVariable<Vector3> value) => obj.TryGetValue(MoveDirection, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddMoveDirection(this IEntity obj, IReactiveVariable<Vector3> value) => obj.AddValue(MoveDirection, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasMoveDirection(this IEntity obj) => obj.HasValue(MoveDirection);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelMoveDirection(this IEntity obj) => obj.DelValue(MoveDirection);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetMoveDirection(this IEntity obj, IReactiveVariable<Vector3> value) => obj.SetValue(MoveDirection, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IReactiveVariable<int> GetHealth(this IEntity obj) => obj.GetValue<IReactiveVariable<int>>(Health);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -345,40 +383,40 @@ namespace AtomicGame
 		public static void SetDeathEvent(this IEntity obj, IEvent value) => obj.SetValue(DeathEvent, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IValue<int> GetDamage(this IEntity obj) => obj.GetValue<IValue<int>>(Damage);
+		public static Cooldown GetLifetime(this IEntity obj) => obj.GetValue<Cooldown>(Lifetime);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetDamage(this IEntity obj, out IValue<int> value) => obj.TryGetValue(Damage, out value);
+		public static bool TryGetLifetime(this IEntity obj, out Cooldown value) => obj.TryGetValue(Lifetime, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddDamage(this IEntity obj, IValue<int> value) => obj.AddValue(Damage, value);
+		public static bool AddLifetime(this IEntity obj, Cooldown value) => obj.AddValue(Lifetime, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasDamage(this IEntity obj) => obj.HasValue(Damage);
+		public static bool HasLifetime(this IEntity obj) => obj.HasValue(Lifetime);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelDamage(this IEntity obj) => obj.DelValue(Damage);
+		public static bool DelLifetime(this IEntity obj) => obj.DelValue(Lifetime);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetDamage(this IEntity obj, IValue<int> value) => obj.SetValue(Damage, value);
+		public static void SetLifetime(this IEntity obj, Cooldown value) => obj.SetValue(Lifetime, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IReactiveVariable<Vector3> GetMoveDirection(this IEntity obj) => obj.GetValue<IReactiveVariable<Vector3>>(MoveDirection);
+		public static IAction GetDestroyAction(this IEntity obj) => obj.GetValue<IAction>(DestroyAction);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetMoveDirection(this IEntity obj, out IReactiveVariable<Vector3> value) => obj.TryGetValue(MoveDirection, out value);
+		public static bool TryGetDestroyAction(this IEntity obj, out IAction value) => obj.TryGetValue(DestroyAction, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddMoveDirection(this IEntity obj, IReactiveVariable<Vector3> value) => obj.AddValue(MoveDirection, value);
+		public static bool AddDestroyAction(this IEntity obj, IAction value) => obj.AddValue(DestroyAction, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasMoveDirection(this IEntity obj) => obj.HasValue(MoveDirection);
+		public static bool HasDestroyAction(this IEntity obj) => obj.HasValue(DestroyAction);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelMoveDirection(this IEntity obj) => obj.DelValue(MoveDirection);
+		public static bool DelDestroyAction(this IEntity obj) => obj.DelValue(DestroyAction);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetMoveDirection(this IEntity obj, IReactiveVariable<Vector3> value) => obj.SetValue(MoveDirection, value);
+		public static void SetDestroyAction(this IEntity obj, IAction value) => obj.SetValue(DestroyAction, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static SceneEntity GetBulletPrefab(this IEntity obj) => obj.GetValue<SceneEntity>(BulletPrefab);

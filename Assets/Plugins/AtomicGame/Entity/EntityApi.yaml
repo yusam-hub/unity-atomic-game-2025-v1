@@ -30,10 +30,14 @@ values:
 - JumpEvent: IEvent
 - Effects: IReactiveDictionary<string, EffectInstance>
 - PlanarRotation: IReactiveVariable<Quaternion>  
-- Health: IReactiveVariable<int>
-- DeathEvent: IEvent
 - Damage: IValue<int>
 - MoveDirection: IReactiveVariable<Vector3>
+  
+#Life
+- Health: IReactiveVariable<int>
+- DeathEvent: IEvent
+- Lifetime: Cooldown
+- DestroyAction: IAction
   
 #Bullet
 - BulletPrefab: SceneEntity

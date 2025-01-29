@@ -14,10 +14,21 @@ namespace AtomicGame
         
         [SerializeField]
         private TriggerDispatcher _triggerDispatcher;
+        
+        [SerializeField]
+        private float _lifetime = 10;
         public override void Install(IEntity entity)
         {
+            GameContext gameContext = GameContext.Instance;
+            
             entity.AddTransform(transform);
             entity.AddDamage(new Const<int>(_damage));
+            
+            entity.AddLifetime(new Cooldown(_lifetime, _lifetime));
+            entity.AddDestroyAction(new BaseAction(() =>
+            {
+               GameObject.Destroy(transform.gameObject); 
+            }));
             
             entity.AddMoveSpeed(new ReactiveVariable<float>(_moveSpeed));
             entity.AddMoveDirection(new ReactiveVariable<Vector3>(transform.forward));
@@ -25,6 +36,7 @@ namespace AtomicGame
             
             entity.WhenFixedUpdate(entity.TransformMoveSelf);
             entity.AddBehaviour<BulletCollisionBehaviour>();
+            entity.AddBehaviour<BulletLifetimeBehaviour>();
         }
     }
 }
