@@ -15,6 +15,9 @@ namespace AtomicGame
         private InteractInstaller _interactInstaller;
 
         [SerializeField] 
+        private HealthInstaller _healthInstaller;
+
+        [SerializeField] 
         private ReactiveVariable<float> _moveSpeed = new(3.5f);
 
         [SerializeField, ReadOnly]
@@ -22,7 +25,7 @@ namespace AtomicGame
         
         [SerializeField] 
         private ReactiveVariable<float> _rotateSpeed = new(15f);
-        
+
         [SerializeField, ReadOnly]
         private ReactiveVariable<bool> _isMoving = new (false);
       
@@ -43,6 +46,12 @@ namespace AtomicGame
             _controllerColliderHitDispatcher = GetComponent<ControllerColliderHitDispatcher>();
             
             _interactInstaller.Install(entity);
+            _healthInstaller.Install(entity);
+
+            entity.GetDeathEvent().Subscribe(() =>
+            {
+                Debug.Log($"Death");
+            });
             
             entity.AddEffects(new ReactiveDictionary<string, EffectInstance>());
             entity.AddPlanarRotation(_planarRotation);

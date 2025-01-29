@@ -15,7 +15,7 @@ namespace AtomicGame
 
             entity.AddTransform(transform);
             
-            entity.AddInteractibleTag();
+            entity.AddInteractableTag();
             entity.AddInteractAction(new BaseAction<IEntity>(character =>
             {
                 if (EffectUseCase.CanApply(character, _effect))

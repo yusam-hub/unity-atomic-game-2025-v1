@@ -25,7 +25,7 @@ namespace AtomicGame
                 return false;
             }
 
-            if (!interactible.HasInteractibleTag())
+            if (!interactible.HasInteractableTag())
             {
                 return false;
             }
@@ -60,7 +60,7 @@ namespace AtomicGame
             for (int i = 0; i < count; i++)
             {
                 Collider collider = colliders[i];
-                if (!collider.TryGetEntity(out IEntity other) || !other.HasInteractibleTag())
+                if (!collider.TryGetEntity(out IEntity other) || !other.HasInteractableTag())
                     continue;
 
                 Vector3 position = other.GetTransform().position;

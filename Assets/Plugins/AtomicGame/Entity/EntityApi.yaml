@@ -13,7 +13,8 @@ imports:
 - Atomic.Elements
 
 tags:
-- Interactible
+- Interactable
+- Damageable
 
 values:
 - Transform: Transform
@@ -29,6 +30,9 @@ values:
 - JumpEvent: IEvent
 - Effects: IReactiveDictionary<string, EffectInstance>
 - PlanarRotation: IReactiveVariable<Quaternion>  
+- Health: IReactiveVariable<int>
+- DeathEvent: IEvent
+- Damage: IValue<int>
   
 #Interact
 - InteractAction: IAction<IEntity> #IEntity — Character

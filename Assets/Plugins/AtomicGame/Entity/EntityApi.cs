@@ -14,7 +14,8 @@ namespace AtomicGame
 	public static class EntityApi
 	{
 		///Tags
-		public const int Interactible = -2055148603;
+		public const int Interactable = 1077199658;
+		public const int Damageable = 563499515;
 
 
 		///Values
@@ -31,6 +32,9 @@ namespace AtomicGame
 		public const int JumpEvent = -1811156839; // IEvent
 		public const int Effects = -2018114250; // IReactiveDictionary<string, EffectInstance>
 		public const int PlanarRotation = -2030768779; // IReactiveVariable<Quaternion>
+		public const int Health = -915003867; // IReactiveVariable<int>
+		public const int DeathEvent = -1096613677; // IEvent
+		public const int Damage = 375673178; // IValue<int>
 		public const int InteractAction = -1026843572; // IAction<IEntity>
 		public const int TargetInteractible = 21081601; // IReactiveVariable<IEntity>
 		public const int KeyPressAction = -418488485; // IAction<KeyCode>
@@ -47,13 +51,22 @@ namespace AtomicGame
 		///Tag Extensions
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasInteractibleTag(this IEntity obj) => obj.HasTag(Interactible);
+		public static bool HasInteractableTag(this IEntity obj) => obj.HasTag(Interactable);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddInteractibleTag(this IEntity obj) => obj.AddTag(Interactible);
+		public static bool AddInteractableTag(this IEntity obj) => obj.AddTag(Interactable);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelInteractibleTag(this IEntity obj) => obj.DelTag(Interactible);
+		public static bool DelInteractableTag(this IEntity obj) => obj.DelTag(Interactable);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasDamageableTag(this IEntity obj) => obj.HasTag(Damageable);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddDamageableTag(this IEntity obj) => obj.AddTag(Damageable);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelDamageableTag(this IEntity obj) => obj.DelTag(Damageable);
 
 
 		///Value Extensions
@@ -291,6 +304,60 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetPlanarRotation(this IEntity obj, IReactiveVariable<Quaternion> value) => obj.SetValue(PlanarRotation, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveVariable<int> GetHealth(this IEntity obj) => obj.GetValue<IReactiveVariable<int>>(Health);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetHealth(this IEntity obj, out IReactiveVariable<int> value) => obj.TryGetValue(Health, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddHealth(this IEntity obj, IReactiveVariable<int> value) => obj.AddValue(Health, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasHealth(this IEntity obj) => obj.HasValue(Health);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelHealth(this IEntity obj) => obj.DelValue(Health);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetHealth(this IEntity obj, IReactiveVariable<int> value) => obj.SetValue(Health, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IEvent GetDeathEvent(this IEntity obj) => obj.GetValue<IEvent>(DeathEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetDeathEvent(this IEntity obj, out IEvent value) => obj.TryGetValue(DeathEvent, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddDeathEvent(this IEntity obj, IEvent value) => obj.AddValue(DeathEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasDeathEvent(this IEntity obj) => obj.HasValue(DeathEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelDeathEvent(this IEntity obj) => obj.DelValue(DeathEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetDeathEvent(this IEntity obj, IEvent value) => obj.SetValue(DeathEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IValue<int> GetDamage(this IEntity obj) => obj.GetValue<IValue<int>>(Damage);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetDamage(this IEntity obj, out IValue<int> value) => obj.TryGetValue(Damage, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddDamage(this IEntity obj, IValue<int> value) => obj.AddValue(Damage, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasDamage(this IEntity obj) => obj.HasValue(Damage);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelDamage(this IEntity obj) => obj.DelValue(Damage);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetDamage(this IEntity obj, IValue<int> value) => obj.SetValue(Damage, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IAction<IEntity> GetInteractAction(this IEntity obj) => obj.GetValue<IAction<IEntity>>(InteractAction);
