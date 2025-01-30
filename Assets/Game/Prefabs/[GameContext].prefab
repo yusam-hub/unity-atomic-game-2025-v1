@@ -705,6 +705,8 @@ MonoBehaviour:
     value: 0
   _keyScore:
     value: 0
+  _pumpkinScore:
+    value: 0
 --- !u!114 &1666601667652594208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,4 +722,6 @@ MonoBehaviour:
   _scoreCoinAudioClipChanged: {fileID: 8300000, guid: b45b19776b2e15e48947a75b76ccca86,
     type: 3}
   _scoreKeyAudioClipChanged: {fileID: 8300000, guid: b45b19776b2e15e48947a75b76ccca86,
+    type: 3}
+  _scorePumpkinAudioClipChanged: {fileID: 8300000, guid: b45b19776b2e15e48947a75b76ccca86,
     type: 3}

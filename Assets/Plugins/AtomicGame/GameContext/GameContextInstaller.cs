@@ -16,11 +16,15 @@ namespace AtomicGame
         
         [SerializeField, ReadOnly]
         private ReactiveVariable<int> _keyScore = new();
+        
+        [SerializeField, ReadOnly]
+        private ReactiveVariable<int> _pumpkinScore = new();
         protected override void Install(IGameContext context)
         {
             context.AddBulletSceneEntityPool(new GenericSceneEntityPool(_bulletPool));
             context.AddCoinScore(_coinScore);
             context.AddKeyScore(_keyScore);
+            context.AddPumpkinScore(_pumpkinScore);
         }
     }
 }

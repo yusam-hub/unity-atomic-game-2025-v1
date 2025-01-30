@@ -20,6 +20,7 @@ namespace AtomicGame
 		public const int BulletSceneEntityPool = 1173791206; // GenericSceneEntityPool
 		public const int CoinScore = 293015855; // IReactiveVariable<int>
 		public const int KeyScore = -787689007; // IReactiveVariable<int>
+		public const int PumpkinScore = -2008409474; // IReactiveVariable<int>
 
 
 		///Value Extensions
@@ -77,5 +78,23 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetKeyScore(this IGameContext obj, IReactiveVariable<int> value) => obj.SetValue(KeyScore, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveVariable<int> GetPumpkinScore(this IGameContext obj) => obj.GetValue<IReactiveVariable<int>>(PumpkinScore);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetPumpkinScore(this IGameContext obj, out IReactiveVariable<int> value) => obj.TryGetValue(PumpkinScore, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddPumpkinScore(this IGameContext obj, IReactiveVariable<int> value) => obj.AddValue(PumpkinScore, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasPumpkinScore(this IGameContext obj) => obj.HasValue(PumpkinScore);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelPumpkinScore(this IGameContext obj) => obj.DelValue(PumpkinScore);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetPumpkinScore(this IGameContext obj, IReactiveVariable<int> value) => obj.SetValue(PumpkinScore, value);
     }
 }

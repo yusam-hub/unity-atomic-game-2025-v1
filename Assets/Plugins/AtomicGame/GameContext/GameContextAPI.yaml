@@ -17,3 +17,4 @@ values:
 - BulletSceneEntityPool: GenericSceneEntityPool
 - CoinScore: IReactiveVariable<int>
 - KeyScore: IReactiveVariable<int>
+- PumpkinScore: IReactiveVariable<int>

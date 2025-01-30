@@ -24,9 +24,11 @@ namespace AtomicGame
 
         [SerializeField, ReadOnly] 
         private ReactiveVariable<Vector3> _moveDirection = new();
-        
+
+        private GameContextPumpkinPresenter _pumpkinPresenter;
         public override void Install(IEntity entity)
         {
+     
             entity.AddEnemyTag();
             entity.AddTransform(transform);
             entity.AddMoveSpeed(_moveSpeed);
@@ -39,6 +41,8 @@ namespace AtomicGame
             
             entity.GetDeathEvent().Subscribe(() =>
             {
+                IReactiveVariable<int> pumpkinScore = GameContext.Instance.GetPumpkinScore();
+                pumpkinScore.Value += 1;
                 transform.gameObject.SetActive(false);
             });
 
