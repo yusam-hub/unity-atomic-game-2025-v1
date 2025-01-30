@@ -38,8 +38,10 @@ namespace AtomicGame
 		public const int DeathEvent = -1096613677; // IEvent
 		public const int Lifetime = -997109026; // Cooldown
 		public const int DestroyAction = 85938956; // IAction
+		public const int WeaponFireAction = -19054336; // IAction
+		public const int WeaponFireEvent = 1287098833; // IEvent
+		public const int WeaponFirePoint = -1061394350; // Transform
 		public const int BulletPrefab = -918778767; // SceneEntity
-		public const int FirePoint = 397255013; // Transform
 		public const int InteractAction = -1026843572; // IAction<IEntity>
 		public const int TargetInteractable = -990542098; // IReactiveVariable<IEntity>
 		public const int KeyPressAction = -418488485; // IAction<KeyCode>
@@ -419,6 +421,60 @@ namespace AtomicGame
 		public static void SetDestroyAction(this IEntity obj, IAction value) => obj.SetValue(DestroyAction, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IAction GetWeaponFireAction(this IEntity obj) => obj.GetValue<IAction>(WeaponFireAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetWeaponFireAction(this IEntity obj, out IAction value) => obj.TryGetValue(WeaponFireAction, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddWeaponFireAction(this IEntity obj, IAction value) => obj.AddValue(WeaponFireAction, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasWeaponFireAction(this IEntity obj) => obj.HasValue(WeaponFireAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelWeaponFireAction(this IEntity obj) => obj.DelValue(WeaponFireAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetWeaponFireAction(this IEntity obj, IAction value) => obj.SetValue(WeaponFireAction, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IEvent GetWeaponFireEvent(this IEntity obj) => obj.GetValue<IEvent>(WeaponFireEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetWeaponFireEvent(this IEntity obj, out IEvent value) => obj.TryGetValue(WeaponFireEvent, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddWeaponFireEvent(this IEntity obj, IEvent value) => obj.AddValue(WeaponFireEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasWeaponFireEvent(this IEntity obj) => obj.HasValue(WeaponFireEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelWeaponFireEvent(this IEntity obj) => obj.DelValue(WeaponFireEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetWeaponFireEvent(this IEntity obj, IEvent value) => obj.SetValue(WeaponFireEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static Transform GetWeaponFirePoint(this IEntity obj) => obj.GetValue<Transform>(WeaponFirePoint);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetWeaponFirePoint(this IEntity obj, out Transform value) => obj.TryGetValue(WeaponFirePoint, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddWeaponFirePoint(this IEntity obj, Transform value) => obj.AddValue(WeaponFirePoint, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasWeaponFirePoint(this IEntity obj) => obj.HasValue(WeaponFirePoint);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelWeaponFirePoint(this IEntity obj) => obj.DelValue(WeaponFirePoint);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetWeaponFirePoint(this IEntity obj, Transform value) => obj.SetValue(WeaponFirePoint, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static SceneEntity GetBulletPrefab(this IEntity obj) => obj.GetValue<SceneEntity>(BulletPrefab);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -435,24 +491,6 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetBulletPrefab(this IEntity obj, SceneEntity value) => obj.SetValue(BulletPrefab, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Transform GetFirePoint(this IEntity obj) => obj.GetValue<Transform>(FirePoint);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetFirePoint(this IEntity obj, out Transform value) => obj.TryGetValue(FirePoint, out value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddFirePoint(this IEntity obj, Transform value) => obj.AddValue(FirePoint, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasFirePoint(this IEntity obj) => obj.HasValue(FirePoint);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelFirePoint(this IEntity obj) => obj.DelValue(FirePoint);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetFirePoint(this IEntity obj, Transform value) => obj.SetValue(FirePoint, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IAction<IEntity> GetInteractAction(this IEntity obj) => obj.GetValue<IAction<IEntity>>(InteractAction);

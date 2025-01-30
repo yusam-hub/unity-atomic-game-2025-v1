@@ -38,10 +38,14 @@ values:
 - DeathEvent: IEvent
 - Lifetime: Cooldown
 - DestroyAction: IAction
+
+#Weapon  
+- WeaponFireAction: IAction
+- WeaponFireEvent: IEvent
+- WeaponFirePoint: Transform
   
 #Bullet
 - BulletPrefab: SceneEntity
-- FirePoint: Transform
   
 #Interact
 - InteractAction: IAction<IEntity> #IEntity — Character

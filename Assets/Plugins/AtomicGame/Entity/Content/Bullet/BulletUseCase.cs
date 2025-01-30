@@ -11,7 +11,7 @@ namespace AtomicGame
             {
                 return null;
             }
-            if (!entity.HasFirePoint())
+            if (!entity.HasWeaponFirePoint())
             {
                 return null;
             }
@@ -19,7 +19,7 @@ namespace AtomicGame
             GameContext gameContext = GameContext.Instance;
             
             SceneEntity bulletPrefab = entity.GetBulletPrefab();
-            Transform firePoint = entity.GetFirePoint();
+            Transform firePoint = entity.GetWeaponFirePoint();
  
             SceneEntity bullet = gameContext.GetBulletSceneEntityPool()
                 .Rent(bulletPrefab, firePoint.position, firePoint.rotation);

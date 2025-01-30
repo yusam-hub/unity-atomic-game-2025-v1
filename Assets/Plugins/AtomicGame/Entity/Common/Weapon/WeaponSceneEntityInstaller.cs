@@ -13,11 +13,5 @@ namespace AtomicGame
         {
             _weaponInstaller.Install(entity);
         }
-
-        [Button]
-        public void SpawnTest(IEntity entity)
-        {
-            BulletUseCase.SpawnBullet(entity);
-        }
     }
 }

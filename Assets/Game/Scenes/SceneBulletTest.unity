@@ -159,7 +159,7 @@ MonoBehaviour:
   _weaponInstaller:
     _bulletPrefab: {fileID: 3057322964238258238, guid: e1190d2abdfd94857b39df85ec41f1a0,
       type: 3}
-    _firePoint: {fileID: 1379062528}
+    _weaponFirePoint: {fileID: 1379062528}
 --- !u!114 &1188905501
 MonoBehaviour:
   m_ObjectHideFlags: 0
