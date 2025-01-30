@@ -39,11 +39,18 @@ namespace AtomicGame
             _period.Tick(deltaTime);
             
             if (!_period.IsExpired())
+            {
                 return;
+            }
 
-            InteractUseCase.FindClosest(_center.position, _radius, _layerMask, _triggerInteraction, out IEntity target);
-            
-            _target.Value = target;
+            if (EnemyUseCase.FindClosest(_center.position, _radius, _layerMask, _triggerInteraction, out IEntity target))
+            {
+                _target.Value = target;
+            }
+            else
+            {
+                _target.Value = null;
+            }
             
             _period.Reset();
         }
