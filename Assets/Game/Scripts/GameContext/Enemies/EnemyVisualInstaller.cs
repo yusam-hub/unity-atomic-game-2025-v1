@@ -9,6 +9,8 @@ namespace AtomicGame
         [SerializeField] 
         private GameObject _deathParticleSystemPrefab;
         
+        [SerializeField] 
+        private AudioClip _deathAudioClip;
         public override void Install(IEntity entity)
         {
             entity.GetDeathEvent().Subscribe(() =>
@@ -17,6 +19,8 @@ namespace AtomicGame
                     Instantiate(_deathParticleSystemPrefab, entity.GetTransform().position, entity.GetTransform().rotation), 
                     3
                     );
+                
+                AudioManager.PlayOneShot(_deathAudioClip);
             });
         }
     }
