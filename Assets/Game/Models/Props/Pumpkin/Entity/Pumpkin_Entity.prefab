@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3142498ee69840069f3a93c11b1e1f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  installOnAwake: 1
+  installOnAwake: 0
   installInEditMode: 0
   disposeValues: 1
   installers:
@@ -215,17 +215,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a841b42d139b4ff887d3735081c24740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _healthInstaller:
+    _health:
+      value: 100
   _moveSpeed:
     value: 2
   _rotateSpeed:
     value: 15
-  _healthInstaller:
-    _health:
-      value: 100
+  _moveDirection:
+    value: {x: 0, y: 0, z: 0}
 --- !u!114 &3232185005467522114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,3 +238,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deathParticleSystemPrefab: {fileID: 8235030381089142245, guid: 00e73cc0f1f09420e9372ae551b912ee,
     type: 3}
+  _deathAudioClip: {fileID: 8300000, guid: 7da886a070ddeee4ba6bc0fd415e462c, type: 3}

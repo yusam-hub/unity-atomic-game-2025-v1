@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 585280266335983553}
+  - component: {fileID: 4105888410896746544}
   m_Layer: 0
   m_Name: PatrolPoints
   m_TagString: Untagged
@@ -65,6 +66,24 @@ Transform:
   - {fileID: 300559496125803420}
   m_Father: {fileID: 7769235073024206202}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4105888410896746544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192600213913253386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493586dbf8454f54b16a5e7413018022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _entity: {fileID: 4210367930630429225}
+  _transforms:
+  - {fileID: 2076827431884909903}
+  - {fileID: 2279417863984069590}
+  - {fileID: 300559496125803420}
+  _installEntityOnAwake: 1
 --- !u!1 &2368334721545206000
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,31 +187,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7769235073024206202}
     m_Modifications:
-    - target: {fileID: 3232185005467522114, guid: 8dc30d7d66755411088bcf0423ecd411,
-        type: 3}
-      propertyPath: _deathAudioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 7da886a070ddeee4ba6bc0fd415e462c, type: 3}
     - target: {fileID: 3740045639255672910, guid: 8dc30d7d66755411088bcf0423ecd411,
         type: 3}
       propertyPath: m_Name
       value: Pumpkin_Entity
       objectReference: {fileID: 0}
-    - target: {fileID: 6090700872297794583, guid: 8dc30d7d66755411088bcf0423ecd411,
-        type: 3}
-      propertyPath: _patrolPoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 2076827431884909903}
-    - target: {fileID: 6090700872297794583, guid: 8dc30d7d66755411088bcf0423ecd411,
-        type: 3}
-      propertyPath: _patrolPoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 2279417863984069590}
-    - target: {fileID: 6090700872297794583, guid: 8dc30d7d66755411088bcf0423ecd411,
-        type: 3}
-      propertyPath: _patrolPoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 300559496125803420}
     - target: {fileID: 8984629353359167730, guid: 8dc30d7d66755411088bcf0423ecd411,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -254,3 +253,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5604291544658082828}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4210367930630429225 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8622223008838034981, guid: 8dc30d7d66755411088bcf0423ecd411,
+    type: 3}
+  m_PrefabInstance: {fileID: 5604291544658082828}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3142498ee69840069f3a93c11b1e1f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
