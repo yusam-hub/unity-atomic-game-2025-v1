@@ -28,6 +28,11 @@ namespace AtomicGame
             entity.AddRotateSpeed(_rotateSpeed);
             entity.AddMoveDirection(new ReactiveVariable<Vector3>());
             entity.AddBehaviour(new EnemyBehaviour());
+
+            entity.GetDeathEvent().Subscribe(() =>
+            {
+                transform.gameObject.SetActive(false);
+            });
         }
     }
 }

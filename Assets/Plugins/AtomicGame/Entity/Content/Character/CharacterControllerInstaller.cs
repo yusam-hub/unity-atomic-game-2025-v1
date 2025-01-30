@@ -18,14 +18,17 @@ namespace AtomicGame
         private HealthInstaller _healthInstaller;
 
         [SerializeField] 
+        private TriggerDispatcher _damageTriggerDispatcher;
+        
+        [SerializeField] 
         private ReactiveVariable<float> _moveSpeed = new(3.5f);
+
+        [SerializeField] 
+        private ReactiveVariable<float> _rotateSpeed = new(15f);
 
         [SerializeField, ReadOnly]
         private ReactiveVariable<float> _currentSpeed = new(0);
         
-        [SerializeField] 
-        private ReactiveVariable<float> _rotateSpeed = new(15f);
-
         [SerializeField, ReadOnly]
         private ReactiveVariable<bool> _isMoving = new (false);
       
@@ -34,6 +37,7 @@ namespace AtomicGame
         
         [SerializeField, ReadOnly]
         private ReactiveVariable<Vector3> _moveDirection = new();
+
         
         private CharacterController _characterController;
         private ControllerColliderHitDispatcher _controllerColliderHitDispatcher;
@@ -83,6 +87,8 @@ namespace AtomicGame
                     _isMoving
                 )
             );
+
+            entity.AddBehaviour(new CharacterControllerDamageTriggerBehaviour(_damageTriggerDispatcher));
         }
     }
 }

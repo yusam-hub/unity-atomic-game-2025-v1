@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 8622223008838034981}
   - component: {fileID: 5812019859781454683}
   - component: {fileID: 6090700872297794583}
+  - component: {fileID: 3232185005467522114}
   m_Layer: 0
   m_Name: Pumpkin_Entity
   m_TagString: Untagged
@@ -185,6 +186,7 @@ MonoBehaviour:
   disposeValues: 1
   installers:
   - {fileID: 6090700872297794583}
+  - {fileID: 3232185005467522114}
   _onlySelectedGizmos: 0
   _onlyEditModeGizmos: 0
 --- !u!114 &5812019859781454683
@@ -213,3 +215,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a841b42d139b4ff887d3735081c24740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _moveSpeed:
+    value: 2
+  _rotateSpeed:
+    value: 15
+  _healthInstaller:
+    _health:
+      value: 100
+--- !u!114 &3232185005467522114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3740045639255672910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc00deef63c4d9b8906c04ef9d7e771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deathParticleSystemPrefab: {fileID: 8235030381089142245, guid: 00e73cc0f1f09420e9372ae551b912ee,
+    type: 3}

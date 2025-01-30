@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719b11986e04437cbe0c9e37cf249882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebuggingEnter: 1
+  isDebuggingEnter: 0
   isDebuggingStay: 0
   isDebuggingExit: 0
 --- !u!1 &5060631342980041185
@@ -407,12 +407,13 @@ MonoBehaviour:
   _healthInstaller:
     _health:
       value: 100
+  _damageTriggerDispatcher: {fileID: 1875118000841314576}
   _moveSpeed:
     value: 3.5
-  _currentSpeed:
-    value: 0
   _rotateSpeed:
     value: 15
+  _currentSpeed:
+    value: 0
   _isMoving:
     value: 0
   _isGrounded:
