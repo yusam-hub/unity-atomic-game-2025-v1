@@ -75,6 +75,8 @@ namespace AtomicGame
         
         public void OnUpdate(in IEntity entity, in float deltaTime)
         {
+            if (!HealthUseCase.IsAlive(entity)) return;
+            
             _isGrounded.Value = _characterController.isGrounded;
             
             var newDir = _moveDirection.Value;

@@ -25,7 +25,6 @@ namespace AtomicGame
         {
             if (health <= 0)
             {
-                Debug.Log("$Death Invoke");
                 _deathEvent.Invoke();
             }
         }

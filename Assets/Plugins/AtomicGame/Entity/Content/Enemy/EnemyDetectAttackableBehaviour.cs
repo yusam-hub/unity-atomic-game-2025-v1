@@ -45,7 +45,14 @@ namespace AtomicGame
 
             if (EnemyUseCase.FindClosest(_center.position, _radius, _layerMask, _triggerInteraction, out IEntity target))
             {
-                _target.Value = target;
+                if (HealthUseCase.IsAlive(target))
+                {
+                    _target.Value = target;
+                }
+                else
+                {
+                    _target.Value = null;
+                }
             }
             else
             {
