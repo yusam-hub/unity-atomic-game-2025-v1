@@ -17,12 +17,13 @@ namespace AtomicGame
         
         [SerializeField]
         private float _lifetime = 10;
-
-        [SerializeField]
-        private GameObject _damageActionPrefab;
-  
+        
+        private GameContext _gameContext;
+        
         public override void Install(IEntity entity)
         {
+            _gameContext = GameContext.Instance;
+            
             entity.AddTransform(transform);
             entity.AddDamage(new Const<int>(_damage));
             
@@ -30,9 +31,14 @@ namespace AtomicGame
             
             entity.AddDamageAction(new BaseAction(() =>
             {
-                if (_damageActionPrefab)
+                if (_gameContext.GetGameContextConfig().vfxPrefabConfig.damageActionPrefab)
                 {
-                    Destroy(Instantiate(_damageActionPrefab, transform.position, transform.rotation), 3);
+                    Destroy(Instantiate(
+                        _gameContext.GetGameContextConfig().vfxPrefabConfig.damageActionPrefab, 
+                        transform.position, 
+                        transform.rotation
+                        ), 
+                        3);
                 }
             }));
             

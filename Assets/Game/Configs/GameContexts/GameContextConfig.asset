@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68df9fec1d6d4e3bb4b95345382b3a67, type: 3}
+  m_Name: GameContextConfig
+  m_EditorClassIdentifier: 
+  audioClipConfig:
+    playerJump: {fileID: 8300000, guid: a76b32836dc7cc44aa9a52f0694ee199, type: 3}
+    playerDeath: {fileID: 8300000, guid: 79c3cb7a26813d146b07c293b0324039, type: 3}
+    addScoreCoin: {fileID: 8300000, guid: b45b19776b2e15e48947a75b76ccca86, type: 3}
+    addScoreKey: {fileID: 8300000, guid: b45b19776b2e15e48947a75b76ccca86, type: 3}
+    addScorePumpkin: {fileID: 8300000, guid: b45b19776b2e15e48947a75b76ccca86, type: 3}
+  vfxPrefabConfig:
+    damageActionPrefab: {fileID: 6501363449856150340, guid: c9441de19e3ad402f912a0d2d1e9a46a,
+      type: 3}

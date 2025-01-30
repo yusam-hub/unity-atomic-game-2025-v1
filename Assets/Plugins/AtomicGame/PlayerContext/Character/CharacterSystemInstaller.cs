@@ -9,7 +9,6 @@ namespace AtomicGame
     [Serializable]
     public sealed class CharacterSystemInstaller : IContextInstaller<IPlayerContext>
     {
-        //[SerializeField]
         private SceneEntity _character;
         
         [SerializeField]
@@ -17,6 +16,8 @@ namespace AtomicGame
 
         [SerializeField, AssetsOnly]
         private GameObject _characterPrefab;
+        
+        private PlayerContextHealthPresenter _healthPresenter; 
         
         public void Install(IPlayerContext context)
         {
@@ -28,6 +29,13 @@ namespace AtomicGame
             context.AddController<CharacterMoveController>();
             context.AddController<CharacterJumpController>();
             context.AddController<CharacterInteractController>();
+            
+            _healthPresenter = SceneEntity.FindObjectOfType<PlayerContextHealthPresenter>();
+            if (_healthPresenter)
+            {
+                _healthPresenter.health.text = _character.GetHealth().Value.ToString();
+                _character.GetHealth().Subscribe((value) => { _healthPresenter.health.text = value.ToString(); });
+            }
         }
     }
 }

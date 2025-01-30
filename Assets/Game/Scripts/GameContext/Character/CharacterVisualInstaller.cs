@@ -5,14 +5,19 @@ namespace AtomicGame
 {
     public class CharacterVisualInstaller: SceneEntityInstaller
     {
-        [SerializeField]
-        private AudioClip _jumpClip;
-
+        private GameContext _gameContext;
         public override void Install(IEntity entity)
         {
+            _gameContext = GameContext.Instance;
+            
             entity.GetJumpEvent().Subscribe(() =>
             {
-                AudioManager.PlayOneShot(_jumpClip);
+                AudioManager.PlayOneShot(_gameContext.GetGameContextConfig().audioClipConfig.playerJump);
+            });
+            
+            entity.GetDeathEvent().Subscribe(() =>
+            {
+                AudioManager.PlayOneShot(_gameContext.GetGameContextConfig().audioClipConfig.playerDeath);
             });
         }
     }

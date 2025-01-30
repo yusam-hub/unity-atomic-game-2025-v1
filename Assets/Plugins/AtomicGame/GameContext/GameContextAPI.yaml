@@ -18,3 +18,4 @@ values:
 - CoinScore: IReactiveVariable<int>
 - KeyScore: IReactiveVariable<int>
 - PumpkinScore: IReactiveVariable<int>
+- GameContextConfig: GameContextConfig

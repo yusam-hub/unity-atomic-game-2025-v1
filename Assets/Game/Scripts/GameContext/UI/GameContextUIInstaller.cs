@@ -9,14 +9,7 @@ namespace AtomicGame
         private GameContextScoreKeyPresenter _scoreKeyPresenter;
         private GameContextScoreCoinPresenter _scoreCoinPresenter;
         private GameContextPumpkinPresenter _scorePumpkinPresenter;
-        [SerializeField] 
-        private AudioClip _scoreCoinAudioClipChanged;
-        
-        [SerializeField] 
-        private AudioClip _scoreKeyAudioClipChanged;
 
-        [SerializeField] 
-        private AudioClip _scorePumpkinAudioClipChanged;
         protected override void Install(IGameContext context)
         {
             _scoreCoinPresenter = FindObjectOfType<GameContextScoreCoinPresenter>();
@@ -30,7 +23,7 @@ namespace AtomicGame
                 if (_scoreCoinPresenter) {
                     _scoreCoinPresenter.score.text = value.ToString();
                 }
-                AudioManager.PlayOneShot(_scoreCoinAudioClipChanged);       
+                AudioManager.PlayOneShot(context.GetGameContextConfig().audioClipConfig.addScoreCoin);       
             });
             
             IReactiveVariable<int> keyScore = context.GetKeyScore();
@@ -40,7 +33,7 @@ namespace AtomicGame
                 if (_scoreKeyPresenter) {
                     _scoreKeyPresenter.score.text = value.ToString();
                 }
-                AudioManager.PlayOneShot(_scoreKeyAudioClipChanged);       
+                AudioManager.PlayOneShot(context.GetGameContextConfig().audioClipConfig.addScoreKey);       
             });
             
             IReactiveVariable<int> pumpkinScore = context.GetPumpkinScore();
@@ -50,7 +43,7 @@ namespace AtomicGame
                 if (_scorePumpkinPresenter) {
                     _scorePumpkinPresenter.pumpkin.text = value.ToString();
                 }
-                AudioManager.PlayOneShot(_scorePumpkinAudioClipChanged);       
+                AudioManager.PlayOneShot(context.GetGameContextConfig().audioClipConfig.addScorePumpkin);       
             });
         }
     }

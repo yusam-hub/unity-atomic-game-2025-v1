@@ -8,6 +8,9 @@ namespace AtomicGame
 {
     public sealed class GameContextInstaller : SceneContextInstaller<IGameContext>
     {
+        [SerializeField]
+        private GameContextConfig _gameContextConfig;
+        
         [SerializeField] 
         private Transform _bulletPool;
         
@@ -25,6 +28,7 @@ namespace AtomicGame
             context.AddCoinScore(_coinScore);
             context.AddKeyScore(_keyScore);
             context.AddPumpkinScore(_pumpkinScore);
+            context.AddGameContextConfig(_gameContextConfig);
         }
     }
 }

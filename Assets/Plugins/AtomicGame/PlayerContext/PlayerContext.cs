@@ -6,7 +6,7 @@ namespace AtomicGame
     {
     }
 
-    public sealed class PlayerContext : SceneContext, IPlayerContext
+    public sealed class PlayerContext : SingletonSceneContext<PlayerContext>, IPlayerContext
     {
     }
 }

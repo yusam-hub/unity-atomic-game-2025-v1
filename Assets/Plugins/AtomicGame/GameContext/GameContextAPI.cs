@@ -21,6 +21,7 @@ namespace AtomicGame
 		public const int CoinScore = 293015855; // IReactiveVariable<int>
 		public const int KeyScore = -787689007; // IReactiveVariable<int>
 		public const int PumpkinScore = -2008409474; // IReactiveVariable<int>
+		public const int GameContextConfig = 559908192; // GameContextConfig
 
 
 		///Value Extensions
@@ -96,5 +97,23 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetPumpkinScore(this IGameContext obj, IReactiveVariable<int> value) => obj.SetValue(PumpkinScore, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static GameContextConfig GetGameContextConfig(this IGameContext obj) => obj.GetValue<GameContextConfig>(GameContextConfig);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetGameContextConfig(this IGameContext obj, out GameContextConfig value) => obj.TryGetValue(GameContextConfig, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddGameContextConfig(this IGameContext obj, GameContextConfig value) => obj.AddValue(GameContextConfig, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasGameContextConfig(this IGameContext obj) => obj.HasValue(GameContextConfig);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelGameContextConfig(this IGameContext obj) => obj.DelValue(GameContextConfig);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetGameContextConfig(this IGameContext obj, GameContextConfig value) => obj.SetValue(GameContextConfig, value);
     }
 }

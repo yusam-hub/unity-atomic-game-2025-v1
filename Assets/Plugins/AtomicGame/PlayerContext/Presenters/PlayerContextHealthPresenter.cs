@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AtomicGame
 {
-    public class GameContextHealthPresenter: MonoBehaviour
+    public class PlayerContextHealthPresenter: MonoBehaviour
     {
         public TextMeshProUGUI health;
     }
