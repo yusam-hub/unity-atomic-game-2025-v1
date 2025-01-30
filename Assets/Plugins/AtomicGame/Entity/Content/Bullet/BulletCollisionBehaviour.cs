@@ -12,10 +12,11 @@ namespace AtomicGame
         private TriggerDispatcher _triggerDispatcher;
         private IValue<int> _damage;
         private IAction _destroyAction;
-        
+        private IAction _damageAction;
         public void Init(in IEntity entity)
         {
             _destroyAction = entity.GetDestroyAction();
+            _damageAction = entity.GetDamageAction();
             _damage = entity.GetDamage();
             _triggerDispatcher = entity.GetTriggerDispatcher();
 
@@ -34,7 +35,10 @@ namespace AtomicGame
                 return;
             }
 
-            target.TakeDamage(_damage.Value);
+            if (target.TakeDamage(_damage.Value))
+            {
+                _damageAction.Invoke();
+            }
             
             _destroyAction.Invoke();
         }

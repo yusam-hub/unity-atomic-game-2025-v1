@@ -4785,7 +4785,7 @@ GameObject:
   - component: {fileID: 10842438}
   - component: {fileID: -2165412362712217161}
   m_Layer: 0
-  m_Name: CartoonFireTorchRed
+  m_Name: BulletFireParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

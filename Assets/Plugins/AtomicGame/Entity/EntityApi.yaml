@@ -41,7 +41,8 @@ values:
 - DeathEvent: IEvent
 - Lifetime: Cooldown
 - DestroyAction: IAction
-
+- DamageAction: IAction
+  
 #Weapon  
 - WeaponFireAction: IAction
 - WeaponFireEvent: IEvent

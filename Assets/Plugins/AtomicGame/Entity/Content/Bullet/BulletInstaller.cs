@@ -17,12 +17,26 @@ namespace AtomicGame
         
         [SerializeField]
         private float _lifetime = 10;
+
+        [SerializeField]
+        private GameObject _damageActionPrefab;
+  
         public override void Install(IEntity entity)
         {
             entity.AddTransform(transform);
             entity.AddDamage(new Const<int>(_damage));
             
             entity.AddLifetime(new Cooldown(_lifetime, _lifetime));
+            
+            entity.AddDamageAction(new BaseAction(() =>
+            {
+                Debug.Log($"Damage Action");
+                if (_damageActionPrefab)
+                {
+                    Destroy(Instantiate(_damageActionPrefab, transform.position, transform.rotation), 3);
+                    Debug.Log($"Damage Action Prefab");
+                }
+            }));
             
             entity.AddDestroyAction(new BaseAction(() =>
             {

@@ -7,9 +7,10 @@ namespace AtomicGame
     public sealed class GameContextUIInstaller : SceneContextInstaller<IGameContext>
     {
         private GameContextScorePresenter _scorePresenter;
-       
+
         [SerializeField] 
         private AudioClip _scoreCoinAudioClipChanged;
+        
         [SerializeField] 
         private AudioClip _scoreKeyAudioClipChanged;
 

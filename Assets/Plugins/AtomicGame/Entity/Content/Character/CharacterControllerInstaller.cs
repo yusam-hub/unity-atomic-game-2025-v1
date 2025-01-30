@@ -44,6 +44,9 @@ namespace AtomicGame
         
         [SerializeField, ReadOnly]
         private ReactiveVariable<Quaternion> _planarRotation = new ();
+        
+        private GameContextHealthPresenter _healthPresenter;      
+
         public override void Install(IEntity entity)
         {
             _characterController = GetComponent<CharacterController>();
@@ -51,6 +54,13 @@ namespace AtomicGame
             
             _interactInstaller.Install(entity);
             _healthInstaller.Install(entity);
+            
+            _healthPresenter = FindObjectOfType<GameContextHealthPresenter>();
+            if (_healthPresenter)
+            {
+                _healthPresenter.health.text = entity.GetHealth().Value.ToString();
+                entity.GetHealth().Subscribe((value) => { _healthPresenter.health.text = value.ToString(); });
+            }
 
             entity.AddPlayerTag();
          

@@ -29,8 +29,11 @@ namespace AtomicGame
             {
                 return;
             }
-            
-            target.TakeDamage(1000);
+
+            if (target.HasEnemyTag())
+            {
+                target.TakeDamage(1000);       
+            }
         }
 
         public void Dispose(in IEntity entity)

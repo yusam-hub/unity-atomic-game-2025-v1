@@ -259,7 +259,7 @@ MonoBehaviour:
     _detectCooldownPeriod: 0.1
     _attackCooldownPeriod: 1
   _weaponInstaller:
-    _bulletPrefab: {fileID: 3057322964238258238, guid: e1190d2abdfd94857b39df85ec41f1a0,
+    _bulletPrefab: {fileID: 3057322964238258238, guid: 943c3657ed47844a29843e0c7d2ddab3,
       type: 3}
     _weaponFirePoint: {fileID: 2613395306965063875}
   _moveSpeed:

@@ -41,6 +41,7 @@ namespace AtomicGame
 		public const int DeathEvent = -1096613677; // IEvent
 		public const int Lifetime = -997109026; // Cooldown
 		public const int DestroyAction = 85938956; // IAction
+		public const int DamageAction = 1156185048; // IAction
 		public const int WeaponFireAction = -19054336; // IAction
 		public const int WeaponFireEvent = 1287098833; // IEvent
 		public const int WeaponFirePoint = -1061394350; // Transform
@@ -451,6 +452,24 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetDestroyAction(this IEntity obj, IAction value) => obj.SetValue(DestroyAction, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IAction GetDamageAction(this IEntity obj) => obj.GetValue<IAction>(DamageAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetDamageAction(this IEntity obj, out IAction value) => obj.TryGetValue(DamageAction, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddDamageAction(this IEntity obj, IAction value) => obj.AddValue(DamageAction, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasDamageAction(this IEntity obj) => obj.HasValue(DamageAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelDamageAction(this IEntity obj) => obj.DelValue(DamageAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetDamageAction(this IEntity obj, IAction value) => obj.SetValue(DamageAction, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IAction GetWeaponFireAction(this IEntity obj) => obj.GetValue<IAction>(WeaponFireAction);

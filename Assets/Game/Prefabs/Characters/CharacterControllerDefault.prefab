@@ -406,7 +406,7 @@ MonoBehaviour:
     _period: 0.1
   _healthInstaller:
     _health:
-      value: 100
+      value: 1000
   _damageTriggerDispatcher: {fileID: 1875118000841314576}
   _moveSpeed:
     value: 3.5
