@@ -12,6 +12,9 @@ namespace AtomicGame
 
         [SerializeField] 
         private EnemyAttackInstaller _enemyAttackInstaller;
+
+        [SerializeField]
+        private WeaponInstaller _weaponInstaller;
         
         [SerializeField] 
         private ReactiveVariable<float> _moveSpeed = new(2f);
@@ -29,9 +32,10 @@ namespace AtomicGame
             entity.AddMoveSpeed(_moveSpeed);
             entity.AddRotateSpeed(_rotateSpeed);
             entity.AddMoveDirection(_moveDirection);
-            entity.AddBehaviour(new EnemyBehaviour());
+            entity.AddBehaviour(new EnemyMovingThrowTransformsBehaviour());
 
             _healthInstaller.Install(entity);
+            _weaponInstaller.Install(entity);
             
             entity.GetDeathEvent().Subscribe(() =>
             {

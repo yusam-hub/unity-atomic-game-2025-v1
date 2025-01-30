@@ -339,6 +339,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pumpkin_Entity
       objectReference: {fileID: 0}
+    - target: {fileID: 6090700872297794583, guid: 8dc30d7d66755411088bcf0423ecd411,
+        type: 3}
+      propertyPath: _enemyAttackInstaller._radius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090700872297794583, guid: 8dc30d7d66755411088bcf0423ecd411,
+        type: 3}
+      propertyPath: _enemyAttackInstaller._detectLayerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 8984629353359167730, guid: 8dc30d7d66755411088bcf0423ecd411,
         type: 3}
       propertyPath: m_LocalPosition.x

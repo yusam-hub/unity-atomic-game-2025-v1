@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &592652835845348362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2613395306965063875}
+  m_Layer: 0
+  m_Name: WeaponFirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2613395306965063875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592652835845348362}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8984629353359167730}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2055214208819263580
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +150,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4897105933461842508}
+  - {fileID: 2613395306965063875}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6671527818143265744
@@ -219,12 +251,17 @@ MonoBehaviour:
     _health:
       value: 100
   _enemyAttackInstaller:
-    _radius: 5
-    _layerMask:
+    _detectRadius: 10
+    _detectLayerMask:
       serializedVersion: 2
       m_Bits: 128
-    _triggerInteraction: 0
-    _cooldownPeriod: 0.1
+    _detectTriggerInteraction: 0
+    _detectCooldownPeriod: 0.1
+    _attackCooldownPeriod: 1
+  _weaponInstaller:
+    _bulletPrefab: {fileID: 3057322964238258238, guid: e1190d2abdfd94857b39df85ec41f1a0,
+      type: 3}
+    _weaponFirePoint: {fileID: 2613395306965063875}
   _moveSpeed:
     value: 2
   _rotateSpeed:

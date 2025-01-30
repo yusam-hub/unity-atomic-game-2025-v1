@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AtomicGame
 {
-    public sealed class DetectAttackableBehaviour : IEntityInit, IEntityFixedUpdate, IEntityGizmos
+    public sealed class EnemyDetectAttackableBehaviour : IEntityInit, IEntityFixedUpdate, IEntityGizmos
     {
         private IReactiveVariable<IEntity> _target;
 
@@ -14,7 +14,7 @@ namespace AtomicGame
         private readonly QueryTriggerInteraction _triggerInteraction;
         private readonly Cooldown _period;
 
-        public DetectAttackableBehaviour(
+        public EnemyDetectAttackableBehaviour(
             Transform center,
             float radius,
             LayerMask layerMask,

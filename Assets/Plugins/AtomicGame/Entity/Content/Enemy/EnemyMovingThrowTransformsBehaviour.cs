@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AtomicGame
 {
-    public class EnemyBehaviour : IEntityInit, IEntityUpdate
+    public class EnemyMovingThrowTransformsBehaviour : IEntityInit, IEntityUpdate
     {
         private IReactiveVariable<IEntity> _targetAttackable;
         private Transform[] _transforms;

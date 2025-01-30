@@ -10,16 +10,19 @@ namespace AtomicGame
     public sealed class EnemyAttackInstaller : IEntityInstaller
     {
         [SerializeField]
-        private float _radius = 5;
+        private float _detectRadius = 10;
 
         [SerializeField]
-        private LayerMask _layerMask;
+        private LayerMask _detectLayerMask;
 
         [SerializeField]
-        private QueryTriggerInteraction _triggerInteraction;
+        private QueryTriggerInteraction _detectTriggerInteraction;
 
         [SerializeField]
-        private float _cooldownPeriod = 0.1f;
+        private float _detectCooldownPeriod = 0.1f;
+        
+        [SerializeField]
+        private float _attackCooldownPeriod = 1f;
 
         [SerializeField, ReadOnly]
         private ReactiveVariable<IEntity> _targetAttackable = new();
@@ -29,19 +32,21 @@ namespace AtomicGame
             entity.AddTargetAttackable(_targetAttackable);
             
             entity.AddBehaviour(
-                new DetectAttackableBehaviour(
+                new EnemyDetectAttackableBehaviour(
                     entity.GetTransform(), 
-                    _radius, 
-                    _layerMask, 
-                    _triggerInteraction,
-                new Cooldown(_cooldownPeriod)
+                    _detectRadius, 
+                    _detectLayerMask, 
+                    _detectTriggerInteraction,
+                new Cooldown(_detectCooldownPeriod)
                     )
                 );
             
-            entity.GetTargetAttackable().Subscribe((target) =>
-            {
-                Debug.Log(target != null ? $"{target.Name}" : $"null");
-            });
+            entity.AddBehaviour(
+                new EnemyAttackBehaviour(
+                    new Cooldown(_attackCooldownPeriod)
+                    )
+            );
+
         }
     }
 }
