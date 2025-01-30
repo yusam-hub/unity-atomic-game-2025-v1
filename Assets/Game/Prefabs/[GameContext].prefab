@@ -701,7 +701,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletPool: {fileID: 2946671962657706654}
-  _score:
+  _coinScore:
+    value: 0
+  _keyScore:
     value: 0
 --- !u!114 &1666601667652594208
 MonoBehaviour:
@@ -715,5 +717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c95f0a2d8a94981b09b7b29d714a32c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreAudioClipChanged: {fileID: 8300000, guid: b45b19776b2e15e48947a75b76ccca86,
+  _scoreCoinAudioClipChanged: {fileID: 8300000, guid: b45b19776b2e15e48947a75b76ccca86,
+    type: 3}
+  _scoreKeyAudioClipChanged: {fileID: 8300000, guid: b45b19776b2e15e48947a75b76ccca86,
     type: 3}

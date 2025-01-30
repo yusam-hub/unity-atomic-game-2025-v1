@@ -9,7 +9,9 @@ namespace AtomicGame
         private GameContextScorePresenter _scorePresenter;
        
         [SerializeField] 
-        private AudioClip _scoreAudioClipChanged;
+        private AudioClip _scoreCoinAudioClipChanged;
+        [SerializeField] 
+        private AudioClip _scoreKeyAudioClipChanged;
 
         protected override void Install(IGameContext context)
         {
@@ -22,7 +24,17 @@ namespace AtomicGame
                 if (_scorePresenter) {
                     _scorePresenter.score.text = value.ToString();
                 }
-                AudioManager.PlayOneShot(_scoreAudioClipChanged);       
+                AudioManager.PlayOneShot(_scoreCoinAudioClipChanged);       
+            });
+            
+            IReactiveVariable<int> keyScore = context.GetKeyScore();
+            
+            keyScore.Subscribe((value) =>
+            {
+                if (_scorePresenter) {
+                    _scorePresenter.score.text = value.ToString();
+                }
+                AudioManager.PlayOneShot(_scoreKeyAudioClipChanged);       
             });
         }
     }
