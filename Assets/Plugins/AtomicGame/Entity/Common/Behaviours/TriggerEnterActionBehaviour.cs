@@ -29,6 +29,16 @@ namespace AtomicGame
 
         private void OnTriggerEnter(Collider collider)
         {
+            if (!collider.TryGetEntity(out IEntity target))
+            {
+                return;
+            }
+
+            if (!target.HasPlayerTag())
+            {
+                return;
+            }
+            
             _triggerEnterAction.Invoke();
         }
 
