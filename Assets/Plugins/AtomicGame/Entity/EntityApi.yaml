@@ -16,6 +16,8 @@ tags:
 - Interactable
 - Damageable
 - Scoreable
+- Player
+- Enemy
 
 values:
 - Transform: Transform
@@ -51,8 +53,9 @@ values:
 #Interact
 - InteractAction: IAction<IEntity> #IEntity — Character
 - TargetInteractable: IReactiveVariable<IEntity> #Entity — current interactable item
+- TargetAttackable: IReactiveVariable<IEntity> #Entity — current attacked item
   
-#Inputs
+  #Inputs
 - KeyPressAction: IAction<KeyCode>
 - KeyDownAction: IAction<KeyCode>
 - KeyUpAction: IAction<KeyCode>

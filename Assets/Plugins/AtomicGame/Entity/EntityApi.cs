@@ -17,6 +17,8 @@ namespace AtomicGame
 		public const int Interactable = 1077199658;
 		public const int Damageable = 563499515;
 		public const int Scoreable = -1523738390;
+		public const int Player = -1615495341;
+		public const int Enemy = 979269037;
 
 
 		///Values
@@ -45,6 +47,7 @@ namespace AtomicGame
 		public const int BulletPrefab = -918778767; // SceneEntity
 		public const int InteractAction = -1026843572; // IAction<IEntity>
 		public const int TargetInteractable = -990542098; // IReactiveVariable<IEntity>
+		public const int TargetAttackable = 145417146; // IReactiveVariable<IEntity>
 		public const int KeyPressAction = -418488485; // IAction<KeyCode>
 		public const int KeyDownAction = -124030595; // IAction<KeyCode>
 		public const int KeyUpAction = -181628813; // IAction<KeyCode>
@@ -85,6 +88,24 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DelScoreableTag(this IEntity obj) => obj.DelTag(Scoreable);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasPlayerTag(this IEntity obj) => obj.HasTag(Player);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddPlayerTag(this IEntity obj) => obj.AddTag(Player);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelPlayerTag(this IEntity obj) => obj.DelTag(Player);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasEnemyTag(this IEntity obj) => obj.HasTag(Enemy);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddEnemyTag(this IEntity obj) => obj.AddTag(Enemy);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelEnemyTag(this IEntity obj) => obj.DelTag(Enemy);
 
 
 		///Value Extensions
@@ -538,6 +559,24 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetTargetInteractable(this IEntity obj, IReactiveVariable<IEntity> value) => obj.SetValue(TargetInteractable, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveVariable<IEntity> GetTargetAttackable(this IEntity obj) => obj.GetValue<IReactiveVariable<IEntity>>(TargetAttackable);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetTargetAttackable(this IEntity obj, out IReactiveVariable<IEntity> value) => obj.TryGetValue(TargetAttackable, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddTargetAttackable(this IEntity obj, IReactiveVariable<IEntity> value) => obj.AddValue(TargetAttackable, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasTargetAttackable(this IEntity obj) => obj.HasValue(TargetAttackable);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelTargetAttackable(this IEntity obj) => obj.DelValue(TargetAttackable);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetTargetAttackable(this IEntity obj, IReactiveVariable<IEntity> value) => obj.SetValue(TargetAttackable, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IAction<KeyCode> GetKeyPressAction(this IEntity obj) => obj.GetValue<IAction<KeyCode>>(KeyPressAction);

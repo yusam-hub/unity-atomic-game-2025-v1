@@ -9,6 +9,9 @@ namespace AtomicGame
     {
         [SerializeField] 
         private HealthInstaller _healthInstaller;
+
+        [SerializeField] 
+        private EnemyAttackInstaller _enemyAttackInstaller;
         
         [SerializeField] 
         private ReactiveVariable<float> _moveSpeed = new(2f);
@@ -21,18 +24,21 @@ namespace AtomicGame
         
         public override void Install(IEntity entity)
         {
-            _healthInstaller.Install(entity);
-            
+            entity.AddEnemyTag();
             entity.AddTransform(transform);
             entity.AddMoveSpeed(_moveSpeed);
             entity.AddRotateSpeed(_rotateSpeed);
             entity.AddMoveDirection(_moveDirection);
             entity.AddBehaviour(new EnemyBehaviour());
 
+            _healthInstaller.Install(entity);
+            
             entity.GetDeathEvent().Subscribe(() =>
             {
                 transform.gameObject.SetActive(false);
             });
+
+            _enemyAttackInstaller.Install(entity);
         }
     }
 }
