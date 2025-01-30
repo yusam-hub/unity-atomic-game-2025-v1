@@ -10,6 +10,10 @@ namespace AtomicGame
     {
         public static bool IsAlive(this IEntity entity)
         {
+            if (!entity.HasDamageableTag())
+            {
+                return false;
+            }
             return entity.GetHealth().Value > 0;
         }
 
