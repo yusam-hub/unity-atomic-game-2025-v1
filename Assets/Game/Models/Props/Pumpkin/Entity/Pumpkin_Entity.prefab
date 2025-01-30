@@ -218,6 +218,13 @@ MonoBehaviour:
   _healthInstaller:
     _health:
       value: 100
+  _enemyAttackInstaller:
+    _radius: 5
+    _layerMask:
+      serializedVersion: 2
+      m_Bits: 128
+    _triggerInteraction: 0
+    _cooldownPeriod: 0.1
   _moveSpeed:
     value: 2
   _rotateSpeed:
