@@ -15,6 +15,7 @@ imports:
 tags:
 - Interactable
 - Damageable
+- Scoreable
 
 values:
 - Transform: Transform
@@ -31,7 +32,7 @@ values:
 - Effects: IReactiveDictionary<string, EffectInstance>
 - PlanarRotation: IReactiveVariable<Quaternion>  
 - Damage: IValue<int>
-- MoveDirection: IReactiveVariable<Vector3>
+- MoveDirection: IReactiveVariable<Vector3>  
   
 #Life
 - Health: IReactiveVariable<int>
@@ -64,4 +65,5 @@ values:
 #Dispatchers
 - CollisionDispatcher: CollisionDispatcher
 - TriggerDispatcher: TriggerDispatcher
+- TriggerEnterAction: IAction
 - ControllerColliderHitDispatcher: ControllerColliderHitDispatcher

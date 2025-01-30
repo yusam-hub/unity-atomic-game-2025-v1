@@ -12,11 +12,15 @@ namespace AtomicGame
         private Transform _bulletPool;
         
         [SerializeField, ReadOnly]
-        private ReactiveVariable<int> _score = new();
+        private ReactiveVariable<int> _coinScore = new();
+        
+        [SerializeField, ReadOnly]
+        private ReactiveVariable<int> _keyScore = new();
         protected override void Install(IGameContext context)
         {
             context.AddBulletSceneEntityPool(new GenericSceneEntityPool(_bulletPool));
-            context.AddScore(_score);
+            context.AddCoinScore(_coinScore);
+            context.AddKeyScore(_keyScore);
         }
     }
 }

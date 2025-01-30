@@ -18,7 +18,8 @@ namespace AtomicGame
 
 		///Values
 		public const int BulletSceneEntityPool = 1173791206; // GenericSceneEntityPool
-		public const int Score = -212330411; // IReactiveVariable<int>
+		public const int CoinScore = 293015855; // IReactiveVariable<int>
+		public const int KeyScore = -787689007; // IReactiveVariable<int>
 
 
 		///Value Extensions
@@ -42,21 +43,39 @@ namespace AtomicGame
 		public static void SetBulletSceneEntityPool(this IGameContext obj, GenericSceneEntityPool value) => obj.SetValue(BulletSceneEntityPool, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IReactiveVariable<int> GetScore(this IGameContext obj) => obj.GetValue<IReactiveVariable<int>>(Score);
+		public static IReactiveVariable<int> GetCoinScore(this IGameContext obj) => obj.GetValue<IReactiveVariable<int>>(CoinScore);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetScore(this IGameContext obj, out IReactiveVariable<int> value) => obj.TryGetValue(Score, out value);
+		public static bool TryGetCoinScore(this IGameContext obj, out IReactiveVariable<int> value) => obj.TryGetValue(CoinScore, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddScore(this IGameContext obj, IReactiveVariable<int> value) => obj.AddValue(Score, value);
+		public static bool AddCoinScore(this IGameContext obj, IReactiveVariable<int> value) => obj.AddValue(CoinScore, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasScore(this IGameContext obj) => obj.HasValue(Score);
+		public static bool HasCoinScore(this IGameContext obj) => obj.HasValue(CoinScore);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelScore(this IGameContext obj) => obj.DelValue(Score);
+		public static bool DelCoinScore(this IGameContext obj) => obj.DelValue(CoinScore);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetScore(this IGameContext obj, IReactiveVariable<int> value) => obj.SetValue(Score, value);
+		public static void SetCoinScore(this IGameContext obj, IReactiveVariable<int> value) => obj.SetValue(CoinScore, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveVariable<int> GetKeyScore(this IGameContext obj) => obj.GetValue<IReactiveVariable<int>>(KeyScore);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetKeyScore(this IGameContext obj, out IReactiveVariable<int> value) => obj.TryGetValue(KeyScore, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddKeyScore(this IGameContext obj, IReactiveVariable<int> value) => obj.AddValue(KeyScore, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasKeyScore(this IGameContext obj) => obj.HasValue(KeyScore);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelKeyScore(this IGameContext obj) => obj.DelValue(KeyScore);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetKeyScore(this IGameContext obj, IReactiveVariable<int> value) => obj.SetValue(KeyScore, value);
     }
 }

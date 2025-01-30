@@ -16,6 +16,7 @@ namespace AtomicGame
 		///Tags
 		public const int Interactable = 1077199658;
 		public const int Damageable = 563499515;
+		public const int Scoreable = -1523738390;
 
 
 		///Values
@@ -52,6 +53,7 @@ namespace AtomicGame
 		public const int ChangeCrossFadeEvent = 364688039; // IEvent<int>
 		public const int CollisionDispatcher = -2127104721; // CollisionDispatcher
 		public const int TriggerDispatcher = -1084234046; // TriggerDispatcher
+		public const int TriggerEnterAction = -1869765499; // IAction
 		public const int ControllerColliderHitDispatcher = -2253885; // ControllerColliderHitDispatcher
 
 
@@ -74,6 +76,15 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DelDamageableTag(this IEntity obj) => obj.DelTag(Damageable);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasScoreableTag(this IEntity obj) => obj.HasTag(Scoreable);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddScoreableTag(this IEntity obj) => obj.AddTag(Scoreable);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelScoreableTag(this IEntity obj) => obj.DelTag(Scoreable);
 
 
 		///Value Extensions
@@ -671,6 +682,24 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetTriggerDispatcher(this IEntity obj, TriggerDispatcher value) => obj.SetValue(TriggerDispatcher, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IAction GetTriggerEnterAction(this IEntity obj) => obj.GetValue<IAction>(TriggerEnterAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetTriggerEnterAction(this IEntity obj, out IAction value) => obj.TryGetValue(TriggerEnterAction, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddTriggerEnterAction(this IEntity obj, IAction value) => obj.AddValue(TriggerEnterAction, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasTriggerEnterAction(this IEntity obj) => obj.HasValue(TriggerEnterAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelTriggerEnterAction(this IEntity obj) => obj.DelValue(TriggerEnterAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetTriggerEnterAction(this IEntity obj, IAction value) => obj.SetValue(TriggerEnterAction, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static ControllerColliderHitDispatcher GetControllerColliderHitDispatcher(this IEntity obj) => obj.GetValue<ControllerColliderHitDispatcher>(ControllerColliderHitDispatcher);

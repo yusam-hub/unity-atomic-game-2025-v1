@@ -15,4 +15,5 @@ imports:
 
 values:
 - BulletSceneEntityPool: GenericSceneEntityPool
-- Score: IReactiveVariable<int>
+- CoinScore: IReactiveVariable<int>
+- KeyScore: IReactiveVariable<int>

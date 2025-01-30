@@ -15,9 +15,9 @@ namespace AtomicGame
         {
             _scorePresenter = FindObjectOfType<GameContextScorePresenter>();
             
-            IReactiveVariable<int> score = context.GetScore();
+            IReactiveVariable<int> coinScore = context.GetCoinScore();
             
-            score.Subscribe((value) =>
+            coinScore.Subscribe((value) =>
             {
                 if (_scorePresenter) {
                     _scorePresenter.score.text = value.ToString();
