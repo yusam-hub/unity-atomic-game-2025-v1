@@ -12,7 +12,7 @@ namespace AtomicGame
         private readonly float _radius;
         private readonly LayerMask _layerMask;
         private readonly QueryTriggerInteraction _triggerInteraction;
-        private readonly Cooldown _period; 
+        private readonly Cooldown _period;
 
         public DetectAttackableBehaviour(
             Transform center,

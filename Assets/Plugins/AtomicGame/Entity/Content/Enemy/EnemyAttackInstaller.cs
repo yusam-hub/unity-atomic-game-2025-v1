@@ -1,6 +1,7 @@
 using System;
 using Atomic.Elements;
 using Atomic.Entities;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace AtomicGame
@@ -19,10 +20,13 @@ namespace AtomicGame
 
         [SerializeField]
         private float _cooldownPeriod = 0.1f;
+
+        [SerializeField, ReadOnly]
+        private ReactiveVariable<IEntity> _targetAttackable = new();
         
         public void Install(IEntity entity)
         {
-            entity.AddTargetAttackable(new ReactiveVariable<IEntity>());
+            entity.AddTargetAttackable(_targetAttackable);
             
             entity.AddBehaviour(
                 new DetectAttackableBehaviour(

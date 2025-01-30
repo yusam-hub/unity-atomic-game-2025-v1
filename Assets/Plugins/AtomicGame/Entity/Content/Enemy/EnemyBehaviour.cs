@@ -6,6 +6,7 @@ namespace AtomicGame
 {
     public class EnemyBehaviour : IEntityInit, IEntityUpdate
     {
+        private IReactiveVariable<IEntity> _targetAttackable;
         private Transform[] _transforms;
         private Transform _transform;
         private IReactiveVariable<float> _moveSpeed;
@@ -18,6 +19,7 @@ namespace AtomicGame
             _transforms = entity.GetTransforms();
             _moveSpeed = entity.GetMoveSpeed();
             _moveDirection = entity.GetMoveDirection();
+            _targetAttackable = entity.GetTargetAttackable();
             _indexOfTransforms = -1;
             if (_transforms.Length > 0)
             {
@@ -29,6 +31,7 @@ namespace AtomicGame
         {
             if (_indexOfTransforms == -1) return;
             if (!HealthUseCase.IsAlive(entity)) return;
+            if (_targetAttackable.Value != null) return;
             
             var nextPosition = _transforms[_indexOfTransforms].position;
             
