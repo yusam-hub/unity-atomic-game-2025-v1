@@ -29,6 +29,8 @@ values:
 - IsGrounded: IReactiveVariable<bool>
 - RotateSpeed: IValue<float>
 - RotateAction: IAction<Vector3, float> #direction,deltaTime
+- MoveCondition: IExpression<bool>
+- JumpCondition: IExpression<bool>
 - JumpAction: IAction
 - JumpEvent: IEvent
 - Effects: IReactiveDictionary<string, EffectInstance>

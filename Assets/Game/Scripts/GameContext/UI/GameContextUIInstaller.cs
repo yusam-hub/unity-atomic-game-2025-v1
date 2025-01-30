@@ -6,8 +6,8 @@ namespace AtomicGame
 {
     public sealed class GameContextUIInstaller : SceneContextInstaller<IGameContext>
     {
-        private GameContextScorePresenter _scorePresenter;
-
+        private GameContextScoreKeyPresenter _scoreKeyPresenter;
+        private GameContextScoreCoinPresenter _scoreCoinPresenter;
         [SerializeField] 
         private AudioClip _scoreCoinAudioClipChanged;
         
@@ -16,14 +16,15 @@ namespace AtomicGame
 
         protected override void Install(IGameContext context)
         {
-            _scorePresenter = FindObjectOfType<GameContextScorePresenter>();
+            _scoreCoinPresenter = FindObjectOfType<GameContextScoreCoinPresenter>();
+            _scoreKeyPresenter = FindObjectOfType<GameContextScoreKeyPresenter>();
             
             IReactiveVariable<int> coinScore = context.GetCoinScore();
             
             coinScore.Subscribe((value) =>
             {
-                if (_scorePresenter) {
-                    _scorePresenter.score.text = value.ToString();
+                if (_scoreCoinPresenter) {
+                    _scoreCoinPresenter.score.text = value.ToString();
                 }
                 AudioManager.PlayOneShot(_scoreCoinAudioClipChanged);       
             });
@@ -32,8 +33,8 @@ namespace AtomicGame
             
             keyScore.Subscribe((value) =>
             {
-                if (_scorePresenter) {
-                    _scorePresenter.score.text = value.ToString();
+                if (_scoreKeyPresenter) {
+                    _scoreKeyPresenter.score.text = value.ToString();
                 }
                 AudioManager.PlayOneShot(_scoreKeyAudioClipChanged);       
             });

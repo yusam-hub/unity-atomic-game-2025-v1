@@ -45,8 +45,9 @@ namespace AtomicGame
         [SerializeField, ReadOnly]
         private ReactiveVariable<Quaternion> _planarRotation = new ();
         
-        private GameContextHealthPresenter _healthPresenter;      
-
+        private GameContextHealthPresenter _healthPresenter; 
+        private IExpression<bool> _moveCondition = new AndExpression();
+        private IExpression<bool> _jumpCondition = new AndExpression();
         public override void Install(IEntity entity)
         {
             _characterController = GetComponent<CharacterController>();
@@ -63,7 +64,12 @@ namespace AtomicGame
             }
 
             entity.AddPlayerTag();
-         
+            _moveCondition.Append(() => HealthUseCase.IsAlive(entity));
+            entity.AddMoveCondition(_moveCondition);
+            
+            _jumpCondition.Append(() => HealthUseCase.IsAlive(entity));
+            entity.AddJumpCondition(_jumpCondition);
+            
             entity.AddEffects(new ReactiveDictionary<string, EffectInstance>());
             entity.AddPlanarRotation(_planarRotation);
             
@@ -73,9 +79,12 @@ namespace AtomicGame
             entity.AddMoveSpeed(_moveSpeed);
             entity.AddMoveAction(new BaseAction<Vector3, float>((direction, deltaTime) =>
             {
-                var newDir = _planarRotation.Value * direction;
-                _moveDirection.Value = newDir;
-                entity.GetRotateAction().Invoke(_moveDirection.Value, deltaTime);
+                if (_moveCondition.Invoke())
+                {
+                    var newDir = _planarRotation.Value * direction;
+                    _moveDirection.Value = newDir;
+                    entity.GetRotateAction().Invoke(_moveDirection.Value, deltaTime);
+                }
             }));
             
             entity.AddIsMoving(_isMoving);

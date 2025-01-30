@@ -30,11 +30,9 @@ namespace AtomicGame
             
             entity.AddDamageAction(new BaseAction(() =>
             {
-                Debug.Log($"Damage Action");
                 if (_damageActionPrefab)
                 {
                     Destroy(Instantiate(_damageActionPrefab, transform.position, transform.rotation), 3);
-                    Debug.Log($"Damage Action Prefab");
                 }
             }));
             

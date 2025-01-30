@@ -31,6 +31,8 @@ namespace AtomicGame
 		public const int IsGrounded = 507951781; // IReactiveVariable<bool>
 		public const int RotateSpeed = -1838353354; // IValue<float>
 		public const int RotateAction = -600505304; // IAction<Vector3, float>
+		public const int MoveCondition = 1466174948; // IExpression<bool>
+		public const int JumpCondition = -2140666110; // IExpression<bool>
 		public const int JumpAction = -2046675773; // IAction
 		public const int JumpEvent = -1811156839; // IEvent
 		public const int Effects = -2018114250; // IReactiveDictionary<string, EffectInstance>
@@ -272,6 +274,42 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetRotateAction(this IEntity obj, IAction<Vector3, float> value) => obj.SetValue(RotateAction, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IExpression<bool> GetMoveCondition(this IEntity obj) => obj.GetValue<IExpression<bool>>(MoveCondition);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetMoveCondition(this IEntity obj, out IExpression<bool> value) => obj.TryGetValue(MoveCondition, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddMoveCondition(this IEntity obj, IExpression<bool> value) => obj.AddValue(MoveCondition, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasMoveCondition(this IEntity obj) => obj.HasValue(MoveCondition);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelMoveCondition(this IEntity obj) => obj.DelValue(MoveCondition);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetMoveCondition(this IEntity obj, IExpression<bool> value) => obj.SetValue(MoveCondition, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IExpression<bool> GetJumpCondition(this IEntity obj) => obj.GetValue<IExpression<bool>>(JumpCondition);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetJumpCondition(this IEntity obj, out IExpression<bool> value) => obj.TryGetValue(JumpCondition, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddJumpCondition(this IEntity obj, IExpression<bool> value) => obj.AddValue(JumpCondition, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasJumpCondition(this IEntity obj) => obj.HasValue(JumpCondition);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelJumpCondition(this IEntity obj) => obj.DelValue(JumpCondition);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetJumpCondition(this IEntity obj, IExpression<bool> value) => obj.SetValue(JumpCondition, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IAction GetJumpAction(this IEntity obj) => obj.GetValue<IAction>(JumpAction);

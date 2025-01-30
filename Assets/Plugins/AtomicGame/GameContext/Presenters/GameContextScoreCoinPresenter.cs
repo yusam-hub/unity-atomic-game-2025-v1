@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AtomicGame
 {
-    public class GameContextScorePresenter : MonoBehaviour
+    public class GameContextScoreCoinPresenter : MonoBehaviour
     {
         public TextMeshProUGUI score;
     }

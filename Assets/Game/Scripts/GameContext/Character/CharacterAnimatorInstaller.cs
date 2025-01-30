@@ -10,6 +10,7 @@ namespace AtomicGame
 
         private static readonly int IsGrounded = Animator.StringToHash("IsGrounded");
         private static readonly int IsMoving = Animator.StringToHash("IsMoving");
+        private static readonly int DeathTrigger = Animator.StringToHash("DeathTrigger");
 
         public override void Install(IEntity entity)
         {
@@ -23,6 +24,11 @@ namespace AtomicGame
             entity.GetIsMoving().Subscribe((value) =>
             {
                 _animator.SetBool(IsMoving, value);
+            });
+
+            entity.GetDeathEvent().Subscribe(() =>
+            {
+                _animator.SetTrigger(DeathTrigger);
             });
         }
     }

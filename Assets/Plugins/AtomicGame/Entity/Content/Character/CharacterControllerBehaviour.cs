@@ -51,9 +51,11 @@ namespace AtomicGame
             _controllerColliderHitDispatcher.OnHit += ControllerColliderHitDispatcherOnOnHit;
             
             IEvent jumpEvent = entity.GetJumpEvent();
+            IExpression<bool> jumpCondition = entity.GetJumpCondition();
             
             entity.AddJumpAction(new BaseAction(() =>
             {
+                if (!jumpCondition.Invoke()) return;
                 if (_numberOfJumps >= _maxNumberOfJumps) return;
                 _numberOfJumps++;
                 _velocity = jumpPower;
