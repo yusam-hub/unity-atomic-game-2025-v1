@@ -19,10 +19,17 @@ namespace AtomicGame
             entity.AddDamageableTag();
             entity.AddHealth(_health);
             entity.AddDeathEvent(new BaseEvent());
-
+            entity.AddRestoreEvent(new BaseEvent());
+            
             entity.AddBehaviour(
-                new DeathBehaviour()
+                new DeathRestoreBehaviour()
             );
+        }
+
+        [Button]
+        public void Setup(IEntity entity, int newHealth)
+        {
+            entity.GetHealth().Value = newHealth;
         }
     }
 }

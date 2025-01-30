@@ -41,6 +41,7 @@ values:
 #Life
 - Health: IReactiveVariable<int>
 - DeathEvent: IEvent
+- RestoreEvent: IEvent
 - Lifetime: Cooldown
 - DestroyAction: IAction
 - DamageAction: IAction

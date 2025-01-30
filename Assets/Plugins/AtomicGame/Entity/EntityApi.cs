@@ -41,6 +41,7 @@ namespace AtomicGame
 		public const int MoveDirection = -721923052; // IReactiveVariable<Vector3>
 		public const int Health = -915003867; // IReactiveVariable<int>
 		public const int DeathEvent = -1096613677; // IEvent
+		public const int RestoreEvent = 745515910; // IEvent
 		public const int Lifetime = -997109026; // Cooldown
 		public const int DestroyAction = 85938956; // IAction
 		public const int DamageAction = 1156185048; // IAction
@@ -454,6 +455,24 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetDeathEvent(this IEntity obj, IEvent value) => obj.SetValue(DeathEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IEvent GetRestoreEvent(this IEntity obj) => obj.GetValue<IEvent>(RestoreEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetRestoreEvent(this IEntity obj, out IEvent value) => obj.TryGetValue(RestoreEvent, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddRestoreEvent(this IEntity obj, IEvent value) => obj.AddValue(RestoreEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasRestoreEvent(this IEntity obj) => obj.HasValue(RestoreEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelRestoreEvent(this IEntity obj) => obj.DelValue(RestoreEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetRestoreEvent(this IEntity obj, IEvent value) => obj.SetValue(RestoreEvent, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Cooldown GetLifetime(this IEntity obj) => obj.GetValue<Cooldown>(Lifetime);
