@@ -9,6 +9,9 @@ namespace AtomicGame
     public sealed class GameContextInstaller : SceneContextInstaller<IGameContext>
     {
         [SerializeField]
+        private MenuInGameInstaller _menuInGameInstaller;
+
+        [SerializeField]
         private GameContextConfig _gameContextConfig;
         
         [SerializeField] 
@@ -22,9 +25,6 @@ namespace AtomicGame
         
         [SerializeField, ReadOnly]
         private ReactiveVariable<int> _pumpkinScore = new();
-
-        [SerializeField]
-        private MenuInGameInstaller _menuInGameInstaller;
 
         [SerializeField] 
         private ReactiveVariable<float> _audioVolume = new(1);
