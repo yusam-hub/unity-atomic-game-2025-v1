@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63a2a79fe7d4234aac2ab73e3deec10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: ScenePumpkinTest
+  sceneName: SceneLevel_01
   loadingMinimumTime: 1
   loadingWaitAfterComplete: 1
   loadingAutoActivate: 1
