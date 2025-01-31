@@ -410,6 +410,8 @@ MonoBehaviour:
   _damageTriggerDispatcher: {fileID: 1875118000841314576}
   _moveSpeed:
     value: 3.5
+  _flyVelocityForTakeDamage:
+    value: -50
   _rotateSpeed:
     value: 15
   _currentSpeed:
@@ -447,7 +449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0764ac63b1f40778ed52be77f415950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpClip: {fileID: 8300000, guid: 4ef5ea6792769eb409562cfb3cefb5c8, type: 3}
 --- !u!1001 &2827260149289248996
 PrefabInstance:
   m_ObjectHideFlags: 0

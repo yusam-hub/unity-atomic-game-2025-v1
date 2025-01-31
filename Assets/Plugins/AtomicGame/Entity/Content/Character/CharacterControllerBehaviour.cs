@@ -14,7 +14,8 @@ namespace AtomicGame
         private IReactiveVariable<float> _moveSpeed;
         private IReactiveVariable<Vector3> _moveDirection;
         private IReactiveVariable<bool> _isGrounded;
-        private IReactiveVariable<bool> _isMoving;     
+        private IReactiveVariable<bool> _isMoving;
+        private IReactiveVariable<float> _flyVelocityForTakeDamage;
         
         private Vector3 _platformLastPosition;
         private Vector3 _platformMovement;
@@ -34,7 +35,8 @@ namespace AtomicGame
             IReactiveVariable<float> moveSpeed, 
             IReactiveVariable<Vector3> moveDirection,
             IReactiveVariable<bool> isGrounded,
-            IReactiveVariable<bool> isMoving
+            IReactiveVariable<bool> isMoving,
+            IReactiveVariable<float> flyVelocityForTakeDamage 
             )
         {
             _characterController = characterController;
@@ -44,6 +46,7 @@ namespace AtomicGame
             _moveDirection = moveDirection;
             _isGrounded = isGrounded;
             _isMoving = isMoving;
+            _flyVelocityForTakeDamage = flyVelocityForTakeDamage;
         }
 
         public void Init(in IEntity entity)
@@ -94,7 +97,7 @@ namespace AtomicGame
             }
 
             newDir.y = _velocity;
-                
+
             float acceleration = 2;
             
             _currentSpeed.Value = Mathf.MoveTowards(
@@ -108,8 +111,14 @@ namespace AtomicGame
             _characterController.Move(newDir  * deltaTime);
 
             _moveDirection.Value = newDir;
+            
+            if (
+                Mathf.Abs(_moveDirection.Value.y) > Mathf.Abs(_flyVelocityForTakeDamage.Value)
+            )
+            {
+                entity.TakeDamage(100);
+                //todo: крик падения звук!!!!
+            }
         }
-
-
     }
 }

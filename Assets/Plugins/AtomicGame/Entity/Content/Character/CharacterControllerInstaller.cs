@@ -5,6 +5,7 @@ using Atomic.Entities;
 using AtomicGame;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace AtomicGame
 {
@@ -23,6 +24,9 @@ namespace AtomicGame
         [SerializeField] 
         private ReactiveVariable<float> _moveSpeed = new(3.5f);
 
+        [SerializeField] 
+        private ReactiveVariable<float> _flyVelocityForTakeDamage = new(-50f);
+        
         [SerializeField] 
         private ReactiveVariable<float> _rotateSpeed = new(15f);
 
@@ -97,7 +101,8 @@ namespace AtomicGame
                     _moveSpeed,
                     _moveDirection,
                     _isGrounded,
-                    _isMoving
+                    _isMoving,
+                    _flyVelocityForTakeDamage
                 )
             );
 
