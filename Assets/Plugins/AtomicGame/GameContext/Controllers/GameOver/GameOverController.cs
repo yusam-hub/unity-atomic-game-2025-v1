@@ -11,7 +11,6 @@ namespace AtomicGame
         public GameOverController(Cooldown gameOver)
         {
             _gameOver = gameOver;
-            
         }
 
         public void Init(IGameContext context)
@@ -31,8 +30,8 @@ namespace AtomicGame
             
             if (_gameOver.IsExpired())
             {
-                context.GetGameOverEndEvent().Invoke();
                 _waiting = true;
+                context.GetGameOverEndEvent().Invoke();
             }
         }
     }
