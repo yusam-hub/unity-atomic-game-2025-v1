@@ -8,8 +8,10 @@ namespace AtomicGame
     public sealed class MenuInGameInstaller : IContextInstaller<IGameContext>
     {
         private GameContextMenuInGamePresenter _gameContextMenuInGamePresenter;
+        private SceneLoaderComponent _sceneLoaderComponent;
         public void Install(IGameContext context)
         {
+            _sceneLoaderComponent = GameObject.FindObjectOfType<SceneLoaderComponent>();
             _gameContextMenuInGamePresenter = GameObject.FindObjectOfType<GameContextMenuInGamePresenter>();
             _gameContextMenuInGamePresenter.gameObject.SetActive(false);
             
@@ -19,6 +21,11 @@ namespace AtomicGame
                 ApplicationHelper.HideCursor();
                 _gameContextMenuInGamePresenter.gameObject.SetActive(false);
                 ApplicationHelper.Resume();
+            });
+            
+            _gameContextMenuInGamePresenter.backToMainMenuButton.onClick.AddListener(() => { 
+                ApplicationHelper.HideCursor();
+                _sceneLoaderComponent.SceneLoaderStartHandler();
             });
 
             _gameContextMenuInGamePresenter.volumeSlider.value = context.GetAudioVolume().Value;
