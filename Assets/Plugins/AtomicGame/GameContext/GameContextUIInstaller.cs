@@ -6,6 +6,9 @@ namespace AtomicGame
 {
     public sealed class GameContextUIInstaller : SceneContextInstaller<IGameContext>
     {
+        [SerializeField]
+        private string _mixerMasterVolumeExposedName = "GameContextMasterVolume";
+        
         private GameContextScoreKeyPresenter _scoreKeyPresenter;
         private GameContextScoreCoinPresenter _scoreCoinPresenter;
         private GameContextPumpkinPresenter _scorePumpkinPresenter;
@@ -48,7 +51,7 @@ namespace AtomicGame
             
             context.GetAudioVolume().Subscribe((value) =>
             {
-                GameContextAudioManager.Instance.mainMixer.SetFloat("GameContextMasterPitch", Mathf.Clamp(value, 0.01f, 1f));
+                GameContextAudioManager.Instance.mainMixer.SetFloat(_mixerMasterVolumeExposedName, Mathf.Clamp(value, -80f, 0f));
             });
             
             context.GetAudioMusic().Subscribe((value) =>
