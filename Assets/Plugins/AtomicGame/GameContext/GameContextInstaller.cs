@@ -22,6 +22,18 @@ namespace AtomicGame
         
         [SerializeField, ReadOnly]
         private ReactiveVariable<int> _pumpkinScore = new();
+
+        [SerializeField]
+        private MenuInGameInstaller _menuInGameInstaller;
+
+        [SerializeField] 
+        private ReactiveVariable<float> _audioVolume = new(1);
+        
+        [SerializeField] 
+        private ReactiveVariable<float> _audioMusic = new(1);
+        
+        [SerializeField] 
+        private ReactiveVariable<float> _audioEffect = new(1);
         protected override void Install(IGameContext context)
         {
             context.AddBulletSceneEntityPool(new GenericSceneEntityPool(_bulletPool));
@@ -29,6 +41,11 @@ namespace AtomicGame
             context.AddKeyScore(_keyScore);
             context.AddPumpkinScore(_pumpkinScore);
             context.AddGameContextConfig(_gameContextConfig);
+            context.AddAudioVolume(_audioVolume);
+            context.AddAudioMusic(_audioMusic);
+            context.AddAudioEffect(_audioEffect);
+            
+            _menuInGameInstaller.Install(context);
         }
     }
 }

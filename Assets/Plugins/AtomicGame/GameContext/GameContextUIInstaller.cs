@@ -15,7 +15,7 @@ namespace AtomicGame
             _scoreCoinPresenter = FindObjectOfType<GameContextScoreCoinPresenter>();
             _scoreKeyPresenter = FindObjectOfType<GameContextScoreKeyPresenter>();
             _scorePumpkinPresenter = FindObjectOfType<GameContextPumpkinPresenter>();
-            
+
             IReactiveVariable<int> coinScore = context.GetCoinScore();
             
             coinScore.Subscribe((value) =>
@@ -23,7 +23,7 @@ namespace AtomicGame
                 if (_scoreCoinPresenter) {
                     _scoreCoinPresenter.score.text = value.ToString();
                 }
-                AudioManager.PlayOneShot(context.GetGameContextConfig().audioClipConfig.addScoreCoin);       
+                GameContextAudioManager.PlayOneShot(context.GetGameContextConfig().audioClipConfig.addScoreCoin);       
             });
             
             IReactiveVariable<int> keyScore = context.GetKeyScore();
@@ -33,7 +33,7 @@ namespace AtomicGame
                 if (_scoreKeyPresenter) {
                     _scoreKeyPresenter.score.text = value.ToString();
                 }
-                AudioManager.PlayOneShot(context.GetGameContextConfig().audioClipConfig.addScoreKey);       
+                GameContextAudioManager.PlayOneShot(context.GetGameContextConfig().audioClipConfig.addScoreKey);       
             });
             
             IReactiveVariable<int> pumpkinScore = context.GetPumpkinScore();
@@ -43,7 +43,22 @@ namespace AtomicGame
                 if (_scorePumpkinPresenter) {
                     _scorePumpkinPresenter.pumpkin.text = value.ToString();
                 }
-                AudioManager.PlayOneShot(context.GetGameContextConfig().audioClipConfig.addScorePumpkin);       
+                GameContextAudioManager.PlayOneShot(context.GetGameContextConfig().audioClipConfig.addScorePumpkin);       
+            });
+            
+            context.GetAudioVolume().Subscribe((value) =>
+            {
+                GameContextAudioManager.Instance.mainMixer.SetFloat("GameContextMasterPitch", Mathf.Clamp(value, 0.01f, 1f));
+            });
+            
+            context.GetAudioMusic().Subscribe((value) =>
+            {
+                GameContextAudioManager.Instance.musicSource.volume = value;
+            });
+            
+            context.GetAudioEffect().Subscribe((value) =>
+            {
+                GameContextAudioManager.Instance.effectSource.volume = value;   
             });
         }
     }

@@ -12,12 +12,12 @@ namespace AtomicGame
             
             entity.GetJumpEvent().Subscribe(() =>
             {
-                AudioManager.PlayOneShot(_gameContext.GetGameContextConfig().audioClipConfig.playerJump);
+                GameContextAudioManager.PlayOneShot(_gameContext.GetGameContextConfig().audioClipConfig.playerJump);
             });
             
             entity.GetDeathEvent().Subscribe(() =>
             {
-                AudioManager.PlayOneShot(_gameContext.GetGameContextConfig().audioClipConfig.playerDeath);
+                GameContextAudioManager.PlayOneShot(_gameContext.GetGameContextConfig().audioClipConfig.playerDeath);
             });
         }
     }

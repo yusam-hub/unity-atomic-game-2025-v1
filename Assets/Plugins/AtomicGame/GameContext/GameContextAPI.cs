@@ -22,6 +22,9 @@ namespace AtomicGame
 		public const int KeyScore = -787689007; // IReactiveVariable<int>
 		public const int PumpkinScore = -2008409474; // IReactiveVariable<int>
 		public const int GameContextConfig = 559908192; // GameContextConfig
+		public const int AudioVolume = -805304480; // IReactiveVariable<float>
+		public const int AudioMusic = 1364878041; // IReactiveVariable<float>
+		public const int AudioEffect = -537240756; // IReactiveVariable<float>
 
 
 		///Value Extensions
@@ -115,5 +118,59 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetGameContextConfig(this IGameContext obj, GameContextConfig value) => obj.SetValue(GameContextConfig, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveVariable<float> GetAudioVolume(this IGameContext obj) => obj.GetValue<IReactiveVariable<float>>(AudioVolume);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetAudioVolume(this IGameContext obj, out IReactiveVariable<float> value) => obj.TryGetValue(AudioVolume, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddAudioVolume(this IGameContext obj, IReactiveVariable<float> value) => obj.AddValue(AudioVolume, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasAudioVolume(this IGameContext obj) => obj.HasValue(AudioVolume);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelAudioVolume(this IGameContext obj) => obj.DelValue(AudioVolume);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetAudioVolume(this IGameContext obj, IReactiveVariable<float> value) => obj.SetValue(AudioVolume, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveVariable<float> GetAudioMusic(this IGameContext obj) => obj.GetValue<IReactiveVariable<float>>(AudioMusic);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetAudioMusic(this IGameContext obj, out IReactiveVariable<float> value) => obj.TryGetValue(AudioMusic, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddAudioMusic(this IGameContext obj, IReactiveVariable<float> value) => obj.AddValue(AudioMusic, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasAudioMusic(this IGameContext obj) => obj.HasValue(AudioMusic);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelAudioMusic(this IGameContext obj) => obj.DelValue(AudioMusic);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetAudioMusic(this IGameContext obj, IReactiveVariable<float> value) => obj.SetValue(AudioMusic, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveVariable<float> GetAudioEffect(this IGameContext obj) => obj.GetValue<IReactiveVariable<float>>(AudioEffect);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetAudioEffect(this IGameContext obj, out IReactiveVariable<float> value) => obj.TryGetValue(AudioEffect, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddAudioEffect(this IGameContext obj, IReactiveVariable<float> value) => obj.AddValue(AudioEffect, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasAudioEffect(this IGameContext obj) => obj.HasValue(AudioEffect);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelAudioEffect(this IGameContext obj) => obj.DelValue(AudioEffect);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetAudioEffect(this IGameContext obj, IReactiveVariable<float> value) => obj.SetValue(AudioEffect, value);
     }
 }

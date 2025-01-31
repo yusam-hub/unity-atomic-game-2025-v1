@@ -20,7 +20,7 @@ namespace AtomicGame
                     3
                     );
                 
-                AudioManager.PlayOneShot(_deathAudioClip);
+                GameContextAudioManager.PlayOneShot(_deathAudioClip);
             });
         }
     }

@@ -19,3 +19,6 @@ values:
 - KeyScore: IReactiveVariable<int>
 - PumpkinScore: IReactiveVariable<int>
 - GameContextConfig: GameContextConfig
+- AudioVolume: IReactiveVariable<float>
+- AudioMusic: IReactiveVariable<float>
+- AudioEffect: IReactiveVariable<float>

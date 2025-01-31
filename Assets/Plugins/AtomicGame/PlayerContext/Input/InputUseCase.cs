@@ -18,6 +18,12 @@ namespace AtomicGame
             return Input.GetKeyDown(keyCode);
         }
         
+        public static bool IsPause(in IPlayerContext context)
+        {
+            KeyCode keyCode = context.GetInputMap().Pause;
+            return Input.GetKeyDown(keyCode);
+        }
+        
         public static Vector3 GetMoveDirection(in IPlayerContext context)
         {
             InputMap inputMap = context.GetInputMap();
