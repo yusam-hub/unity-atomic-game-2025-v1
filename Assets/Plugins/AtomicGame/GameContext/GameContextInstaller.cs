@@ -12,6 +12,9 @@ namespace AtomicGame
         private MenuInGameInstaller _menuInGameInstaller;
 
         [SerializeField]
+        private GameOverInstaller _gameOverInstaller;
+        
+        [SerializeField]
         private GameContextConfig _gameContextConfig;
         
         [SerializeField] 
@@ -44,8 +47,11 @@ namespace AtomicGame
             context.AddAudioVolume(_audioVolume);
             context.AddAudioMusic(_audioMusic);
             context.AddAudioEffect(_audioEffect);
+            context.AddGameOverBeginEvent(new BaseEvent());
+            context.AddGameOverEndEvent(new BaseEvent());
             
             _menuInGameInstaller.Install(context);
+            _gameOverInstaller.Install(context);
         }
     }
 }

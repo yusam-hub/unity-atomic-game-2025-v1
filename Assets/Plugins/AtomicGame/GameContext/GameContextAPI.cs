@@ -25,6 +25,8 @@ namespace AtomicGame
 		public const int AudioVolume = -805304480; // IReactiveVariable<float>
 		public const int AudioMusic = 1364878041; // IReactiveVariable<float>
 		public const int AudioEffect = -537240756; // IReactiveVariable<float>
+		public const int GameOverBeginEvent = -725482832; // IEvent
+		public const int GameOverEndEvent = 1143324027; // IEvent
 
 
 		///Value Extensions
@@ -172,5 +174,41 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetAudioEffect(this IGameContext obj, IReactiveVariable<float> value) => obj.SetValue(AudioEffect, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IEvent GetGameOverBeginEvent(this IGameContext obj) => obj.GetValue<IEvent>(GameOverBeginEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetGameOverBeginEvent(this IGameContext obj, out IEvent value) => obj.TryGetValue(GameOverBeginEvent, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddGameOverBeginEvent(this IGameContext obj, IEvent value) => obj.AddValue(GameOverBeginEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasGameOverBeginEvent(this IGameContext obj) => obj.HasValue(GameOverBeginEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelGameOverBeginEvent(this IGameContext obj) => obj.DelValue(GameOverBeginEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetGameOverBeginEvent(this IGameContext obj, IEvent value) => obj.SetValue(GameOverBeginEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IEvent GetGameOverEndEvent(this IGameContext obj) => obj.GetValue<IEvent>(GameOverEndEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetGameOverEndEvent(this IGameContext obj, out IEvent value) => obj.TryGetValue(GameOverEndEvent, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddGameOverEndEvent(this IGameContext obj, IEvent value) => obj.AddValue(GameOverEndEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasGameOverEndEvent(this IGameContext obj) => obj.HasValue(GameOverEndEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelGameOverEndEvent(this IGameContext obj) => obj.DelValue(GameOverEndEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetGameOverEndEvent(this IGameContext obj, IEvent value) => obj.SetValue(GameOverEndEvent, value);
     }
 }

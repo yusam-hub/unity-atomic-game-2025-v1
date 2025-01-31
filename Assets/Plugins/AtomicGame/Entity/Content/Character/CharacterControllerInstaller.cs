@@ -107,6 +107,11 @@ namespace AtomicGame
             );
 
             entity.AddBehaviour(new CharacterControllerDamageTriggerBehaviour(_damageTriggerDispatcher));
+            
+            entity.GetDeathEvent().Subscribe(() =>
+            {
+                GameContext.Instance.GetGameOverBeginEvent().Invoke();
+            });
         }
     }
 }
