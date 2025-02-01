@@ -25,11 +25,20 @@ namespace AtomicGame
         private ReactiveVariable<float> _moveSpeed = new(3.5f);
 
         [SerializeField] 
+        private ReactiveVariable<float> _rotateSpeed = new(15f);
+
+        [SerializeField] 
         private ReactiveVariable<float> _flyVelocityForTakeDamage = new(-50f);
         
         [SerializeField] 
-        private ReactiveVariable<float> _rotateSpeed = new(15f);
-
+        private ReactiveVariable<float> _jumpPower = new(5f);
+        
+        [SerializeField] 
+        private ReactiveVariable<int> _maxNumberOfJumps = new(2);
+        
+        [SerializeField] 
+        private ReactiveVariable<float> _gravityMultiplier = new(2f);
+        
         [SerializeField, ReadOnly]
         private ReactiveVariable<float> _currentSpeed = new(0);
         
@@ -102,7 +111,10 @@ namespace AtomicGame
                     _moveDirection,
                     _isGrounded,
                     _isMoving,
-                    _flyVelocityForTakeDamage
+                    _flyVelocityForTakeDamage,
+                    _jumpPower,
+                    _maxNumberOfJumps,
+                    _gravityMultiplier
                 )
             );
 

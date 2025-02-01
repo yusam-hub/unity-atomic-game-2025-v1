@@ -16,17 +16,16 @@ namespace AtomicGame
         private IReactiveVariable<bool> _isGrounded;
         private IReactiveVariable<bool> _isMoving;
         private IReactiveVariable<float> _flyVelocityForTakeDamage;
+        private IReactiveVariable<float> _gravityMultiplier;
+        private IReactiveVariable<float> _jumpPower;
+        private IReactiveVariable<int> _maxNumberOfJumps;
         
         private Vector3 _platformLastPosition;
         private Vector3 _platformMovement;
         
         private float _gravity = -9.81f;
-        private float gravityMultiplier = 2.0f;
         private float _velocity;
-        
-        private float jumpPower = 7;
         private int _numberOfJumps;
-        private readonly int _maxNumberOfJumps = 2;
 
         public CharacterControllerBehaviour(
             CharacterController characterController, 
@@ -36,7 +35,10 @@ namespace AtomicGame
             IReactiveVariable<Vector3> moveDirection,
             IReactiveVariable<bool> isGrounded,
             IReactiveVariable<bool> isMoving,
-            IReactiveVariable<float> flyVelocityForTakeDamage 
+            IReactiveVariable<float> flyVelocityForTakeDamage,
+            IReactiveVariable<float> jumpPower,
+            IReactiveVariable<int> maxNumberOfJumps,
+            IReactiveVariable<float> gravityMultiplier
             )
         {
             _characterController = characterController;
@@ -47,6 +49,9 @@ namespace AtomicGame
             _isGrounded = isGrounded;
             _isMoving = isMoving;
             _flyVelocityForTakeDamage = flyVelocityForTakeDamage;
+            _jumpPower = jumpPower;
+            _maxNumberOfJumps = maxNumberOfJumps;
+            _gravityMultiplier = gravityMultiplier;
         }
 
         public void Init(in IEntity entity)
@@ -59,9 +64,9 @@ namespace AtomicGame
             entity.AddJumpAction(new BaseAction(() =>
             {
                 if (!jumpCondition.Invoke()) return;
-                if (_numberOfJumps >= _maxNumberOfJumps) return;
+                if (_numberOfJumps >= _maxNumberOfJumps.Value) return;
                 _numberOfJumps++;
-                _velocity = jumpPower;
+                _velocity = _jumpPower.Value;
                 jumpEvent.Invoke();
             }));
         }
@@ -92,7 +97,7 @@ namespace AtomicGame
             }
             else
             {
-                _velocity += _gravity * gravityMultiplier * deltaTime;
+                _velocity += _gravity * _gravityMultiplier.Value * deltaTime;
                 _isMoving.Value = true;
             }
 

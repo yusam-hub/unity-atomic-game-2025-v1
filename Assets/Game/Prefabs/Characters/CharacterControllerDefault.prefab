@@ -410,10 +410,16 @@ MonoBehaviour:
   _damageTriggerDispatcher: {fileID: 1875118000841314576}
   _moveSpeed:
     value: 3.5
-  _flyVelocityForTakeDamage:
-    value: -50
   _rotateSpeed:
     value: 15
+  _flyVelocityForTakeDamage:
+    value: -50
+  _jumpPower:
+    value: 5
+  _maxNumberOfJumps:
+    value: 2
+  _gravityMultiplier:
+    value: 2
   _currentSpeed:
     value: 0
   _isMoving:
