@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trigger: {fileID: 489971469042524360}
+  _scoreableType: 0
   _isRotate: 1
   _rotateSpeed: 200
 --- !u!1 &6302131847419235937
@@ -79,7 +80,7 @@ GameObject:
   - component: {fileID: 2116013516865217598}
   - component: {fileID: 7421533848211912078}
   - component: {fileID: 3936629046671636860}
-  - component: {fileID: 5879897382730858812}
+  - component: {fileID: 8287568974463526948}
   - component: {fileID: 489971469042524360}
   m_Layer: 0
   m_Name: Coin_Original
@@ -153,8 +154,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5879897382730858812
-MeshCollider:
+--- !u!135 &8287568974463526948
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -171,10 +172,9 @@ MeshCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5216581434543980006, guid: c3d4d93e0bc3747ddbb39c168bcad267, type: 3}
+  serializedVersion: 3
+  m_Radius: 0.029576192
+  m_Center: {x: 0, y: 0.000000004656613, z: 0}
 --- !u!114 &489971469042524360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,4 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719b11986e04437cbe0c9e37cf249882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebugging: 0
+  isDebuggingEnter: 0
+  isDebuggingStay: 0
+  isDebuggingExit: 0
