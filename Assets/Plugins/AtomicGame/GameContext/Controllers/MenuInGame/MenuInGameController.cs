@@ -22,8 +22,9 @@ namespace AtomicGame
 
         public void OnUpdate(IGameContext context, float deltaTime)
         {
-            if (InputUseCase.IsPause(_playerContext) && !_gameContextMenuInGamePresenter.gameObject.activeSelf)
+            if (InputUseCase.IsPause(_playerContext) && context.GetGameState().Value == GameContextState.statePlay)
             {
+                context.GetGameState().Value = GameContextState.statePause;
                 _gameContextMenuInGamePresenter.gameObject.SetActive(true);  
                 ApplicationHelper.ShowCursor();       
                 ApplicationHelper.Pause();

@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Game/Scenes/GameLauncher.unity
     guid: e27c18e0c63f84029a445d2e9c29cb52
   - enabled: 1
-    path: Assets/Game/Scenes/Levels/SceneLevel_01.unity
+    path: Assets/Game/Scenes/Levels/GameLevel_1.unity
     guid: 7a78eaaf70baa4325974aa9be0d77479
   - enabled: 1
     path: Assets/Game/Scenes/Development/SceneBulletTest.unity

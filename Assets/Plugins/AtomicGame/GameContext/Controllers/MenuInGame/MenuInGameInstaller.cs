@@ -21,6 +21,7 @@ namespace AtomicGame
                 ApplicationHelper.HideCursor();
                 _gameContextMenuInGamePresenter.gameObject.SetActive(false);
                 ApplicationHelper.Resume();
+                context.GetGameState().Value = GameContextState.statePlay;
             });
             
             _gameContextMenuInGamePresenter.backToMainMenuButton.onClick.AddListener(() => { 

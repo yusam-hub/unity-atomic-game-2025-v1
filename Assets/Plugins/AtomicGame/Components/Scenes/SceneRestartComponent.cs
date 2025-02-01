@@ -54,6 +54,7 @@ namespace AtomicGame
         {
             _loadingTimeCounter = 0;
             _asyncOperation = SceneManager.LoadSceneAsync(GetSceneName());
+
             _asyncOperation.allowSceneActivation = false;
             while (_asyncOperation.progress < 0.9f)
             {

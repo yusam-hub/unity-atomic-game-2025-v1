@@ -25,8 +25,10 @@ namespace AtomicGame
 		public const int AudioVolume = -805304480; // IReactiveVariable<float>
 		public const int AudioMusic = 1364878041; // IReactiveVariable<float>
 		public const int AudioEffect = -537240756; // IReactiveVariable<float>
+		public const int GameState = 1452499819; // IReactiveVariable<GameContextState>
 		public const int GameOverBeginEvent = -725482832; // IEvent
 		public const int GameOverEndEvent = 1143324027; // IEvent
+		public const int GameWinAction = 592407949; // IAction
 
 
 		///Value Extensions
@@ -176,6 +178,24 @@ namespace AtomicGame
 		public static void SetAudioEffect(this IGameContext obj, IReactiveVariable<float> value) => obj.SetValue(AudioEffect, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveVariable<GameContextState> GetGameState(this IGameContext obj) => obj.GetValue<IReactiveVariable<GameContextState>>(GameState);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetGameState(this IGameContext obj, out IReactiveVariable<GameContextState> value) => obj.TryGetValue(GameState, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddGameState(this IGameContext obj, IReactiveVariable<GameContextState> value) => obj.AddValue(GameState, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasGameState(this IGameContext obj) => obj.HasValue(GameState);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelGameState(this IGameContext obj) => obj.DelValue(GameState);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetGameState(this IGameContext obj, IReactiveVariable<GameContextState> value) => obj.SetValue(GameState, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IEvent GetGameOverBeginEvent(this IGameContext obj) => obj.GetValue<IEvent>(GameOverBeginEvent);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -210,5 +230,23 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetGameOverEndEvent(this IGameContext obj, IEvent value) => obj.SetValue(GameOverEndEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IAction GetGameWinAction(this IGameContext obj) => obj.GetValue<IAction>(GameWinAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetGameWinAction(this IGameContext obj, out IAction value) => obj.TryGetValue(GameWinAction, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddGameWinAction(this IGameContext obj, IAction value) => obj.AddValue(GameWinAction, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasGameWinAction(this IGameContext obj) => obj.HasValue(GameWinAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelGameWinAction(this IGameContext obj) => obj.DelValue(GameWinAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetGameWinAction(this IGameContext obj, IAction value) => obj.SetValue(GameWinAction, value);
     }
 }

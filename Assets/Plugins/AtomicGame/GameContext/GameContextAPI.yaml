@@ -22,5 +22,7 @@ values:
 - AudioVolume: IReactiveVariable<float>
 - AudioMusic: IReactiveVariable<float>
 - AudioEffect: IReactiveVariable<float>
+- GameState: IReactiveVariable<GameContextState>
 - GameOverBeginEvent: IEvent
 - GameOverEndEvent: IEvent
+- GameWinAction: IAction

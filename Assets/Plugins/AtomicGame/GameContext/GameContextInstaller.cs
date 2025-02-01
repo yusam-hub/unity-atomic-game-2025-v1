@@ -13,6 +13,9 @@ namespace AtomicGame
 
         [SerializeField]
         private GameOverInstaller _gameOverInstaller;
+
+        [SerializeField]
+        private GameWinInstaller _gameWinInstaller;
         
         [SerializeField]
         private GameContextConfig _gameContextConfig;
@@ -20,13 +23,13 @@ namespace AtomicGame
         [SerializeField] 
         private Transform _bulletPool;
         
-        [SerializeField, ReadOnly]
+        [SerializeField]
         private ReactiveVariable<int> _coinScore = new();
         
-        [SerializeField, ReadOnly]
+        [SerializeField]
         private ReactiveVariable<int> _keyScore = new();
         
-        [SerializeField, ReadOnly]
+        [SerializeField]
         private ReactiveVariable<int> _pumpkinScore = new();
 
         [SerializeField] 
@@ -37,6 +40,9 @@ namespace AtomicGame
         
         [SerializeField] 
         private ReactiveVariable<float> _audioEffect = new(1);
+        
+        [SerializeField, ReadOnly] 
+        private ReactiveVariable<GameContextState> _gameState = new(GameContextState.statePlay);
         protected override void Install(IGameContext context)
         {
             context.AddBulletSceneEntityPool(new GenericSceneEntityPool(_bulletPool));
@@ -49,9 +55,12 @@ namespace AtomicGame
             context.AddAudioEffect(_audioEffect);
             context.AddGameOverBeginEvent(new BaseEvent());
             context.AddGameOverEndEvent(new BaseEvent());
+            context.AddGameState(_gameState);
             
             _menuInGameInstaller.Install(context);
             _gameOverInstaller.Install(context);
+            _gameWinInstaller.Install(context);
+            
         }
     }
 }

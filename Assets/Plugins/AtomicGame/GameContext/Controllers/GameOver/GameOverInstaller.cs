@@ -32,6 +32,7 @@ namespace AtomicGame
 
             context.GetGameOverEndEvent().Subscribe(() =>
             {
+                context.GetGameState().Value = GameContextState.stateGameOver;
                 _gameOverPresenter.gameObject.SetActive(true);
                 ApplicationHelper.ShowCursor();
                 ApplicationHelper.Pause();
