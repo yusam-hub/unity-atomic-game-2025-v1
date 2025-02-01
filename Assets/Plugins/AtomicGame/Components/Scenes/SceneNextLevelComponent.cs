@@ -21,7 +21,13 @@ namespace AtomicGame
             int id = int.Parse(idAsString);
             id++;
             string newName = scenePrefix + id.ToString();
-            return newName;
+            
+            if (SceneHelper.IsSceneExist(newName))
+            {
+                return newName;
+            }
+
+            return sceneReturnToMainMenu;
         }
     }
 }
