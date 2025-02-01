@@ -415,7 +415,7 @@ MonoBehaviour:
   _flyVelocityForTakeDamage:
     value: -50
   _jumpPower:
-    value: 5
+    value: 6
   _maxNumberOfJumps:
     value: 2
   _gravityMultiplier:
