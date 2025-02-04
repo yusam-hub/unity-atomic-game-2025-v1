@@ -181,6 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63a2a79fe7d4234aac2ab73e3deec10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDebugging: 1
   loadingMinimumTime: 1
   loadingWaitAfterComplete: 1
   loadingAutoActivate: 1
@@ -525,6 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4884b0e99a4dcda7d829b94cde4e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDebugging: 1
   loadingMinimumTime: 1
   loadingWaitAfterComplete: 1
   loadingAutoActivate: 1
@@ -762,6 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6d67948f1304413998b98381874d004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDebugging: 1
   loadingMinimumTime: 1
   loadingWaitAfterComplete: 1
   loadingAutoActivate: 1

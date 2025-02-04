@@ -17,11 +17,6 @@ namespace AtomicGame
             _sceneLoaderComponent = GameObject.FindObjectOfType<SceneLoaderComponent>();
             _sceneRestartComponent = GameObject.FindObjectOfType<SceneRestartComponent>();
             _sceneNextLevelComponent = GameObject.FindObjectOfType<SceneNextLevelComponent>();
-            
-            
-            Debug.Log($"_sceneLoaderComponent = {_sceneLoaderComponent.GetSceneName()}");
-            Debug.Log($"_sceneRestartComponent = {_sceneRestartComponent.GetSceneName()}");
-                        
                         
             _gameWinPresenter = GameObject.FindObjectOfType<GameContextGameWinPresenter>(true);
             _gameWinPresenter.gameObject.SetActive(false);

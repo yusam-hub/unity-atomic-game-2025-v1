@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace AtomicGame
 {
-    public class SceneNextLevelComponent : SceneRestartComponent
+    public sealed class SceneNextLevelComponent : AbstractSceneComponent
     {
         [SerializeField] 
         private string scenePrefix = "GameLevel_";

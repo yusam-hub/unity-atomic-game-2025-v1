@@ -15,9 +15,6 @@ namespace AtomicGame
             _sceneLoaderComponent = GameObject.FindObjectOfType<SceneLoaderComponent>();
             _sceneRestartComponent = GameObject.FindObjectOfType<SceneRestartComponent>();
             
-            Debug.Log($"_sceneLoaderComponent = {_sceneLoaderComponent.GetSceneName()}");
-            Debug.Log($"_sceneRestartComponent = {_sceneRestartComponent.GetSceneName()}");
-            
             _gameContextMenuInGamePresenter = GameObject.FindObjectOfType<GameContextMenuInGamePresenter>(true);
             _gameContextMenuInGamePresenter.gameObject.SetActive(false);
             

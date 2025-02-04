@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace AtomicGame
 {
-    public class SceneLoaderComponent : SceneRestartComponent
+    public sealed class SceneLoaderComponent : AbstractSceneComponent
     {
         [SerializeField] 
         private string sceneName;
