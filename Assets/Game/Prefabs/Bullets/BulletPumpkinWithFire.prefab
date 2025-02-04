@@ -119,12 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5506813dc54622989e0ff886cc5dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 3
-  _damage: 100
+  _moveSpeed: 5
+  _damage: 5
   _triggerDispatcher: {fileID: 4474341219892247423}
-  _lifetime: 10
-  _damageActionPrefab: {fileID: 6501363449856150340, guid: c9441de19e3ad402f912a0d2d1e9a46a,
-    type: 3}
+  _lifetime: 3
 --- !u!1001 &6766809563195779441
 PrefabInstance:
   m_ObjectHideFlags: 0
