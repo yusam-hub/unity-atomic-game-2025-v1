@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace AtomicGame
 {
-    public class SceneRestartComponent : AbstractSceneComponent
+    public sealed class SceneRestartComponent : AbstractSceneComponent
     {
         public override string GetSceneName()
         {
