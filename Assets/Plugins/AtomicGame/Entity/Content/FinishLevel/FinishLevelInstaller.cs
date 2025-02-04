@@ -50,5 +50,11 @@ namespace AtomicGame
         {
             GameContext.Instance.GetGameWinAction().Invoke();
         }
+        
+        [Button]
+        public void GameOverDebug()
+        {
+            GameContext.Instance.GetGameOverEndEvent().Invoke();
+        }
     }
 }
