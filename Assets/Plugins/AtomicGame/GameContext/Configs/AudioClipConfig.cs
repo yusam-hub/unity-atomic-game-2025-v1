@@ -13,6 +13,12 @@ namespace AtomicGame
         public AudioClip playerDeath;
         
         [SerializeField]
+        public AudioClip pumpkinDeath;
+        
+        [SerializeField]
+        public AudioClip pumpkinAttack;
+        
+        [SerializeField]
         public AudioClip addScoreCoin;
         
         [SerializeField]
@@ -20,5 +26,11 @@ namespace AtomicGame
         
         [SerializeField]
         public AudioClip addScorePumpkin;
+        
+        [SerializeField]
+        public AudioClip gameWin;
+        
+        [SerializeField]
+        public AudioClip gameOver;
     }
 }

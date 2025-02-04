@@ -15,7 +15,10 @@ namespace AtomicGame
             _sceneLoaderComponent = GameObject.FindObjectOfType<SceneLoaderComponent>();
             _sceneRestartComponent = GameObject.FindObjectOfType<SceneRestartComponent>();
             
-            _gameOverPresenter = GameObject.FindObjectOfType<GameContextGameOverPresenter>();
+            Debug.Log($"_sceneLoaderComponent = {_sceneLoaderComponent.GetSceneName()}");
+            Debug.Log($"_sceneRestartComponent = {_sceneRestartComponent.GetSceneName()}");
+            
+            _gameOverPresenter = GameObject.FindObjectOfType<GameContextGameOverPresenter>(true);
             _gameOverPresenter.gameObject.SetActive(false);
             
             _gameOverPresenter.exitButton.onClick.AddListener(ApplicationHelper.QuitBuildAndEditor);
@@ -32,6 +35,7 @@ namespace AtomicGame
 
             context.GetGameOverEndEvent().Subscribe(() =>
             {
+                GameContextAudioManager.PlayOneShot(context.GetGameContextConfig().audioClipConfig.gameOver);
                 context.GetGameState().Value = GameContextState.stateGameOver;
                 _gameOverPresenter.gameObject.SetActive(true);
                 ApplicationHelper.ShowCursor();

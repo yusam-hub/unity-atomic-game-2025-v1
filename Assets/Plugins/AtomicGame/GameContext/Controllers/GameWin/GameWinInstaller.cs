@@ -18,7 +18,12 @@ namespace AtomicGame
             _sceneRestartComponent = GameObject.FindObjectOfType<SceneRestartComponent>();
             _sceneNextLevelComponent = GameObject.FindObjectOfType<SceneNextLevelComponent>();
             
-            _gameWinPresenter = GameObject.FindObjectOfType<GameContextGameWinPresenter>();
+            
+            Debug.Log($"_sceneLoaderComponent = {_sceneLoaderComponent.GetSceneName()}");
+            Debug.Log($"_sceneRestartComponent = {_sceneRestartComponent.GetSceneName()}");
+                        
+                        
+            _gameWinPresenter = GameObject.FindObjectOfType<GameContextGameWinPresenter>(true);
             _gameWinPresenter.gameObject.SetActive(false);
             
             _gameWinPresenter.exitButton.onClick.AddListener(ApplicationHelper.QuitBuildAndEditor);
@@ -40,6 +45,7 @@ namespace AtomicGame
 
             context.AddGameWinAction(new BaseAction(() =>
             {
+                GameContextAudioManager.PlayOneShot(context.GetGameContextConfig().audioClipConfig.gameWin);
                 context.GetGameState().Value = GameContextState.stateWin;
                 _gameWinPresenter.gameObject.SetActive(true);
                 ApplicationHelper.ShowCursor();

@@ -7,20 +7,23 @@ namespace AtomicGame
     public class EnemyVisualInstaller: SceneEntityInstaller
     {
         [SerializeField] 
-        private GameObject _deathParticleSystemPrefab;
-        
-        [SerializeField] 
-        private AudioClip _deathAudioClip;
+        private GameContextConfig _gameContextConfig;
+
         public override void Install(IEntity entity)
         {
             entity.GetDeathEvent().Subscribe(() =>
             {
                 Destroy(
-                    Instantiate(_deathParticleSystemPrefab, entity.GetTransform().position, entity.GetTransform().rotation), 
+                    Instantiate(_gameContextConfig.vfxPrefabConfig.pumpkinDeathPrefab, entity.GetTransform().position, entity.GetTransform().rotation), 
                     3
                     );
                 
-                GameContextAudioManager.PlayOneShot(_deathAudioClip);
+                GameContextAudioManager.PlayOneShot(_gameContextConfig.audioClipConfig.pumpkinDeath);
+            });
+            
+            entity.GetWeaponFireEvent().Subscribe(() =>
+            {
+                GameContextAudioManager.PlayOneShot(_gameContextConfig.audioClipConfig.pumpkinAttack);
             });
         }
     }

@@ -1,4 +1,5 @@
 using Atomic.Entities;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace AtomicGame
@@ -42,6 +43,12 @@ namespace AtomicGame
         public void Dispose(in IEntity entity)
         {
             _triggerDispatcher.OnEnter -= TriggerDispatcherOnOnEnter;
+        }
+
+        [Button]
+        public void GameWinDebug()
+        {
+            GameContext.Instance.GetGameWinAction().Invoke();
         }
     }
 }

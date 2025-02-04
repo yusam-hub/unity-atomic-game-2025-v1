@@ -7,6 +7,8 @@ namespace AtomicGame
     {
         public Button backToGameButton;
 
+        public Button restartButton;
+        
         public Button backToMainMenuButton;
 
         public Button exitButton;

@@ -9,10 +9,16 @@ namespace AtomicGame
     {
         private GameContextMenuInGamePresenter _gameContextMenuInGamePresenter;
         private SceneLoaderComponent _sceneLoaderComponent;
+        private SceneRestartComponent _sceneRestartComponent;
         public void Install(IGameContext context)
         {
             _sceneLoaderComponent = GameObject.FindObjectOfType<SceneLoaderComponent>();
-            _gameContextMenuInGamePresenter = GameObject.FindObjectOfType<GameContextMenuInGamePresenter>();
+            _sceneRestartComponent = GameObject.FindObjectOfType<SceneRestartComponent>();
+            
+            Debug.Log($"_sceneLoaderComponent = {_sceneLoaderComponent.GetSceneName()}");
+            Debug.Log($"_sceneRestartComponent = {_sceneRestartComponent.GetSceneName()}");
+            
+            _gameContextMenuInGamePresenter = GameObject.FindObjectOfType<GameContextMenuInGamePresenter>(true);
             _gameContextMenuInGamePresenter.gameObject.SetActive(false);
             
             _gameContextMenuInGamePresenter.exitButton.onClick.AddListener(ApplicationHelper.QuitBuildAndEditor);
@@ -22,6 +28,11 @@ namespace AtomicGame
                 _gameContextMenuInGamePresenter.gameObject.SetActive(false);
                 ApplicationHelper.Resume();
                 context.GetGameState().Value = GameContextState.statePlay;
+            });
+            
+            _gameContextMenuInGamePresenter.restartButton.onClick.AddListener(() => { 
+                ApplicationHelper.HideCursor();
+                _sceneRestartComponent.SceneLoaderStartHandler();
             });
             
             _gameContextMenuInGamePresenter.backToMainMenuButton.onClick.AddListener(() => { 

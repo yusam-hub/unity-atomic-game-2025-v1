@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5940280403837469932}
   - component: {fileID: 765905293484184702}
   m_Layer: 0
-  m_Name: DamageActionPrefab
+  m_Name: Damage_Action_Vfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,8 +43,9 @@ AudioSource:
   m_GameObject: {fileID: 6501363449856150340}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ff5f85da24bc943d1abdc5760a22bc81, type: 3}
+  OutputAudioMixerGroup: {fileID: 7607741706569866238, guid: ac794248e9b1e8a4195696f279f2d1cc,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: af9b752fda44c426982e0eeffaae72a6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

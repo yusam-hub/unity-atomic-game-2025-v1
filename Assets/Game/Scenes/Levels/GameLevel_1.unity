@@ -5087,9 +5087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc00deef63c4d9b8906c04ef9d7e771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deathParticleSystemPrefab: {fileID: 8235030381089142245, guid: 00e73cc0f1f09420e9372ae551b912ee,
-    type: 3}
-  _deathAudioClip: {fileID: 8300000, guid: 7da886a070ddeee4ba6bc0fd415e462c, type: 3}
+  _gameContextConfig: {fileID: 0}
 --- !u!114 &942781771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13315,9 +13313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc00deef63c4d9b8906c04ef9d7e771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deathParticleSystemPrefab: {fileID: 8235030381089142245, guid: 00e73cc0f1f09420e9372ae551b912ee,
-    type: 3}
-  _deathAudioClip: {fileID: 8300000, guid: 7da886a070ddeee4ba6bc0fd415e462c, type: 3}
+  _gameContextConfig: {fileID: 0}
 --- !u!114 &8520958720682751779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13420,9 +13416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc00deef63c4d9b8906c04ef9d7e771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deathParticleSystemPrefab: {fileID: 8235030381089142245, guid: 00e73cc0f1f09420e9372ae551b912ee,
-    type: 3}
-  _deathAudioClip: {fileID: 8300000, guid: 7da886a070ddeee4ba6bc0fd415e462c, type: 3}
+  _gameContextConfig: {fileID: 0}
 --- !u!114 &8696664466467150234
 MonoBehaviour:
   m_ObjectHideFlags: 0

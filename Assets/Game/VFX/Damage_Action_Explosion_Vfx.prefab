@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 19825358}
   - component: {fileID: 19952246}
   m_Layer: 0
-  m_Name: DamageActionExplosion
+  m_Name: Damage_Action_Explosion_Vfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,5 +8,8 @@ namespace AtomicGame
     {
         [SerializeField]
         public GameObject damageActionPrefab;
+        
+        [SerializeField]     
+        public GameObject pumpkinDeathPrefab;
     }
 }

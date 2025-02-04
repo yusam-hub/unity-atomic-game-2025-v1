@@ -280,6 +280,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc00deef63c4d9b8906c04ef9d7e771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deathParticleSystemPrefab: {fileID: 8235030381089142245, guid: 00e73cc0f1f09420e9372ae551b912ee,
-    type: 3}
-  _deathAudioClip: {fileID: 8300000, guid: 7da886a070ddeee4ba6bc0fd415e462c, type: 3}
+  _gameContextConfig: {fileID: 11400000, guid: 7f807d49fdcc14fc5b3e8ee21f26eca9, type: 2}

@@ -13,11 +13,17 @@ MonoBehaviour:
   m_Name: GameContextConfig
   m_EditorClassIdentifier: 
   audioClipConfig:
-    playerJump: {fileID: 8300000, guid: a76b32836dc7cc44aa9a52f0694ee199, type: 3}
-    playerDeath: {fileID: 8300000, guid: 79c3cb7a26813d146b07c293b0324039, type: 3}
-    addScoreCoin: {fileID: 8300000, guid: b45b19776b2e15e48947a75b76ccca86, type: 3}
-    addScoreKey: {fileID: 8300000, guid: b45b19776b2e15e48947a75b76ccca86, type: 3}
-    addScorePumpkin: {fileID: 8300000, guid: b45b19776b2e15e48947a75b76ccca86, type: 3}
+    playerJump: {fileID: 8300000, guid: f289a5057c9244c1294dccd6a0d117f0, type: 3}
+    playerDeath: {fileID: 8300000, guid: d2aa909c0e5b143c5b976943b0a77a17, type: 3}
+    pumpkinDeath: {fileID: 8300000, guid: a9c658d8e1081415aa68af3d47d11c6b, type: 3}
+    pumpkinAttack: {fileID: 8300000, guid: b38fa114699874fcd83966a864cd5f5c, type: 3}
+    addScoreCoin: {fileID: 8300000, guid: 137ec1ca35a844e64a192ebc26b5e807, type: 3}
+    addScoreKey: {fileID: 8300000, guid: 76c96bce632af4733b9222f18cfb63cc, type: 3}
+    addScorePumpkin: {fileID: 8300000, guid: e586f3aa111724202877a878a734e66e, type: 3}
+    gameWin: {fileID: 8300000, guid: 18c556dea735a4ade87006810feebeea, type: 3}
+    gameOver: {fileID: 8300000, guid: 82c3965bd3faf49c393098756bccad81, type: 3}
   vfxPrefabConfig:
     damageActionPrefab: {fileID: 6501363449856150340, guid: c9441de19e3ad402f912a0d2d1e9a46a,
+      type: 3}
+    pumpkinDeathPrefab: {fileID: 8235030381089142245, guid: 00e73cc0f1f09420e9372ae551b912ee,
       type: 3}
