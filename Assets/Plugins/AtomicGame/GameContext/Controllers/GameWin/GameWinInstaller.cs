@@ -22,7 +22,11 @@ namespace AtomicGame
             _gameWinPresenter.gameObject.SetActive(false);
             
             _gameWinPresenter.exitButton.onClick.AddListener(ApplicationHelper.QuitBuildAndEditor);
-            
+
+            _gameWinPresenter.nextLevelButton.gameObject.SetActive(
+                SceneHelper.IsSceneExist(_sceneNextLevelComponent.GetNextSceneName())
+                );
+
             _gameWinPresenter.nextLevelButton.onClick.AddListener(() => { 
                 ApplicationHelper.HideCursor();
                 _sceneNextLevelComponent.SceneLoaderStartHandler();

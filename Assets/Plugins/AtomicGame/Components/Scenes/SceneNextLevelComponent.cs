@@ -16,11 +16,7 @@ namespace AtomicGame
 
         public override string GetSceneName()
         {
-            string currentName = SceneManager.GetActiveScene().name;
-            string idAsString = currentName.Replace(scenePrefix, "");
-            int id = int.Parse(idAsString);
-            id++;
-            string newName = scenePrefix + id.ToString();
+            string newName = GetNextSceneName();
             
             if (SceneHelper.IsSceneExist(newName))
             {
@@ -28,6 +24,16 @@ namespace AtomicGame
             }
 
             return sceneReturnToMainMenu;
+        }
+        
+        public string GetNextSceneName()
+        {
+            string currentName = SceneManager.GetActiveScene().name;
+            string idAsString = currentName.Replace(scenePrefix, "");
+            int id = int.Parse(idAsString);
+            id++;
+            string newName = scenePrefix + id.ToString();
+            return newName;
         }
     }
 }
