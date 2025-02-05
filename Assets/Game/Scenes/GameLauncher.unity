@@ -2039,11 +2039,11 @@ MonoBehaviour:
   buttonBack: {fileID: 555249605}
   buttonCredits:
   - buttonCredit: {fileID: 671813419}
-    url: https://ya.ru
+    url: https://artstation.com/polimagine
   - buttonCredit: {fileID: 210335268}
-    url: https://ya.ru
+    url: https://t.me/SpinyOctop
   - buttonCredit: {fileID: 1585553820}
-    url: https://ya.ru
+    url: https://t.me/iurii_sam
 --- !u!1 &1226621685
 GameObject:
   m_ObjectHideFlags: 0
