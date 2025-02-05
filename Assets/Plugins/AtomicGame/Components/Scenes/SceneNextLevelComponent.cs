@@ -35,5 +35,11 @@ namespace AtomicGame
             string newName = scenePrefix + id.ToString();
             return newName;
         }
+        
+        public string GetCurrentLevel()
+        {
+            string currentName = SceneManager.GetActiveScene().name;
+            return currentName.Replace(scenePrefix, "");
+        }
     }
 }

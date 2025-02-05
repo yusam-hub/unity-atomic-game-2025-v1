@@ -12,12 +12,18 @@ namespace AtomicGame
         private GameContextScoreKeyPresenter _scoreKeyPresenter;
         private GameContextScoreCoinPresenter _scoreCoinPresenter;
         private GameContextPumpkinPresenter _scorePumpkinPresenter;
-
+        private GameContextLevelPresenter _levelPresenter;
+        private SceneNextLevelComponent _sceneNextLevelComponent;
+        
         protected override void Install(IGameContext context)
         {
             _scoreCoinPresenter = FindObjectOfType<GameContextScoreCoinPresenter>();
             _scoreKeyPresenter = FindObjectOfType<GameContextScoreKeyPresenter>();
             _scorePumpkinPresenter = FindObjectOfType<GameContextPumpkinPresenter>();
+            _levelPresenter = FindObjectOfType<GameContextLevelPresenter>();
+            _sceneNextLevelComponent = FindObjectOfType<SceneNextLevelComponent>();
+
+            _levelPresenter.level.text = _sceneNextLevelComponent.GetCurrentLevel();
 
             IReactiveVariable<int> coinScore = context.GetCoinScore();
             

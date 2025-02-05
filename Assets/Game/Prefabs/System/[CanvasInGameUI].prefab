@@ -3166,6 +3166,7 @@ GameObject:
   - component: {fileID: 2491731911977612511}
   - component: {fileID: 3094097559725433757}
   - component: {fileID: 6486331043440598244}
+  - component: {fileID: 4944095098116696086}
   m_Layer: 5
   m_Name: '[CanvasInGameUI]'
   m_TagString: Untagged
@@ -3312,6 +3313,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pumpkin: {fileID: 4721642978313006199}
+--- !u!114 &4944095098116696086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6634497609360029748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc49b3c5b94df4b8aa72dbcbfcd4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: {fileID: 6116217338882857968}
 --- !u!1 &6664451110404524256
 GameObject:
   m_ObjectHideFlags: 0
