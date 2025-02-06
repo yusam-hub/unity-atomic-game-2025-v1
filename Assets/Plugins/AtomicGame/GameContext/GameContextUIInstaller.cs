@@ -54,20 +54,33 @@ namespace AtomicGame
                 }
                 GameContextAudioManager.PlayOneShot(context.GetGameContextConfig().audioClipConfig.addScorePumpkin);       
             });
+
+            PlayerPrefsHelper.isDebbugging = true;
+            context.GetAudioVolume().Value = PlayerPrefsHelper.GetParameter("GetAudioVolume", 0f);
+            context.GetAudioMusic().Value = PlayerPrefsHelper.GetParameter("GetAudioMusic", 1f);
+            context.GetAudioEffect().Value = PlayerPrefsHelper.GetParameter("GetAudioEffect", 1f);
+            //todo: нужно послать изменения реальным устройствам - но GameContextAudioManager еще не создан!!!!
+            /*GameContextAudioManager.Instance.mainMixer.SetFloat(_mixerMasterVolumeExposedName, context.GetAudioVolume().Value);
+            GameContextAudioManager.Instance.musicSource.volume = context.GetAudioMusic().Value;
+            GameContextAudioManager.Instance.effectSource.volume = context.GetAudioEffect().Value; */
             
             context.GetAudioVolume().Subscribe((value) =>
             {
-                GameContextAudioManager.Instance.mainMixer.SetFloat(_mixerMasterVolumeExposedName, Mathf.Clamp(value, -80f, 0f));
+                var v = Mathf.Clamp(value, -80f, 0f);
+                GameContextAudioManager.Instance.mainMixer.SetFloat(_mixerMasterVolumeExposedName, v);
+                PlayerPrefsHelper.SetParameter("GetAudioVolume", v);
             });
             
             context.GetAudioMusic().Subscribe((value) =>
             {
                 GameContextAudioManager.Instance.musicSource.volume = value;
+                PlayerPrefsHelper.SetParameter("GetAudioMusic", value);
             });
             
             context.GetAudioEffect().Subscribe((value) =>
             {
-                GameContextAudioManager.Instance.effectSource.volume = value;   
+                GameContextAudioManager.Instance.effectSource.volume = value; 
+                PlayerPrefsHelper.SetParameter("GetAudioEffect", value);
             });
         }
     }

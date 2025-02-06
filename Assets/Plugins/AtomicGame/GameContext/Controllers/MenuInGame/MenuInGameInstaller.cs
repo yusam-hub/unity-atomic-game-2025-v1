@@ -38,18 +38,19 @@ namespace AtomicGame
             });
 
             _gameContextMenuInGamePresenter.volumeSlider.value = context.GetAudioVolume().Value;
+            _gameContextMenuInGamePresenter.musicSlider.value = context.GetAudioMusic().Value;
+            _gameContextMenuInGamePresenter.effectSlider.value = context.GetAudioEffect().Value;
+            
             _gameContextMenuInGamePresenter.volumeSlider.onValueChanged.AddListener((value) =>
             {
                 context.GetAudioVolume().Value = value;
             });
-            
-            _gameContextMenuInGamePresenter.musicSlider.value = context.GetAudioMusic().Value;
+
             _gameContextMenuInGamePresenter.musicSlider.onValueChanged.AddListener((value) =>
             {
                 context.GetAudioMusic().Value = value;   
             });
-            
-            _gameContextMenuInGamePresenter.effectSlider.value = context.GetAudioEffect().Value;
+  
             _gameContextMenuInGamePresenter.effectSlider.onValueChanged.AddListener((value) =>
             {
                 context.GetAudioEffect().Value = value;

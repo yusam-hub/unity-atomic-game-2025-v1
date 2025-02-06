@@ -28,9 +28,11 @@ namespace AtomicGame
                 _gameContextMenuInGamePresenter.gameObject.SetActive(true);  
                 ApplicationHelper.ShowCursor();       
                 ApplicationHelper.Pause();
+                
                 _gameContextMenuInGamePresenter.volumeSlider.value = context.GetAudioVolume().Value;
                 _gameContextMenuInGamePresenter.musicSlider.value = context.GetAudioMusic().Value;
                 _gameContextMenuInGamePresenter.effectSlider.value = context.GetAudioEffect().Value;
+                
             } else
             if (InputUseCase.IsPause(_playerContext) && context.GetGameState().Value != GameContextState.statePlay)
             {
