@@ -8,6 +8,9 @@ namespace AtomicGame
     {
         [SerializeField]
         private string _mixerMasterVolumeExposedName = "GameContextMasterVolume";
+
+        [SerializeField]
+        private GameContextAudioManager gameContextAudioManager;
         
         private GameContextScoreKeyPresenter _scoreKeyPresenter;
         private GameContextScoreCoinPresenter _scoreCoinPresenter;
@@ -55,31 +58,30 @@ namespace AtomicGame
                 GameContextAudioManager.PlayOneShot(context.GetGameContextConfig().audioClipConfig.addScorePumpkin);       
             });
 
-            PlayerPrefsHelper.isDebbugging = true;
             context.GetAudioVolume().Value = PlayerPrefsHelper.GetParameter("GetAudioVolume", 0f);
             context.GetAudioMusic().Value = PlayerPrefsHelper.GetParameter("GetAudioMusic", 1f);
             context.GetAudioEffect().Value = PlayerPrefsHelper.GetParameter("GetAudioEffect", 1f);
-            //todo: нужно послать изменения реальным устройствам - но GameContextAudioManager еще не создан!!!!
-            /*GameContextAudioManager.Instance.mainMixer.SetFloat(_mixerMasterVolumeExposedName, context.GetAudioVolume().Value);
-            GameContextAudioManager.Instance.musicSource.volume = context.GetAudioMusic().Value;
-            GameContextAudioManager.Instance.effectSource.volume = context.GetAudioEffect().Value; */
+      
+            gameContextAudioManager.mainMixer.SetFloat(_mixerMasterVolumeExposedName, context.GetAudioVolume().Value);
+            gameContextAudioManager.musicSource.volume = context.GetAudioMusic().Value;
+            gameContextAudioManager.effectSource.volume = context.GetAudioEffect().Value; 
             
             context.GetAudioVolume().Subscribe((value) =>
             {
                 var v = Mathf.Clamp(value, -80f, 0f);
-                GameContextAudioManager.Instance.mainMixer.SetFloat(_mixerMasterVolumeExposedName, v);
+                gameContextAudioManager.mainMixer.SetFloat(_mixerMasterVolumeExposedName, v);
                 PlayerPrefsHelper.SetParameter("GetAudioVolume", v);
             });
             
             context.GetAudioMusic().Subscribe((value) =>
             {
-                GameContextAudioManager.Instance.musicSource.volume = value;
+                gameContextAudioManager.musicSource.volume = value;
                 PlayerPrefsHelper.SetParameter("GetAudioMusic", value);
             });
             
             context.GetAudioEffect().Subscribe((value) =>
             {
-                GameContextAudioManager.Instance.effectSource.volume = value; 
+                gameContextAudioManager.effectSource.volume = value; 
                 PlayerPrefsHelper.SetParameter("GetAudioEffect", value);
             });
         }
