@@ -1,5 +1,4 @@
-﻿using Sirenix.OdinInspector.Editor.Validation;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace AtomicGame
 {
