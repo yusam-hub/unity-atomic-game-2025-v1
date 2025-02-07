@@ -44,6 +44,7 @@ namespace AtomicGame
 
             context.AddGameWinAction(new BaseAction(() =>
             {
+                GameContextAudioManager.Instance.musicSource.Stop();
                 GameContextAudioManager.PlayOneShot(context.GetGameContextConfig().audioClipConfig.gameWin);
                 context.GetGameState().Value = GameContextState.stateWin;
                 _gameWinPresenter.gameObject.SetActive(true);

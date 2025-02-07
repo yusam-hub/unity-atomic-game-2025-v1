@@ -32,6 +32,7 @@ namespace AtomicGame
 
             context.GetGameOverEndEvent().Subscribe(() =>
             {
+                GameContextAudioManager.Instance.musicSource.Stop();
                 GameContextAudioManager.PlayOneShot(context.GetGameContextConfig().audioClipConfig.gameOver);
                 context.GetGameState().Value = GameContextState.stateGameOver;
                 _gameOverPresenter.gameObject.SetActive(true);

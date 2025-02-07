@@ -30,14 +30,12 @@ namespace AtomicGame
 
         private void OnTriggerEnter(Collider collider)
         {
-            if (!collider.TryGetComponent(out IEntity target))
+            if (collider.TryGetComponent(out IEntity target))
             {
-                return;
-            }
-
-            if (target.TakeDamage(_damage.Value))
-            {
-                _damageAction.Invoke();
+                if (target.TakeDamage(_damage.Value))
+                {
+                    _damageAction.Invoke();
+                }
             }
             
             _destroyAction.Invoke();

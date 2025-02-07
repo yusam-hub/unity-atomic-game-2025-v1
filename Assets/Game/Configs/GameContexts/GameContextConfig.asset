@@ -17,7 +17,7 @@ MonoBehaviour:
     playerDeath: {fileID: 8300000, guid: d2aa909c0e5b143c5b976943b0a77a17, type: 3}
     pumpkinDeath: {fileID: 8300000, guid: a9c658d8e1081415aa68af3d47d11c6b, type: 3}
     pumpkinAttack: {fileID: 8300000, guid: b38fa114699874fcd83966a864cd5f5c, type: 3}
-    addScoreCoin: {fileID: 8300000, guid: 137ec1ca35a844e64a192ebc26b5e807, type: 3}
+    addScoreCoin: {fileID: 8300000, guid: 7e4738963b8464dce880fac50925a8b6, type: 3}
     addScoreKey: {fileID: 8300000, guid: 76c96bce632af4733b9222f18cfb63cc, type: 3}
     addScorePumpkin: {fileID: 8300000, guid: e586f3aa111724202877a878a734e66e, type: 3}
     gameWin: {fileID: 8300000, guid: 18c556dea735a4ade87006810feebeea, type: 3}
