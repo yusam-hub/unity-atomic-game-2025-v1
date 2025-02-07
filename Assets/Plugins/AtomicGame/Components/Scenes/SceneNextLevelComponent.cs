@@ -28,15 +28,17 @@ namespace AtomicGame
         
         public string GetNextSceneName()
         {
-            string currentName = SceneManager.GetActiveScene().name;
-            string idAsString = currentName.Replace(scenePrefix, "");
-            int id = int.Parse(idAsString);
+            string idAsString = GetCurrentLevelId();
+            if (!int.TryParse(idAsString, out var id))
+            {
+                return SceneManager.GetActiveScene().name;
+            }
             id++;
             string newName = scenePrefix + id.ToString();
             return newName;
         }
         
-        public string GetCurrentLevel()
+        public string GetCurrentLevelId()
         {
             string currentName = SceneManager.GetActiveScene().name;
             return currentName.Replace(scenePrefix, "");

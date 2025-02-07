@@ -26,7 +26,7 @@ namespace AtomicGame
             _levelPresenter = FindObjectOfType<GameContextLevelPresenter>();
             _sceneNextLevelComponent = FindObjectOfType<SceneNextLevelComponent>();
 
-            _levelPresenter.level.text = _sceneNextLevelComponent.GetCurrentLevel();
+            _levelPresenter.level.text = _sceneNextLevelComponent.GetCurrentLevelId();
 
             IReactiveVariable<int> coinScore = context.GetCoinScore();
             
