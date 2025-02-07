@@ -151,7 +151,7 @@ MonoBehaviour:
       type: 3}
     _weaponFirePoint: {fileID: 7644579395360547479}
   _moveSpeed:
-    value: 2
+    value: 1
   _rotateSpeed:
     value: 15
   _moveDirection:
