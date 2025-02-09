@@ -11,6 +11,12 @@ namespace AtomicGame
             KeyCode keyCode = context.GetInputMap().Jump;
             return Input.GetKeyDown(keyCode);
         }
+        
+        public static bool IsJumpPress(in IPlayerContext context)
+        {
+            KeyCode keyCode = context.GetInputMap().Jump;
+            return Input.GetKey(keyCode);
+        }
 
         public static bool IsInteract(in IPlayerContext context)
         {
