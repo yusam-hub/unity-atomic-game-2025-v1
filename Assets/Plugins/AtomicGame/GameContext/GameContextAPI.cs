@@ -20,6 +20,7 @@ namespace AtomicGame
 		public const int BulletSceneEntityPool = 1173791206; // GenericSceneEntityPool
 		public const int CoinScore = 293015855; // IReactiveVariable<int>
 		public const int KeyScore = -787689007; // IReactiveVariable<int>
+		public const int KeysOnLevel = -901022658; // IReactiveVariable<int>
 		public const int PumpkinScore = -2008409474; // IReactiveVariable<int>
 		public const int GameContextConfig = 559908192; // GameContextConfig
 		public const int AudioVolume = -805304480; // IReactiveVariable<float>
@@ -86,6 +87,24 @@ namespace AtomicGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetKeyScore(this IGameContext obj, IReactiveVariable<int> value) => obj.SetValue(KeyScore, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveVariable<int> GetKeysOnLevel(this IGameContext obj) => obj.GetValue<IReactiveVariable<int>>(KeysOnLevel);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetKeysOnLevel(this IGameContext obj, out IReactiveVariable<int> value) => obj.TryGetValue(KeysOnLevel, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddKeysOnLevel(this IGameContext obj, IReactiveVariable<int> value) => obj.AddValue(KeysOnLevel, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasKeysOnLevel(this IGameContext obj) => obj.HasValue(KeysOnLevel);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelKeysOnLevel(this IGameContext obj) => obj.DelValue(KeysOnLevel);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetKeysOnLevel(this IGameContext obj, IReactiveVariable<int> value) => obj.SetValue(KeysOnLevel, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IReactiveVariable<int> GetPumpkinScore(this IGameContext obj) => obj.GetValue<IReactiveVariable<int>>(PumpkinScore);

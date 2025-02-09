@@ -1,3 +1,4 @@
+using System;
 using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace AtomicGame
         private TriggerDispatcher _trigger;
 
         [SerializeField]
-        private ScoreableType _scoreableType;
+        public ScoreableType _scoreableType;
         
         [SerializeField]
         private bool _isRotate;
@@ -39,6 +40,14 @@ namespace AtomicGame
             }));
             entity.AddBehaviour(new TriggerEnterActionBehaviour());
             entity.AddBehaviour(new TransformUpRotateBehaviour(_isRotate, _rotateSpeed));
+        }
+
+        private void OnEnable()
+        {
+            if (_scoreableType == ScoreableType.stKey)
+            {
+                GameContext.Instance.GetKeysOnLevel().Value++;
+            }
         }
     }
 }

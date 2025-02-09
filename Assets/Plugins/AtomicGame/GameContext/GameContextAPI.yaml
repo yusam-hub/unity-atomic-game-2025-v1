@@ -17,6 +17,7 @@ values:
 - BulletSceneEntityPool: GenericSceneEntityPool
 - CoinScore: IReactiveVariable<int>
 - KeyScore: IReactiveVariable<int>
+- KeysOnLevel: IReactiveVariable<int>
 - PumpkinScore: IReactiveVariable<int>
 - GameContextConfig: GameContextConfig
 - AudioVolume: IReactiveVariable<float>

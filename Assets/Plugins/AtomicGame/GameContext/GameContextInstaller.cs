@@ -56,6 +56,7 @@ namespace AtomicGame
             context.AddGameOverBeginEvent(new BaseEvent());
             context.AddGameOverEndEvent(new BaseEvent());
             context.AddGameState(_gameState);
+            context.AddKeysOnLevel(new ReactiveInt(0));
             
             _menuInGameInstaller.Install(context);
             _gameOverInstaller.Install(context);

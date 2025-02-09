@@ -34,7 +34,12 @@ namespace AtomicGame
             if (_healthPresenter)
             {
                 _healthPresenter.health.text = _character.GetHealth().Value.ToString();
-                _character.GetHealth().Subscribe((value) => { _healthPresenter.health.text = value.ToString(); });
+                _character.GetHealth().Subscribe((value) =>
+                {
+                    _healthPresenter.health.text = value.ToString();
+                    var healthPercent = value / 100f;
+                    _healthPresenter.healthBar.fillAmount = Mathf.Clamp(healthPercent, 0f, 1f);
+                });
             }
         }
     }

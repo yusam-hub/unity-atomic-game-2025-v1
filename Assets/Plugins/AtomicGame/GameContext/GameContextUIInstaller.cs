@@ -17,16 +17,25 @@ namespace AtomicGame
         private GameContextPumpkinPresenter _scorePumpkinPresenter;
         private GameContextLevelPresenter _levelPresenter;
         private SceneNextLevelComponent _sceneNextLevelComponent;
-        
+
+       
         protected override void Install(IGameContext context)
         {
+            context.GetKeysOnLevel().Subscribe((value) =>
+            {
+                if (_scoreKeyPresenter) {
+                    _scoreKeyPresenter.score.text = context.GetKeyScore().Value + " / " + value;
+                }
+            });
+            
             _scoreCoinPresenter = FindObjectOfType<GameContextScoreCoinPresenter>();
             _scoreKeyPresenter = FindObjectOfType<GameContextScoreKeyPresenter>();
+
             _scorePumpkinPresenter = FindObjectOfType<GameContextPumpkinPresenter>();
             _levelPresenter = FindObjectOfType<GameContextLevelPresenter>();
             _sceneNextLevelComponent = FindObjectOfType<SceneNextLevelComponent>();
 
-            _levelPresenter.level.text = _sceneNextLevelComponent.GetCurrentLevelId();
+            _levelPresenter.level.text = _sceneNextLevelComponent.GetCurrentLevelId() + " / 3";//костыль
 
             IReactiveVariable<int> coinScore = context.GetCoinScore();
             
@@ -43,7 +52,7 @@ namespace AtomicGame
             keyScore.Subscribe((value) =>
             {
                 if (_scoreKeyPresenter) {
-                    _scoreKeyPresenter.score.text = value.ToString();
+                    _scoreKeyPresenter.score.text = value + " / " + context.GetKeysOnLevel().Value;
                 }
                 GameContextAudioManager.PlayOneShot(context.GetGameContextConfig().audioClipConfig.addScoreKey);       
             });
